@@ -1,0 +1,358 @@
+---
+title: "Country Level Bans on Corporal Punishment"
+author: "Andrew Grogan-Kaylor"
+date: '`r format(Sys.Date(), format="%B %d, %Y")`'
+output:
+  html_document:
+    highlight: haddock
+    theme: default
+    toc: yes
+  pdf_document:
+    toc: yes
+mainfont: Tw Cen MT
+always_allow_html: yes
+---
+
+```{r global_options, echo=FALSE}
+
+knitr::opts_chunk$set(echo=FALSE, 
+                      warning=FALSE, 
+                      message=FALSE)
+
+```
+
+```{r call_libraries, eval = TRUE}
+
+library(maps) # basic mapping
+
+library(maptools)
+
+library(mapdata) # map data
+
+library(leaflet) # web maps
+
+library(ggplot2) # nice graphs
+
+library(ggthemes) # nice themes for ggplot2
+
+library(ggrepel) # distance between ggplot labels
+
+library(dplyr) # data wrangling
+
+library(DT) # nifty data table
+
+library(plotly) # interactive plots
+
+library(icon) # Font Awesome icons
+
+```
+
+```{r raw_data, eval = TRUE}
+
+# raw data
+
+raw_txt <- "
+type,year-of-prohibition,country,country_code,total-number-of-bans 
+CP Ban, 2018,Nepal,NPL,54
+CP Ban, 2016,Montenegro,MNE,53
+CP Ban, 2017,Lithuania,LTU,52
+CP Ban, 2016,Slovenia,SVN,51
+CP Ban, 2016,Paraguay,PRY,50
+CP Ban, 2016,Mongolia,MNG,49
+CP Ban, 2015,Peru,PER,48
+CP Ban, 2015,Ireland,IRL,47
+CP Ban, 2015,Benin,BEN,46
+CP Ban, 2015,Andorra,AND,45
+CP Ban, 2014,Nicaragua,NIC,44
+CP Ban, 2014,Estonia,EST,43
+CP Ban, 2014,San Marino,SMR,42
+CP Ban, 2014,Argentina,ARG,41
+CP Ban, 2014,Cape Verde,CPV,40
+CP Ban, 2014,Bolivia,BOL,39
+CP Ban,2014,Brazil,BRA,38 
+CP Ban,2014,Malta,MLT,37 
+CP Ban,2013,Honduras,HND,36 
+CP Ban,2013,Macedonia,MKD,35 
+CP Ban,2011,South Sudan,SSD,34 
+CP Ban,2010,Albania,ALB,33 
+CP Ban,2010,Congo,COG,32 
+CP Ban,2010,Kenya,KEN,31 
+CP Ban,2010,Tunisia,TUN,30 
+CP Ban,2010,Poland,POL,29 
+CP Ban,2008,Liechtenstein,LIE,28 
+CP Ban,2008,Luxembourg,LUX,27 
+CP Ban,2008,Moldova,MDA,26 
+CP Ban,2008,Costa Rica,CRI,25 
+CP Ban,2007,Togo,TGO,24 
+CP Ban,2007,Spain,ESP,23 
+CP Ban,2007,Venezuela,VEN,22 
+CP Ban,2007,Uruguay,URY,21 
+CP Ban,2007,Portugal,PRT,20 
+CP Ban,2007,New Zealand,NZL,19 
+CP Ban,2007,Netherlands,NLD,18 
+CP Ban,2006,Greece,GRC,17 
+CP Ban,2005,Hungary,HUN,16 
+CP Ban,2004,Romania,ROU,15 
+CP Ban,2004,Ukraine,UKR,14 
+CP Ban,2003,Iceland,ISL,13 
+CP Ban,2002,Turkmenistan,TKM,12 
+CP Ban,2000,Germany,DEU,11 
+CP Ban,2000,Israel,ISR,10 
+CP Ban,2000,Bulgaria,BGR,9 
+CP Ban,1999,Croatia,HRV,8 
+CP Ban,1998,Latvia,LVA,7 
+CP Ban,1997,Denmark,DNK,6 
+CP Ban,1994,Cyprus,CYP,5 
+CP Ban,1989,Austria,AUT,4 
+CP Ban,1987,Norway,NOR,3 
+CP Ban,1983,Finland,FIN,2 
+CP Ban,1979,Sweden,SWE,1 
+"
+
+mydata <- read.table(header = TRUE, text=raw_txt, sep=",")
+
+mydata$id <- rownames(mydata) # add id variable
+
+write.csv(mydata, file = "CPBans.csv")
+
+save(mydata, file = "CPBans.RData")
+
+```
+
+# Background {.tabset .tabset-fade .tabset-pills}
+
+`r fa_twitter(colour = "blue")` [Twitter](https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F&text=Country%20Level%20Bans%20on%20Corporal%20Punishment) `r fa_facebook(colour = "darkblue")` [Facebook](https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F) `r fa_google_plus(colour = "red")` [Google+](https://plus.google.com/share?url=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F)
+
+**`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r head(mydata$country, n = 1)`**.
+
+Information on countries that have banned corporal punishment available from  [endcorporalpunishment.org](http://endcorporalpunishment.org/)
+
+## Interactive Globe
+
+```{r, eval = TRUE}
+
+plot_geo(mydata) %>% 
+  add_trace(locations = ~country_code, 
+            color = ~year.of.prohibition,
+            z = ~year.of.prohibition, 
+            text = ~paste(country, 
+                          "<br>year of prohibition:", 
+                          year.of.prohibition),
+            marker = list(size = 10)) %>%
+  layout(title = "Countries With Bans on Corporal Punishment of Children", 
+         geo = list(showland = FALSE,
+                    showcountries = TRUE,
+                    projection = list(type = 'orthographic',
+                                      rotation = list(lon = -30,
+                                                      lat = 10,
+                                                      roll = 0)
+                                      ))) %>%
+  colorbar(title = 'year of prohibition') 
+
+```
+
+## Map 
+
+```{r}
+
+plot_geo(mydata) %>%
+  add_trace(locations = ~country_code, 
+            color = ~year.of.prohibition,
+            z = ~year.of.prohibition,
+            # hoverinfo = "text",
+            text = ~paste(country, 
+                          "<br>year of prohibition:", 
+                          year.of.prohibition)) %>%
+  layout(title = "Countries With Bans on Corporal Punishment of Children",
+         width = 1000,
+         height = 500,
+         geo = list(showland = FALSE,
+                    showcountries = TRUE,
+                    projection = list(type = 'Mollweide'))) %>%
+  colorbar(title = 'year of prohibition')
+
+```
+
+## Motion Chart
+
+```{r plotly_motion_chart, fig.height = 8, eval = TRUE, echo = FALSE}
+
+# create data with repeated observations for animation
+
+mydata$number.repetitions <- 
+  max(mydata$year.of.prohibition) + 
+  1 - 
+  mydata$year.of.prohibition
+
+mydata2 <- data.frame(rep(mydata$country, 
+                          mydata$number.repetitions),
+                      rep(mydata$year.of.prohibition, 
+                          mydata$number.repetitions),
+                      rep(mydata$total.number.of.bans, 
+                          mydata$number.repetitions))
+
+
+names(mydata2)[1] <- "country"
+
+names(mydata2)[2] <- "year.of.prohibition"
+
+names(mydata2)[3] <- "number_bans"
+
+mydata2 <- mydata2 %>% 
+  group_by(country) %>% 
+  mutate(id = n() - row_number()) %>%
+  mutate(year = year.of.prohibition + id)
+
+# head(mydata2)
+
+# motion chart
+
+mydata2 %>% 
+  arrange(year, number_bans) %>% 
+  plot_ly(x = ~year.of.prohibition, 
+        y = ~number_bans,
+        ids = ~country,
+        frame = ~year, 
+        color = ~year.of.prohibition, 
+        type = 'scatter',
+        mode = 'markers',
+        text = ~country,
+        textfont = list(color = toRGB("red")),
+        textposition = 'middle right',
+        marker = list(size = 10),
+        showlegend = FALSE) %>%
+  hide_colorbar() %>%
+  layout(title = 'Country Level Bans on Corporal Punishment', 
+         xaxis = list(title = "year", 
+                      range = c(1975, 2025)),
+         yaxis = list(title = "total number of bans")) 
+
+```
+
+
+
+## Data Table
+
+### Countries With Bans on Corporal Punishment of Children
+
+```{r}
+
+mynewdata <- subset(mydata, 
+                    select = c(total.number.of.bans, 
+                               country, 
+                               year.of.prohibition))
+
+datatable(mynewdata, 
+          rownames = FALSE,
+          # filter = 'top',
+          caption = 'Countries With Bans on Corporal Punishment of Children',
+          colnames = c('Number' = 1, 
+                       'Country' = 2, 
+                       'Year of Prohibition' = 3), 
+          extensions = 'Buttons', 
+          options = list(
+            dom = 'Bfrtip',
+            buttons = c('copy', 
+                        'csv', 
+                        'excel', 
+                        'pdf', 
+                        'print'))
+          )
+
+```
+
+## Static Map
+
+```{r, eval = TRUE}
+
+map('world', 
+    fill = TRUE, 
+    # projection='mollweide',
+    col = "grey", 
+    add = FALSE)
+
+map('world', 
+    mydata$country, 
+    fill = TRUE, 
+    # projection='mollweide',
+    add = TRUE, 
+    col="steelblue")
+
+title("Countries With Corporal Punishment Bans", 
+      col.main="black")
+
+```
+
+## Graph
+
+```{r, eval = TRUE, fig.height=6}
+
+p1 <- ggplot(mydata, 
+             aes(x = year.of.prohibition, 
+                 y = total.number.of.bans)) + 
+  geom_line(stat = "smooth", 
+            method = "loess",
+            color = "grey",
+            span = 0.5,
+            size = 3,
+            alpha = .25) +
+  geom_point(aes(color = total.number.of.bans),
+             # color = "blue", 
+             size = 1) +
+  geom_text(aes(x = year.of.prohibition - .25 ,
+                label = country),
+            hjust = 1, 
+            size = 2) +
+  ggtitle("Total Number of Corporal Punishment Bans by Year") +
+  xlim(1975, 
+       max(mydata$year.of.prohibition)) +
+  xlab("year") + 
+  ylab("total number of bans") +
+  theme_minimal() +
+  scale_color_viridis_c()
+
+p1
+
+```
+
+## Interactive Graph
+
+```{r, fig.height=8}
+
+plot_ly(data = mydata, 
+        x = ~year.of.prohibition, 
+        y = ~total.number.of.bans,
+        color = ~year.of.prohibition, 
+        type = 'scatter',
+        mode = 'marker',
+        marker = list(size = 5),
+        text = ~paste(country, 
+                      '<br>', 
+                      'year of ban:',
+                      year.of.prohibition)) %>%
+  add_annotations(x = mydata$year.of.prohibition,
+                  y = mydata$total.number.of.bans,
+                  text = mydata$country,
+                  font = list(size = 8), 
+                  showarrow = FALSE, 
+                  xanchor = 'right') %>%
+  layout(title = 'Country Level Bans on Corporal Punishment', 
+         xaxis = list(title = "year"),
+         yaxis = list(title = "total number of bans")) %>% 
+  rangeslider()
+
+```
+
+# Created By  
+
+[Andrew Grogan-Kaylor](http://www.umich.edu/~agrogan) @  [agrogan@umich.edu](agrogan@umich.edu). 
+
+"Country Level Bans on Corporal Punishment" is written entirely in [R Markdown](http://rmarkdown.rstudio.com/) using [RStudio](http://www.rstudio.com/).
+
+Last updated: ```r format(Sys.Date(), format="%B %d, %Y")``` at ```r format(Sys.time(),"%H:%M")```
+
+
+
+
+
+
