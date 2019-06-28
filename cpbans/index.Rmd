@@ -53,6 +53,7 @@ library(icon) # Font Awesome icons
 
 raw_txt <- "
 type,year-of-prohibition,country,country_code,total-number-of-bans 
+CP Ban, 2019,Kosovo,RKS,55
 CP Ban, 2018,Nepal,NPL,54
 CP Ban, 2016,Montenegro,MNE,53
 CP Ban, 2017,Lithuania,LTU,52
