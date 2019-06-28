@@ -1,3 +1,5 @@
 ## Research on Parenting, Children, and Families
 
-[Country Level Bans on Corporal Punishment](https://agrogan1.github.io/research/cpbans)
+[Research on Corporal Punishment](./cp)
+
+[Country Level Bans on Corporal Punishment](./cpbans)
