@@ -3,6 +3,9 @@ title: "Country Level Bans on Corporal Punishment"
 author: "Andrew Grogan-Kaylor"
 date: '`r format(Sys.Date(), format="%B %d, %Y")`'
 output:
+  bookdown::gitbook:
+    highlight: haddock
+    split_by: none
   html_document:
     highlight: haddock
     theme: default
@@ -58,8 +61,6 @@ save(mydata, file = "CPBans.RData")
 ```
 
 # Background {.tabset .tabset-fade .tabset-pills}
-
-`r fa_twitter(colour = "blue")` [Twitter](https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F&text=Country%20Level%20Bans%20on%20Corporal%20Punishment) `r fa_facebook(colour = "darkblue")` [Facebook](https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F) `r fa_google_plus(colour = "red")` [Google+](https://plus.google.com/share?url=http%3A%2F%2Fwww-personal.umich.edu%2F~agrogan%2Fcpbans%2F)
 
 **`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r head(mydata$country, n = 1)`**.
 
