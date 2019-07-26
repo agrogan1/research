@@ -3,13 +3,13 @@ title: "Country Level Bans on Corporal Punishment"
 author: "Andrew Grogan-Kaylor"
 date: '`r format(Sys.Date(), format="%B %d, %Y")`'
 output:
-  bookdown::gitbook:
-    highlight: haddock
-    split_by: none
   html_document:
     highlight: haddock
     theme: default
     toc: yes
+  bookdown::gitbook:
+    highlight: haddock
+    split_by: none
   pdf_document:
     toc: yes
 mainfont: Tw Cen MT
