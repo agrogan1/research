@@ -60,6 +60,8 @@ save(mydata, file = "CPBans.RData")
 
 ```
 
+`r icon::fa("twitter", color = "blue")` [[Tweet This](https://twitter.com/intent/tweet?url=https%3A%2F%2Fagrogan1.github.io%2Fresearch%2Fcpbans%2F&text=)]
+
 # Background {.tabset .tabset-fade .tabset-pills}
 
 **`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r head(mydata$country, n = 1)`**.
