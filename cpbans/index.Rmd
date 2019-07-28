@@ -168,8 +168,6 @@ mydata2 %>%
 
 ```
 
-
-
 ## Data Table
 
 ### Countries With Bans on Corporal Punishment of Children
@@ -207,7 +205,7 @@ datatable(mynewdata,
 map('world', 
     fill = TRUE, 
     # projection='mollweide',
-    col = "grey", 
+    col = "lightgrey", 
     add = FALSE)
 
 map('world', 
@@ -215,7 +213,7 @@ map('world',
     fill = TRUE, 
     # projection='mollweide',
     add = TRUE, 
-    col="steelblue")
+    col="gold")
 
 title("Countries With Corporal Punishment Bans", 
       col.main="black")
