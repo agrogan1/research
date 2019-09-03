@@ -8,7 +8,7 @@ author:
     affiliation: University of Michigan
     affiliation_url: https://umich.edu/
 date: "`r Sys.Date()`"
-output: radix::radix_article
+output: distill::distill_article
 ---
 
 ```{r setup, include=FALSE}
@@ -116,11 +116,11 @@ Research that simultaneously examines the relationship of multiple types of fami
 
 **Gershoff, E. T., &amp; Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: OldControversies and New Meta-Analyses. *Journal of Family Psychology*,  [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)**
 
-> This article received a [considerable amount of media attention](https://agroganweb.wordpress.com/research-on-corporal-punishment/media-mentions-of-meta-analysis-of-corporal-punishment-research/).
+> This article received a [considerable amount of media attention](media-mentions-CP-meta.html).
 
 > We discuss some of the implications of research on spanking--including our meta-analysis--[here](http://theconversation.com/hard-evidence-spanking-could-lead-to-health-problems-antisocial-behavior-58566).
 
->[Joan Lipuscek](http://www.joanlipuscek.com/child-therapy-news/new-research-in-the-old-spanking-debate) has written a really nice blog post thinking through some of the issues raised by our research.
+> [Joan Lipuscek](http://www.joanlipuscek.com/child-therapy-news/new-research-in-the-old-spanking-debate) has written a really nice blog post thinking through some of the issues raised by our research.
 
 Whether spanking is helpful or harmful to children continues to be the source of considerable debateamong both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking arerobust to study design differences. Meta-analyses focused specifically on spanking were conducted on atotal of 111 unique effect sizes representing 160,927 children. Thirteen of 17 mean effect sizes weresignificantly different from zero and all indicated a link between spanking and increased risk fordetrimental child outcomes. Effect sizes did not substantially differ between spanking and physical abuseor by study design characteristics.
 
