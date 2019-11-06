@@ -15,6 +15,34 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+```{r, layout="l-screen", fig.height=2}
+
+library(readxl)
+
+CP_Meta_Summary_Results <- read_excel("data/CP Meta Summary Results.xlsx")
+
+library(ggplot2)
+
+p1 <- ggplot(CP_Meta_Summary_Results,
+             aes(x = Outcome,
+                 y = d,
+                 label= Outcome,
+                 fill = Outcome)) + 
+  geom_bar(stat = "identity") +
+  scale_color_viridis_d() +
+  coord_flip() +
+  labs(title= "Effect Sizes of Physical Punishment",
+       x = "Outcome",
+       y = "Cohen's d Effect Size",
+       caption = "Gershoff and Grogan-Kaylor, 2016") +
+  theme(legend.position = "none",
+        title = element_text(size = rel(.5)),
+        axis.text = element_text(size = rel(.4)))
+
+p1
+
+```
+
 Media Mentions of Meta-Analysis of Corporal Punishment Research:
 
 > Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. Journal of Family Psychology. 30(4), 453-469. http://dx.doi.org/10.1037/fam0000191 
