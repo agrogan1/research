@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-```{r, layout="l-screen", fig.height=2}
+```{r, layout="l-screen", fig.height=4}
 
 library(readxl)
 
@@ -23,13 +23,15 @@ CP_Meta_Summary_Results <- read_excel("data/CP Meta Summary Results.xlsx")
 
 library(ggplot2)
 
+library(plotly)
+
 p1 <- ggplot(CP_Meta_Summary_Results,
              aes(x = Outcome,
                  y = d,
-                 label= Outcome,
-                 fill = Outcome)) + 
+                 # label = Outcome,
+                 fill = d)) + 
   geom_bar(stat = "identity") +
-  scale_color_viridis_d() +
+  scale_fill_viridis_c() +
   coord_flip() +
   labs(title= "Effect Sizes of Physical Punishment",
        x = "Outcome",
@@ -37,9 +39,9 @@ p1 <- ggplot(CP_Meta_Summary_Results,
        caption = "Gershoff and Grogan-Kaylor, 2016") +
   theme(legend.position = "none",
         title = element_text(size = rel(.5)),
-        axis.text = element_text(size = rel(.4)))
+        axis.text = element_text(size = rel(.75)))
 
-p1
+ggplotly(p1, tooltip="fill")
 
 ```
 
