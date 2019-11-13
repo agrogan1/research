@@ -114,7 +114,7 @@ Corporal punishment is a widely used, and widely endorsed form of parental disci
 
 Research that simultaneously examines the relationship of multiple types of family andcommunity violence with youth outcomes is limited in the previous research literature, particularly in Latin America. This study examined the relationship of youth exposure to familyand community violence—parental use of corporal punishment, violence in the community,intimate partner physical aggression—with eight subscales of the Youth Self Report among a Chilean sample of 593 youth-mother pairs. Results from multilevel models indicated a positive association between youth exposure to violence in the family and community, and a wide range of behavior problem outcomes, in particular, aggression. With growing evidence concerning the detrimental effect of violence on youth’s well-being, these findings highlight the need for a more comprehensive understanding of the various kinds of violence youth are exposed to within thefamily and community and the concomitant need to reduce multiple forms of violence.
 
-**Gershoff, E. T., &amp; Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. *Journal of Family Psychology*,  [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)** <p id="meta-analysis">
+<p id="meta-analysis">**Gershoff, E. T., &amp; Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. *Journal of Family Psychology*,  [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)** 
 
 > This article received a [considerable amount of media attention](media-mentions-CP-meta.html).
 
