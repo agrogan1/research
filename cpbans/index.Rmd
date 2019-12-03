@@ -64,7 +64,7 @@ save(mydata, file = "CPBans.RData")
 
 # Background {.tabset .tabset-fade .tabset-pills}
 
-**`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r head(mydata$country, n = 1)`**.
+**`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r mydata$country[1]`**.
 
 Information on countries that have banned corporal punishment available from  [endcorporalpunishment.org](http://endcorporalpunishment.org/)
 
