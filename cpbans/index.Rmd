@@ -3,9 +3,8 @@ title: "Country Level Bans on Corporal Punishment"
 author: "Andrew Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     highlight: haddock
-    theme: default
     toc: yes
   bookdown::gitbook:
     highlight: haddock
@@ -26,13 +25,17 @@ knitr::opts_chunk$set(echo=FALSE,
 
 ```{r call_libraries, eval = TRUE}
 
+library(readr) # get data
+
+library(foreign) # read and write other formats
+
 library(maps) # basic mapping
 
-library(maptools)
+library(maptools) # additional map tools
 
 library(mapdata) # map data
 
-library(leaflet) # web maps
+# library(leaflet) # web maps
 
 library(ggplot2) # nice graphs
 
@@ -52,11 +55,11 @@ library(icon) # Font Awesome icons
 
 ```{r get_data, eval = TRUE}
 
-library(readr)
+mydata <- read_csv("CPBans.csv") # read data
 
-mydata <- read_csv("CPBans.csv")
+save(mydata, file = "CPBans.RData") # save to R
 
-save(mydata, file = "CPBans.RData")
+write.dta(mydata, "CPBans.dta") # write to Stata
 
 ```
 
