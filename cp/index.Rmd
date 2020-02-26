@@ -21,6 +21,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Articles:
 
+**Ma, J., Grogan-Kaylor, A., Lee, S. (In Press). Does Community Violence Exposure Moderate the Associations between Maternal Spanking and Early Child Behavior Problems? Aggressive Behavior. [https://doi.org/10.1002/ab.21882](https://doi.org/10.1002/ab.21882)**
+
+A robust research literature links parental spanking with negative behavioral outcomes for children, however, it remains unclear whether conditions in the community may moderate the associations between spanking and behavior problems in early childhood. In the current study, we examined whether community violence exposure moderated the associations of maternal spanking with externalizing and internalizing behavior problems of young children. The sample used in this study was urban families and their children ages 3–5 (n=2,472). We used fixed effects regression models, which yield stronger statistical control for baseline behavior problems, selection bias, and omitted variables bias. Mother's spanking was associated with elevated levels of both externalizing (β=.037, p<.001) and internalizing (β=.016, p<.001) behavior problems. Community violence exposure also predicted higher levels of externalizing (β=.071, p<.01) and internalizing (β=.043, p<.05) behavior problems. Community violence exposure did not moderate the associations between maternal spanking and behavior problems. Professionals working with families should promote the use of nonphysical disciplinary practices, regardless of the level of violence and crime in the community in which the family resides.
+
+
 **Ward, K. P., Lee, S. J., Pace, G. T., Grogan-Kaylor, A., &amp; Ma, J. (In Press). Attachment style and the association of spanking and child externalizing behavior. *Academic Pediatrics*.**
 
 **Objective:** To examine whether the longitudinal associations between maternal spanking and child externalizing behavior are moderated by attachment
