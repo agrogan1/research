@@ -26,7 +26,7 @@ library(ggplot2)
 library(plotly)
 
 p1 <- ggplot(CP_Meta_Summary_Results,
-             aes(x = Outcome,
+             aes(x = reorder(Outcome, d),
                  y = d,
                  # label = Outcome,
                  fill = d)) + 

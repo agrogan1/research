@@ -37,7 +37,7 @@ library(plotly)
 # p1_plotly
 
 p1 <- ggplot(CP_Meta_Summary_Results,
-             aes(x = Outcome,
+             aes(x = reorder(Outcome, d),
                  y = d,
                  # label = Outcome,
                  fill = d)) + 
@@ -60,7 +60,7 @@ ggplotly(p1, tooltip="fill")
 
 > This article received a [considerable amount of media attention](media-mentions-CP-meta.html).
 
-Whether spanking is helpful or harmful to children continues to be the source of considerable debateamong both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking arerobust to study design differences. Meta-analyses focused specifically on spanking were conducted on atotal of 111 unique effect sizes representing 160,927 children. Thirteen of 17 mean effect sizes weresignificantly different from zero and all indicated a link between spanking and increased risk fordetrimental child outcomes. Effect sizes did not substantially differ between spanking and physical abuse or by study design characteristics.
+Whether spanking is helpful or harmful to children continues to be the source of considerable debate among both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences. Meta-analyses focused specifically on spanking were conducted on a total of 111 unique effect sizes representing 160,927 children. Thirteen of 17 mean effect sizes were significantly different from zero and all indicated a link between spanking and increased risk for detrimental child outcomes. Effect sizes did not substantially differ between spanking and physical abuse or by study design characteristics.
 
 
 
