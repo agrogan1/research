@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo=FALSE,
 ```{css, echo=FALSE}
 
 h1, h2 {
-  color: navy;
+  color: black;
   font-family: "Helvetica", "Arial", sans-serif; 
   font-weight: normal;
 }
@@ -82,7 +82,7 @@ library(DT) # nifty data table
 
 library(plotly) # interactive plots
 
-library(icon) # Font Awesome icons
+library(fontawesome) # Font Awesome icons
 
 ```
 
@@ -95,8 +95,6 @@ save(mydata, file = "CPBans.RData") # save to R
 write.dta(mydata, "CPBans.dta") # write to Stata
 
 ```
-
-`r icon::fa("twitter", color = "blue")` [[Tweet This](https://twitter.com/intent/tweet?url=https%3A%2F%2Fagrogan1.github.io%2Fresearch%2Fcpbans%2F&text=)]
 
 # Background {.tabset .tabset-fade .tabset-pills}
 
