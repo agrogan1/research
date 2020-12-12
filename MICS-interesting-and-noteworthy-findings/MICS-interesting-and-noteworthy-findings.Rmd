@@ -1,0 +1,78 @@
+---
+title: "Interesting and Noteworthy Findings From MICS Analyses"
+author: "Andy Grogan-Kaylor"
+date: "`r Sys.Date()`"
+output:
+  word_document:
+    toc: yes
+    fig_height: 3
+    reference_docx: markstat.docx
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+bibliography: MICS.bib
+nocite: |
+  @Grogan-Kaylor2020, @Ward, @Pace2019
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.margin=TRUE)
+
+```
+
+
+```{css, eval=FALSE, echo=FALSE}
+
+@import url("https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap");
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cabin Sketch", cursive;
+}
+body {
+  margin: 0;
+  font-family: Neucha, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+```
+
+# Data
+
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from approximately 60 Low and Middle Income (LMICS) worldwide.
+
+```{r, echo=FALSE, fig.cap="Countries in MICS"}
+
+knitr::include_graphics("MICScountries.png")
+
+```
+
+# Analysis
+
+The statistical methods employed in this work consist of various forms of multilevel models which are able to synthesize results across samples from multiple sources. Thus these findings are applicable to a wide variety of cultures and contexts from around the globe.
+
+# Findings
+
+* When studied in global context, across a wide variety of Low and Middle Income Countries (LMICs), physical punishment (spanking) is associated with decreases in child socio-emotional development, and particularly with increases in child aggression.
+* There is some variation in the effects of parental discipline (including spanking), on child well-being, but across countries, the effects of parental discipline (including spanking) are remarkably consistent.
+* Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
+* Positive disciplinary strategies are generally associated with improvements in child well-being and should therefore be recommended. 
+
+```{r, echo=FALSE, results='asis'}
+
+# print a reference header when not HTML5
+
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") != "html5") {
+  
+  cat("# References")
+  
+}
+
+```
+
+
+
+
+
+
+
