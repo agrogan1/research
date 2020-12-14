@@ -5,13 +5,13 @@ description: |
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
   word_document:
     toc: yes
     fig_height: 3
     reference_docx: markstat.docx
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
 bibliography: MICS.bib
 nocite: |
   @Grogan-Kaylor2020, @Ward, @Pace2019
@@ -52,7 +52,7 @@ body {
 
 # Data
 
-The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from approximately 60 Low and Middle Income (LMICS) worldwide.
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from approximately 60 Low and Middle Income (LMICS) around the world.
 
 ```{r, echo=FALSE, warning=FALSE}
 
@@ -114,14 +114,14 @@ if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html5") {
 
 # Analysis
 
-The statistical methods employed in this work consist of various forms of multilevel models which are able to synthesize results across samples from multiple sources. Thus these findings are applicable to a wide variety of cultures and contexts from around the globe.
+The statistical methods employed in this work consist of various forms of multilevel models which are able to synthesize results across samples from multiple sources. Thus these findings are applicable to a diverse variety of cultures and contexts from around the globe.
 
 # Findings
 
-* When studied in global context, across a wide variety of Low and Middle Income Countries (LMICs), physical punishment (spanking) is associated with decreases in child socio-emotional development, and particularly with increases in child aggression.
-* There is some variation in the effects of parental discipline (including spanking), on child well-being, but across countries, the effects of parental discipline (including spanking) are remarkably consistent.
+* When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), physical punishment (spanking) is associated with decreases in child socio-emotional development, and particularly with increases in child aggression.
+* There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the effects of parental discipline (including spanking) are remarkably consistent.
 * Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
-* Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being and should therefore be recommended. 
+* Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
 
 ```{r, echo=FALSE, results='asis'}
 
