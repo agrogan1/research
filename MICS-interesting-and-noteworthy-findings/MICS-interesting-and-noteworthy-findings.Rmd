@@ -5,13 +5,13 @@ description: |
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
   word_document:
     toc: yes
     fig_height: 3
     reference_docx: markstat.docx
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
 bibliography: MICS.bib
 nocite: |
   @Grogan-Kaylor2020, @Ward, @Pace2019
@@ -52,7 +52,7 @@ body {
 
 # Data
 
-The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from approximately 60 Low and Middle Income (LMICS) around the world.
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
 
 ```{r, echo=FALSE, warning=FALSE}
 
