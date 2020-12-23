@@ -32,7 +32,6 @@ library(plotly)
 
 library(countrycode)
 
-
 ```
 
 
@@ -120,7 +119,7 @@ The statistical methods employed in this work consist of various forms of multil
 # Findings
 
 * When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), physical punishment (spanking) is associated with decreases in child socio-emotional development, and particularly with increases in child aggression.
-* There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the effects of parental discipline (including spanking) are remarkably consistent.
+* There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the effects of parental discipline (including spanking) are remarkably consistent and nearly universal.
 * Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
 * Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
 * The association of other forms of nonviolent discipline with child outcomes is less clear. It may be that the long term investments that parents make in children, such as spending time with children, letting children know that they love them, and listening to children have more positive effects than nonviolent discipline, but this has yet to be thoroughly researched in global context.
