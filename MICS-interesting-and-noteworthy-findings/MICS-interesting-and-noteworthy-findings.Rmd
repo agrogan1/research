@@ -118,7 +118,7 @@ The statistical methods employed in this work consist of various forms of multil
 
 # Findings
 
-When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs): 
+When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), these results have important implications for reducing violence against children and improving children's wellbeing: 
 
 * There are differences in parenting *behaviors* across countries.
 * These differences in parenting *behaviors* notwithstanding, physical punishment (spanking) is consistently associated with *decreases in child socio-emotional development*, and particularly with *increases in child aggression*.
