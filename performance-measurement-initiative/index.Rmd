@@ -8,7 +8,10 @@ author:
     affiliation: University of Michigan
     affiliation_url: https://www.umich.edu
 date: "`r Sys.Date()`"
-output: distill::distill_article
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -42,6 +45,18 @@ Several years ago, one of our major activities was been to conduct a series of s
 Our first published article from our work, “Connecting Poverty to Purchase in Informal Markets” can be accessed [here](http://doi.org/10.1002/sej.1173).
 
 Currently, we are engaged in an evaluation of the [Business and Culture](https://businessandculture.org/about/) course, a partnership between the Ross School of Business and several institutions in Egypt, Lebanon and Libya.
+
+```{r}
+
+knitr::include_url("https://businessandculture.org/",
+                   height = "600px")
+
+```
+
+
+
+
+
 
 
 
