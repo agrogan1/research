@@ -1,7 +1,7 @@
 ---
 title: "Interesting and Noteworthy Findings From MICS Analyses"
 description: | 
-  Theoretical and Conceptual Contributions of Research Using MICS
+  Implications for Reducing Violence Against Children And The Cross Cultural Study Of Parenting And Child Development
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
