@@ -12,7 +12,7 @@ output:
     toc: yes
     fig_height: 3
     reference_docx: markstat.docx
-bibliography: MICS.bib
+bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019
 ---
