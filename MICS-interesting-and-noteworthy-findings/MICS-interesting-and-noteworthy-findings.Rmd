@@ -5,13 +5,13 @@ description: |
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
   word_document:
     toc: yes
     fig_height: 3
     reference_docx: markstat.docx
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
 bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019
@@ -31,22 +31,6 @@ library(dplyr)
 library(plotly)
 
 library(countrycode)
-
-```
-
-
-
-```{css, eval=FALSE, echo=FALSE}
-
-@import url("https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap");
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Sketch", cursive;
-}
-body {
-  margin: 0;
-  font-family: Neucha, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
 
 ```
 
