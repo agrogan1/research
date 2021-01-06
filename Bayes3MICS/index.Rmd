@@ -46,18 +46,7 @@ MICScountries$country_iso <- countrycode(MICScountries$country,
 
 ```
 
-# Abstract
-
-*Background and Objective:* Sixty countries worldwide have banned the use of physical punishment, yet little is known about the association of physical and nonphysical forms of child discipline with child development in a global context. The objective of this study is to examine whether physical punishment and nonphysical discipline are associated with child socioemotional functioning in a global sample of families from 62 countries, and whether country-level normativeness of physical punishment and nonphysical discipline moderated those associations. 
-
-*Methods:* Data for this study are from 215,885 families in the 4th and 5th rounds of the UNICEF Multiple Indicator Cluster Surveys (MICS). Bayesian multilevel logistic models were used to analyze the associations of physical punishment and nonphysical discipline (i.e., taking away privileges and verbal reasoning) with three different outcomes representing children’s socioemotional functioning: getting along well with other children; aggression; and becoming distracted.
-
-*Results:* Use of physical punishment was not associated with getting along with other children; was associated with increased aggression and increases in distraction. Taking away privileges was associated with lower levels of getting along with other children; higher levels of aggression; and higher levels of becoming distracted. Verbal reasoning (i.e., explaining why a behavior was wrong) was associated with higher levels of getting along with other children; higher levels of aggression and higher levels of becoming distracted. Country-level normativeness moderated some of these associations but in general the direction of effects were consistent.
-
-*Conclusions:* Results suggest that eliminating physical punishment would benefit children across the globe and align with the United Nations Convention on the Rights of the Child, which calls for all children to be free from physical violence. More attention needs to be focused on the associations of nonphysical forms of discipline with child functioning across the globe. 
-
- 
-# Countries in MICS
+# Countries in MICS Data
 
 ```{r, echo=FALSE, fig.cap="Countries in MICS"}
 
@@ -95,4 +84,15 @@ p0
 
 
 ```
+
+# Abstract
+
+*Background and Objective:* Sixty countries worldwide have banned the use of physical punishment, yet little is known about the association of physical and nonphysical forms of child discipline with child development in a global context. The objective of this study is to examine whether physical punishment and nonphysical discipline are associated with child socioemotional functioning in a global sample of families from 62 countries, and whether country-level normativeness of physical punishment and nonphysical discipline moderated those associations. 
+
+*Methods:* Data for this study are from 215,885 families in the 4th and 5th rounds of the UNICEF Multiple Indicator Cluster Surveys (MICS). Bayesian multilevel logistic models were used to analyze the associations of physical punishment and nonphysical discipline (i.e., taking away privileges and verbal reasoning) with three different outcomes representing children’s socioemotional functioning: getting along well with other children; aggression; and becoming distracted.
+
+*Results:* Use of physical punishment was not associated with getting along with other children; was associated with increased aggression and increases in distraction. Taking away privileges was associated with lower levels of getting along with other children; higher levels of aggression; and higher levels of becoming distracted. Verbal reasoning (i.e., explaining why a behavior was wrong) was associated with higher levels of getting along with other children; higher levels of aggression and higher levels of becoming distracted. Country-level normativeness moderated some of these associations but in general the direction of effects were consistent.
+
+*Conclusions:* Results suggest that eliminating physical punishment would benefit children across the globe and align with the United Nations Convention on the Rights of the Child, which calls for all children to be free from physical violence. More attention needs to be focused on the associations of nonphysical forms of discipline with child functioning across the globe. 
+
 
