@@ -3,20 +3,25 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
+  pdf_document: 
     toc: yes
-  distill::distill_article:
+    number_sections: yes
+    latex_engine: xelatex
     highlight: haddock
-    toc: yes
   word_document:
     toc: yes
     fig_height: 3
     reference_docx: markstat.docx
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019
+mainfont: Tw Cen MT
+fontsize: 12pt
 ---
 
 ```{r setup, include=FALSE}
@@ -104,7 +109,7 @@ The statistical methods employed in this work consist of various forms of multil
 
 # Findings
 
-When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), these results have important implications for reducing violence against children, for improving family and child well-being, and for the cross-cultural study of parenting and child development:
+When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), these results have important implications for reducing violence against children, for improving family and child well-being, and for the cross-cultural study of parenting and child development (particularly the origins of aggression and antisocial behavior):
 
 * There are differences in parenting *behaviors* across countries. Encouragingly, the most commonly employed disciplinary technique is explaining (verbal reasoning), but psychologically and physically aggressive forms of discipline are also very common.
 * These differences in parenting *behaviors* notwithstanding, physical punishment (spanking) is consistently associated with *decreases in child socio-emotional development*, and particularly with *increases in child aggression*.
