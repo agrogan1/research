@@ -3,11 +3,6 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: 
-    toc: yes
-    number_sections: yes
-    latex_engine: xelatex
-    highlight: haddock
   word_document:
     toc: yes
     fig_height: 3
@@ -15,11 +10,16 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
+  pdf_document: 
+    toc: yes
+    number_sections: yes
+    latex_engine: xelatex
+    highlight: haddock
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
 nocite: |
-  @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019
+  @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019, @Ma
 mainfont: Tw Cen MT
 fontsize: 12pt
 ---
@@ -121,6 +121,7 @@ When studied in global context, across a diverse group of Low and Middle Income 
 * Psychological aggression (e.g. calling a child names) may have effects that are as harmful as those of physical punishment.
 * Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
 * The association of other forms of nonviolent discipline with child outcomes is less clear. It may be that the long term investments that parents make in children, such as spending time with children, letting children know that they love them, and listening to children have more positive effects than nonviolent discipline, but this has yet to be thoroughly researched in global context.
+* Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
 ```{r, echo=FALSE, results='asis'}
 
