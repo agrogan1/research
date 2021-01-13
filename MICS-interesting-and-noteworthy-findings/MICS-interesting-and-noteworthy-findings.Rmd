@@ -3,23 +3,24 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+  word_document:
+    toc: yes
+    fig_height: 3
+    reference_docx: markstat.docx
   pdf_document: 
     toc: yes
     number_sections: yes
     latex_engine: xelatex
     highlight: haddock
-  word_document:
-    toc: yes
-    fig_height: 3
-    reference_docx: markstat.docx
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
 nocite: |
-  @Grogan-Kaylor2020, @WardA, @WardB, @Pace2019, @Ma
+  @Grogan-Kaylor2021, @WardA, @WardB, @Pace2019, @Ma
+citation_url: https://agrogan1.github.io/research/Bayes3MICS/
 mainfont: Tw Cen MT
 fontsize: 12pt
 ---

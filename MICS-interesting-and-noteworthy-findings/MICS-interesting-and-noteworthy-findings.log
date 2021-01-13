@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6670 64-bit) (preloaded format=xelatex 2018.5.3)  11 JAN 2021 14:16
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6670 64-bit) (preloaded format=xelatex 2018.5.3)  13 JAN 2021 10:50
 entering extended mode
 **./MICS-interesting-and-noteworthy-findings.tex
 (MICS-interesting-and-noteworthy-findings.tex
@@ -1358,35 +1358,36 @@ File: MICScountries.png Graphic file (type bmp)
 <MICScountries.png>
 [1
 
-] [2]
+]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.86488pt on input line 184.
+(Font)              scaled to size 7.86488pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.58627pt on input line 184.
+(Font)              scaled to size 5.58627pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.00018pt on input line 184.
+(Font)              scaled to size 12.00018pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.41495pt on input line 184.
+(Font)              scaled to size 8.41495pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.97696pt on input line 184.
+(Font)              scaled to size 5.97696pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99982pt on input line 184.
+(Font)              scaled to size 11.99982pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.41469pt on input line 184.
+(Font)              scaled to size 8.41469pt on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.97679pt on input line 184.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+(Font)              scaled to size 5.97679pt on input line 175.
+[2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
 (MICS-interesting-and-noteworthy-findings.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 196.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 196.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 196.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
  25394 strings out of 427836
  460412 string characters out of 3152480
- 679409 words of memory out of 3000000
+ 680409 words of memory out of 3000000
  29150 multiletter control sequences out of 15000+200000
  536602 words of font info for 75 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
