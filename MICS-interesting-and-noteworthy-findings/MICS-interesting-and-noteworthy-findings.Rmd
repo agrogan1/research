@@ -20,7 +20,7 @@ description: |
 bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2021, @WardA, @WardB, @Pace2019, @Ma
-citation_url: https://agrogan1.github.io/research/Bayes3MICS/
+citation_url: https://agrogan1.github.io/research/MICS-interesting-and-noteworthy-findings/MICS-interesting-and-noteworthy-findings.html
 mainfont: Tw Cen MT
 fontsize: 12pt
 ---
