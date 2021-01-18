@@ -93,6 +93,21 @@ g3 <- list(showland = TRUE,
            lonaxis = list(showgrid = TRUE,
                           gridcolor = toRGB("black")))
 
+g4 <- list(showland = TRUE,  
+           landcolor = toRGB("lightblue"),
+           showcountries = TRUE,
+           showocean = TRUE, 
+           oceancolor = toRGB("white"),
+           projection = list(type = 'orthographic',
+                             rotation = list(lon = 0,
+                                             lat = 0,
+                                             roll = 0)),
+           lataxis = list(showgrid = TRUE,
+                          gridcolor = toRGB("lightblue")),
+           lonaxis = list(showgrid = TRUE,
+                          gridcolor = toRGB("lightblue")))
+
+
 # text options
 
 t <- list(
@@ -158,6 +173,24 @@ MICScountries %>%
             marker = list(line = l),
             showscale = FALSE) %>%
   layout(geo = g3)
+
+```
+
+## Four
+
+```{r}
+
+MICScountries %>% 
+  plot_geo() %>%   
+  add_trace(locations = ~country_iso,
+            color = 1,
+            z = 1, 
+            text = ~country, 
+            hoverinfo = 'text',
+            colors = colorRamp(c("blue", "blue")),
+            marker = list(line = l),
+            showscale = FALSE) %>%
+  layout(geo = g4)
 
 ```
 
