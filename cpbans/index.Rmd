@@ -68,6 +68,8 @@ library(maptools) # additional map tools
 
 library(mapdata) # map data
 
+library(countrycode) # code country names
+
 # library(leaflet) # web maps
 
 library(ggplot2) # nice graphs
@@ -150,7 +152,7 @@ plot_geo(mydata) %>%
 
 ## Motion Chart
 
-```{r plotly_motion_chart, fig.height = 8, eval = TRUE, echo = FALSE}
+```{r, eval = TRUE, echo = FALSE}
 
 # create data with repeated observations for animation
 
@@ -178,7 +180,15 @@ mydata2 <- mydata2 %>%
   mutate(id = n() - row_number()) %>%
   mutate(year = year.of.prohibition + id)
 
+mydata2$country_iso <- countrycode(mydata2$country, 
+                                 'country.name', 
+                                 'iso3c')
+
 # head(mydata2)
+
+```
+
+```{r plotly_motion_chart, fig.height = 8, eval = TRUE, echo = FALSE}
 
 # motion chart
 
@@ -201,6 +211,27 @@ mydata2 %>%
          xaxis = list(title = "year", 
                       range = c(1975, 2025)),
          yaxis = list(title = "total number of bans")) 
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+
+plot_geo(mydata2) %>%
+  add_trace(locations = ~country_iso, 
+            color = ~year.of.prohibition,
+            z = ~year.of.prohibition,
+            frame = ~year,
+            # hoverinfo = "text",
+            text = ~paste(country, 
+                          "<br>year of prohibition:", 
+                          year.of.prohibition)) %>%
+  layout(title = "Countries With Bans on Corporal Punishment of Children",
+         width = 1000,
+         height = 500,
+         geo = list(showland = FALSE,
+                    showcountries = TRUE,
+                    projection = list(type = 'Mollweide'))) %>%
+  colorbar(title = 'year of prohibition')
 
 ```
 
