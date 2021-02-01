@@ -6,7 +6,9 @@ author:
     affiliation: University of Michigan
     affiliation_url: https://www.umich.edu/
 date: "`r Sys.Date()`"
-output: distill::distill_article
+output:
+  distill::distill_article:
+    highlight: haddock
 ---
 
 ```{r setup, include=FALSE}
@@ -25,21 +27,10 @@ library(ggplot2)
 
 library(plotly)
 
-# p1_plotly <- CP_Meta_Summary_Results %>% 
-#   plot_ly(x = ~d,
-#           y = ~Outcome,
-#           color = ~d,
-#           text = ~paste(Outcome, "<br>Cohen's d:", d), 
-#           hoverinfo = 'text',
-#           orientation = 'h',
-#           type = "bar") 
-# 
-# p1_plotly
-
 p1 <- ggplot(CP_Meta_Summary_Results,
              aes(x = reorder(Outcome, d),
                  y = d,
-                 # label = Outcome,
+                 label = Outcome,
                  fill = d)) + 
   geom_bar(stat = "identity") +
   scale_fill_viridis_c() +
@@ -52,7 +43,7 @@ p1 <- ggplot(CP_Meta_Summary_Results,
         title = element_text(size = rel(.5)),
         axis.text = element_text(size = rel(.75)))
 
-ggplotly(p1, tooltip="fill")
+ggplotly(p1, tooltip = c("fill", "label"))
 
 ```
 
