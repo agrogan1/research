@@ -40,16 +40,16 @@ plot_geo() %>%
 
 I am interested in interventions that may reduce poverty, and thereby contribute to child and family wellbeing.  Thus, I collaborate with the [Performance Measurement Initiative](http://wdi.umich.edu/initiatives/performance-measurement/) at the  [William Davidson Institute](http://wdi.umich.edu/) at the Ross School of Business. 
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 
-knitr::include_url("https://wdi.umich.edu/news/qa-faculty-affiliate-looks-for-real-world-applications/")
+knitr::include_url("https://wdi.umich.edu/news/qa-faculty-affiliate-looks-for-real-world-applications/",
+                   height = "600px")
 
 ```
 
-
 Our first published article from our work, *Connecting Poverty to Purchase in Informal Markets* can be accessed [here](http://doi.org/10.1002/sej.1173).
 
-See [here](http://wdi.umich.edu/programs-projects/danone-ecosystem-fund-semilla-impact-assessment/) for one of our recent projects.
+See [here](https://wdi.umich.edu/programs-projects/danone-ecosystem-fund-semilla-impact-assessment/) for one of our recent projects.
  
 Several years ago, one of our major activities was to conduct a series of several day impact assessment workshops that teach members of non-profits and socially conscious businesses how to conduct outcome evaluations.  We conducted workshops in Ann Arbor, New York City, and Johannesburg, South Africa. 
 
