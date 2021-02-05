@@ -68,11 +68,11 @@ g <- list(showframe = TRUE,
           showcountries = TRUE,
           showland = TRUE,
           countrycolor = toRGB("grey"),
-          showocean = TRUE,
+          showocean = FALSE,
           # oceancolor = toRGB("steelblue1"),
           # projection = list(type = 'robinson'),
           projection = list(type = 'orthographic',
-                            rotation = list(lon = 60,
+                            rotation = list(lon = 0,
                                             lat = 0,
                                             roll = 0)),
           showland = TRUE,
@@ -83,13 +83,17 @@ t <- list(
   size = 8,
   color = toRGB("black"))
 
+l <- list(color = toRGB("black"), width = 0.5)
+
 p0 <- MICScountries %>% 
   plot_geo() %>% 
-  add_trace(# z = 1,
+  add_trace(z = 1,
     text = ~country, 
+    colors = "gold",
     hoverinfo = 'text',
     locations = ~country_iso, 
-    marker = list(size=10, color = "red")) %>%
+    showscale = FALSE,
+    marker = list(size=10, line = l)) %>%
   layout(geo = g)
 
 # dynamically choose between plotly and png based on output type
