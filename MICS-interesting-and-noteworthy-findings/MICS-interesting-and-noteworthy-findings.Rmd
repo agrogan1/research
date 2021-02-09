@@ -35,6 +35,16 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```
 
+```{css, echo=FALSE}
+
+d-article blockquote {
+  border-left: 5px solid gold; 
+  padding: 0.5em 10px;
+  }
+  
+```
+
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
 library(dplyr)
