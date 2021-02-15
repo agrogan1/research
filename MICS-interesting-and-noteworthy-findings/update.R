@@ -1,4 +1,4 @@
-# update data driven report
+# update MICS Interesting and Noteworthy Findings
 
 library(rmarkdown) # for most rendering
 
