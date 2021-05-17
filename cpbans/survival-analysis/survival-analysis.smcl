@@ -1,0 +1,125 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 May 2021, 16:51:40
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}17 May 2021
+{txt}
+{com}. //_2
+. display c(current_time)
+{res}16:51:40
+{txt}
+{com}. //_3
+. use "../CPBans.dta"
+{txt}(Written by R.              )
+
+{com}. //_4
+. stset year_of_prohibition // stset the data
+
+{txt}Survival-time data settings
+
+{col 10}Failure event: {res}(assumed to fail at time=year_of_prohibition)
+{col 1}{txt}Observed time interval: {res}(0, year_of_prohibition]
+{col 6}{txt}Exit on or before: {res}failure
+
+{txt}{hline 74}
+{res}         62{txt}  total observations
+{res}          0{txt}  exclusions
+{hline 74}
+{res}         62{txt}  observations remaining, representing
+{res}         62{txt}  failures in single-record/single-failure data
+{res}    124,546{txt}  total analysis time at risk and under observation
+                                                At risk from t = {res}        0
+                                     {txt}Earliest observed entry t = {res}        0
+                                          {txt}Last observed exit t = {res}    2,021
+{txt}
+{com}. //_5
+. sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
+
+{col 9}{txt}Failure {bf:_d}: {res}1{txt} (meaning all fail)
+{col 3}Analysis time {bf:_t}: {res}year_of_prohibition
+{txt}
+{com}. //_6
+. graph export mysurvival.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+mysurvival.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_7
+. sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
+
+{col 9}{txt}Failure {bf:_d}: {res}1{txt} (meaning all fail)
+{col 3}Analysis time {bf:_t}: {res}year_of_prohibition
+{txt}
+{com}. //_8
+. graph export myfailure.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+myfailure.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_9
+. ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+
+{txt}{col 18}Beg.{col 44}Cum.{col 55}Std.
+{col 4}Interval{col 17}Total{col 25}Deaths{col 34}Lost{col 42}Failure{col 54}Error{col 64}[95% Conf. Int.]
+{hline 79}
+ 1979  1980{res}        62        1      0     0.0161    0.0160     0.0023    0.1090
+{txt} 1983  1984{res}        61        1      0     0.0323    0.0224     0.0082    0.1229
+{txt} 1987  1988{res}        60        1      0     0.0484    0.0273     0.0159    0.1426
+{txt} 1989  1990{res}        59        1      0     0.0645    0.0312     0.0247    0.1628
+{txt} 1994  1995{res}        58        1      0     0.0806    0.0346     0.0344    0.1830
+{txt} 1997  1998{res}        57        1      0     0.0968    0.0375     0.0447    0.2028
+{txt} 1998  1999{res}        56        1      0     0.1129    0.0402     0.0555    0.2223
+{txt} 1999  2000{res}        55        1      0     0.1290    0.0426     0.0667    0.2415
+{txt} 2000  2001{res}        54        3      0     0.1774    0.0485     0.1024    0.2974
+{txt} 2002  2003{res}        51        1      0     0.1935    0.0502     0.1149    0.3156
+{txt} 2003  2004{res}        50        1      0     0.2097    0.0517     0.1276    0.3335
+{txt} 2004  2005{res}        49        2      0     0.2419    0.0544     0.1536    0.3688
+{txt} 2005  2006{res}        47        1      0     0.2581    0.0556     0.1668    0.3862
+{txt} 2006  2007{res}        46        1      0     0.2742    0.0567     0.1803    0.4034
+{txt} 2007  2008{res}        45        7      0     0.3871    0.0619     0.2788    0.5197
+{txt} 2008  2009{res}        38        4      0     0.4516    0.0632     0.3380    0.5831
+{txt} 2010  2011{res}        34        5      0     0.5323    0.0634     0.4148    0.6596
+{txt} 2011  2012{res}        29        1      0     0.5484    0.0632     0.4305    0.6745
+{txt} 2013  2014{res}        28        2      0     0.5806    0.0627     0.4623    0.7040
+{txt} 2014  2015{res}        26        8      0     0.7097    0.0576     0.5946    0.8162
+{txt} 2015  2016{res}        18        4      0     0.7742    0.0531     0.6644    0.8684
+{txt} 2016  2017{res}        14        4      0     0.8387    0.0467     0.7373    0.9171
+{txt} 2017  2018{res}        10        1      0     0.8548    0.0447     0.7562    0.9286
+{txt} 2018  2019{res}         9        1      0     0.8710    0.0426     0.7753    0.9397
+{txt} 2019  2020{res}         8        5      0     0.9516    0.0273     0.8780    0.9872
+{txt} 2020  2021{res}         3        1      0     0.9677    0.0224     0.9006    0.9939
+{txt} 2021  2022{res}         2        2      0     1.0000         .          .         .
+{txt}{hline 79}
+
+{com}. //_10
+. graph export myltable.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+myltable.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 May 2021, 16:51:42
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

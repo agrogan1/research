@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Survival Analysis of Corporal Punishment Bans</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">17 May 2021 16:51:29</h3>
+</div>
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<h1 id="get-the-data">Get The Data</h1>
+<pre class='stata'>. use "../CPBans.dta"
+(Written by R.              )
+</pre>
+<h1 id="stset-the-data"><code>stset</code> The Data</h1>
+<pre class='stata'>. stset year_of_prohibition // stset the data
+
+Survival-time data settings
+
+         Failure event: (assumed to fail at time=year_of_prohibition)
+Observed time interval: (0, year_of_prohibition]
+     Exit on or before: failure
+
+──────────────────────────────────────────────────────────────────────────
+         62  total observations
+          0  exclusions
+──────────────────────────────────────────────────────────────────────────
+         62  observations remaining, representing
+         62  failures in single-record/single-failure data
+    124,546  total analysis time at risk and under observation
+                                                At risk from t =         0
+                                     Earliest observed entry t =         0
+                                          Last observed exit t =     2,021
+</pre>
+<h1 id="graphs">Graphs</h1>
+<h2 id="survival-function">Survival Function</h2>
+<pre class='stata'>. sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
+
+        Failure _d: 1 (meaning all fail)
+  Analysis time _t: year_of_prohibition
+</pre>
+<pre class='stata'>. graph export mysurvival.png, width(500) replace
+file mysurvival.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="mysurvival.png" alt="Kaplan-Meier Survivor Function" />
+<p class="caption">Kaplan-Meier Survivor Function</p>
+</div>
+<h2 id="failure-function">Failure Function</h2>
+<pre class='stata'>. sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
+
+        Failure _d: 1 (meaning all fail)
+  Analysis time _t: year_of_prohibition
+</pre>
+<pre class='stata'>. graph export myfailure.png, width(500) replace
+file myfailure.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="myfailure.png" alt="Kaplan-Meier Failure Function" />
+<p class="caption">Kaplan-Meier Failure Function</p>
+</div>
+<h1 id="survival-analysis">Survival Analysis</h1>
+<h1 id="life-table">Life Table</h1>
+<pre class='stata'>. ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+
+                 Beg.                      Cum.       Std.
+   Interval     Total   Deaths   Lost    Failure     Error     [95% Conf. Int.]
+───────────────────────────────────────────────────────────────────────────────
+ 1979  1980        62        1      0     0.0161    0.0160     0.0023    0.1090
+ 1983  1984        61        1      0     0.0323    0.0224     0.0082    0.1229
+ 1987  1988        60        1      0     0.0484    0.0273     0.0159    0.1426
+ 1989  1990        59        1      0     0.0645    0.0312     0.0247    0.1628
+ 1994  1995        58        1      0     0.0806    0.0346     0.0344    0.1830
+ 1997  1998        57        1      0     0.0968    0.0375     0.0447    0.2028
+ 1998  1999        56        1      0     0.1129    0.0402     0.0555    0.2223
+ 1999  2000        55        1      0     0.1290    0.0426     0.0667    0.2415
+ 2000  2001        54        3      0     0.1774    0.0485     0.1024    0.2974
+ 2002  2003        51        1      0     0.1935    0.0502     0.1149    0.3156
+ 2003  2004        50        1      0     0.2097    0.0517     0.1276    0.3335
+ 2004  2005        49        2      0     0.2419    0.0544     0.1536    0.3688
+ 2005  2006        47        1      0     0.2581    0.0556     0.1668    0.3862
+ 2006  2007        46        1      0     0.2742    0.0567     0.1803    0.4034
+ 2007  2008        45        7      0     0.3871    0.0619     0.2788    0.5197
+ 2008  2009        38        4      0     0.4516    0.0632     0.3380    0.5831
+ 2010  2011        34        5      0     0.5323    0.0634     0.4148    0.6596
+ 2011  2012        29        1      0     0.5484    0.0632     0.4305    0.6745
+ 2013  2014        28        2      0     0.5806    0.0627     0.4623    0.7040
+ 2014  2015        26        8      0     0.7097    0.0576     0.5946    0.8162
+ 2015  2016        18        4      0     0.7742    0.0531     0.6644    0.8684
+ 2016  2017        14        4      0     0.8387    0.0467     0.7373    0.9171
+ 2017  2018        10        1      0     0.8548    0.0447     0.7562    0.9286
+ 2018  2019         9        1      0     0.8710    0.0426     0.7753    0.9397
+ 2019  2020         8        5      0     0.9516    0.0273     0.8780    0.9872
+ 2020  2021         3        1      0     0.9677    0.0224     0.9006    0.9939
+ 2021  2022         2        2      0     1.0000         .          .         .
+───────────────────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. graph export myltable.png, width(500) replace
+file myltable.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="myltable.png" alt="Graph Of Life Table" />
+<p class="caption">Graph Of Life Table</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+% Survival Analysis of Corporal Punishment Bans 
+% Andy Grogan-Kaylor 
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=.5 in
+---
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+# Get The Data
+
+    use "../CPBans.dta"
+
+# `stset` The Data
+
+    stset year_of_prohibition // stset the data
+
+# Graphs
+
+## Survival Function
+
+    sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
+	
+	graph export mysurvival.png, width(500) replace
+
+![Kaplan-Meier Survivor Function](mysurvival.png)
+ 
+## Failure Function
+
+    sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
+	
+	graph export myfailure.png, width(500) replace
+
+![Kaplan-Meier Failure Function](myfailure.png)
+	
+# Survival Analysis
+
+# Life Table
+
+    ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+
+	graph export myltable.png, width(500) replace
+
+![Graph Of Life Table](myltable.png)
+
+
+
+
+	
