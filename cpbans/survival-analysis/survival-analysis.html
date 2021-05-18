@@ -49,13 +49,16 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">17 May 2021 16:51:29</h3>
+<h3 class="date">18 May 2021 19:19:34</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-the-data">Get The Data</h1>
 <pre class='stata'>. use "../CPBans.dta"
 (Written by R.              )
 </pre>
+<blockquote>
+<p>NB This isn't actually the 100% correct data since the correct <em>risk set</em> would include <em>all countries</em>, not just <em>countries that eventually ban corporal punishment</em>.</p>
+</blockquote>
 <h1 id="stset-the-data"><code>stset</code> The Data</h1>
 <pre class='stata'>. stset year_of_prohibition // stset the data
 
@@ -104,6 +107,11 @@ file myfailure.png saved as PNG format
 <p class="caption">Kaplan-Meier Failure Function</p>
 </div>
 <h1 id="survival-analysis">Survival Analysis</h1>
+<blockquote>
+<p>Needs Covariates in the Data</p>
+</blockquote>
+<h2 id="parametric-survival-model">Parametric Survival Model</h2>
+<h2 id="cox-proportional-hazards-model">Cox Proportional Hazards Model</h2>
 <h1 id="life-table">Life Table</h1>
 <pre class='stata'>. ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
 

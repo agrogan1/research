@@ -11,6 +11,8 @@ geometry: margin=.5 in
 # Get The Data
 
     use "../CPBans.dta"
+	
+> NB This isn't actually the 100% correct data since the correct *risk set* would include *all countries*, not just *countries that eventually ban corporal punishment*.	
 
 # `stset` The Data
 
@@ -35,6 +37,12 @@ geometry: margin=.5 in
 ![Kaplan-Meier Failure Function](myfailure.png)
 	
 # Survival Analysis
+
+> Needs Covariates in the Data
+
+## Parametric Survival Model
+
+## Cox Proportional Hazards Model
 
 # Life Table
 
