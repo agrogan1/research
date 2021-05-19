@@ -96,6 +96,27 @@ save(mydata, file = "CPBans.RData") # save to R
 
 write.dta(mydata, "CPBans.dta") # write to Stata
 
+# make new data file of ALL Countries
+
+AllCountries <- read_csv("AllCountries.csv") # read data
+
+CPBans_w_AllCountries <- merge(mydata, 
+                               AllCountries, 
+                               by = "country_code",
+                               all = TRUE) # merge
+
+
+CPBans_w_AllCountries$continent <- 
+  countrycode(CPBans_w_AllCountries$country_code, 
+              origin = 'iso3c',
+              destination = 'continent') 
+
+save(CPBans_w_AllCountries, 
+     file = "CPBans_w_AllCountries.RData") # save to R
+
+write.dta(CPBans_w_AllCountries, 
+          "CPBans_w_AllCountries.dta") # write to Stata
+
 ```
 
 # Background {.tabset .tabset-fade .tabset-pills}

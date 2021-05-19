@@ -3,47 +3,53 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}18 May 2021, 19:19:57
+ {txt}opened on:  {res}19 May 2021, 13:31:35
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}18 May 2021
+{res}19 May 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}19:19:57
+{res}13:31:35
 {txt}
 {com}. //_3
-. use "../CPBans.dta"
-{txt}(Written by R.              )
-
+. use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
+{txt}
 {com}. //_4
-. stset year_of_prohibition // stset the data
+. replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
+{txt}(186 real changes made)
+
+{com}. //_5
+. generate f = type == "CP Ban" // "failure" variable
+{txt}
+{com}. //_6
+. stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
 
 {txt}Survival-time data settings
 
-{col 10}Failure event: {res}(assumed to fail at time=year_of_prohibition)
+{col 10}Failure event: {res}f==1
 {col 1}{txt}Observed time interval: {res}(0, year_of_prohibition]
 {col 6}{txt}Exit on or before: {res}failure
 
 {txt}{hline 74}
-{res}         62{txt}  total observations
+{res}        248{txt}  total observations
 {res}          0{txt}  exclusions
 {hline 74}
-{res}         62{txt}  observations remaining, representing
+{res}        248{txt}  observations remaining, representing
 {res}         62{txt}  failures in single-record/single-failure data
-{res}    124,546{txt}  total analysis time at risk and under observation
+{res}    500,452{txt}  total analysis time at risk and under observation
                                                 At risk from t = {res}        0
                                      {txt}Earliest observed entry t = {res}        0
                                           {txt}Last observed exit t = {res}    2,021
 {txt}
-{com}. //_5
+{com}. //_7
 . sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
 
-{col 9}{txt}Failure {bf:_d}: {res}1{txt} (meaning all fail)
-{col 3}Analysis time {bf:_t}: {res}year_of_prohibition
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_6
+{com}. //_8
 . graph export mysurvival.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -53,13 +59,13 @@ PNG
 format
 {p_end}
 
-{com}. //_7
+{com}. //_9
 . sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
-{col 9}{txt}Failure {bf:_d}: {res}1{txt} (meaning all fail)
-{col 3}Analysis time {bf:_t}: {res}year_of_prohibition
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_8
+{com}. //_10
 . graph export myfailure.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -69,42 +75,236 @@ PNG
 format
 {p_end}
 
-{com}. //_9
-. ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+{com}. //_11
+. encode continent, generate(continent_NUMERIC) // numeric version of continent
+{txt}
+{com}. //_12
+. streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
+
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
+
+{txt}Fitting constant-only model:
+Iteration 0:   log likelihood = {res} -148.2325
+{txt}Iteration 1:   log likelihood = {res}-86.999055
+{txt}Iteration 2:   log likelihood = {res}-27.073844
+{txt}Iteration 3:   log likelihood = {res} 29.365489
+{txt}Iteration 4:   log likelihood = {res} 77.015953
+{txt}Iteration 5:   log likelihood = {res} 106.62899
+{txt}Iteration 6:   log likelihood = {res} 115.32234
+{txt}Iteration 7:   log likelihood = {res} 115.88805
+{txt}Iteration 8:   log likelihood = {res} 115.89021
+{txt}Iteration 9:   log likelihood = {res} 115.89021
+
+{txt}Fitting full model:{res}
+{txt}Iteration 0:{space 3}log likelihood = {res: 115.89021}  
+Iteration 1:{space 3}log likelihood = {res: 139.32561}  
+Iteration 2:{space 3}log likelihood = {res: 142.87372}  
+Iteration 3:{space 3}log likelihood = {res: 143.05492}  
+Iteration 4:{space 3}log likelihood = {res: 143.05732}  
+Iteration 5:{space 3}log likelihood = {res: 143.05732}  
+{res}
+{txt}Weibull PH regression
+
+No. of subjects = {res}{ralign 7:248}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:248}
+{txt}No. of failures = {res}{ralign 7:62}
+{txt}Time at risk    = {res}{ralign 7:500,452}
+{col 57}{txt}{lalign 13:LR chi2({res:5})} = {res}{ralign 6:54.33}
+{txt}Log likelihood = {res}143.05732{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}               _t{col 19}{c |} Haz. ratio{col 31}   Std. err.{col 43}      z{col 51}   P>|z|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+continent_NUMERIC {c |}
+{space 10}Africa  {c |}{col 19}{res}{space 2} .1684617{col 31}{space 2} .0612563{col 42}{space 1}   -4.90{col 51}{space 3}0.000{col 59}{space 4} .0826011{col 72}{space 3} .3435709
+{txt}{space 8}Americas  {c |}{col 19}{res}{space 2} .1938708{col 31}{space 2} .0704541{col 42}{space 1}   -4.51{col 51}{space 3}0.000{col 59}{space 4} .0950997{col 72}{space 3}  .395226
+{txt}{space 12}Asia  {c |}{col 19}{res}{space 2} .1520997{col 31}{space 2} .0603348{col 42}{space 1}   -4.75{col 51}{space 3}0.000{col 59}{space 4} .0698995{col 72}{space 3} .3309653
+{txt}{space 14}NA  {c |}{col 19}{res}{space 2} .0916735{col 31}{space 2} .0931508{col 42}{space 1}   -2.35{col 51}{space 3}0.019{col 59}{space 4} .0125119{col 72}{space 3} .6716806
+{txt}{space 9}Oceania  {c |}{col 19}{res}{space 2} .0356574{col 31}{space 2} .0362323{col 42}{space 1}   -3.28{col 51}{space 3}0.001{col 59}{space 4} .0048666{col 72}{space 3} .2612621
+{txt}{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2}        0{col 31}{space 2}        0{col 42}{space 1}   -8.57{col 51}{space 3}0.000{col 59}{space 4}        0{col 72}{space 3}        0
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+            /ln_p {c |}{col 19}{res}{space 2} 5.278967{col 31}{space 2} .1166492{col 42}{space 1}   45.26{col 51}{space 3}0.000{col 59}{space 4} 5.050339{col 72}{space 3} 5.507596
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                p {c |}{col 19}{res}{space 2} 196.1672{col 31}{space 2} 22.88274{col 59}{space 4} 156.0754{col 72}{space 3} 246.5576
+{txt}              1/p {c |}{col 19}{res}{space 2} .0050977{col 31}{space 2} .0005946{col 59}{space 4} .0040558{col 72}{space 3} .0064072
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
+
+{com}. //_13
+. streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
+
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
+
+{txt}Iteration 0:{space 3}log likelihood = {res: -148.2325}  
+Iteration 1:{space 3}log likelihood = {res:-139.40941}  
+Iteration 2:{space 3}log likelihood = {res:-131.58499}  
+Iteration 3:{space 3}log likelihood = {res:-131.55897}  
+Iteration 4:{space 3}log likelihood = {res:-131.55892}  
+Iteration 5:{space 3}log likelihood = {res:-131.55892}  
+{res}
+{txt}Exponential PH regression
+
+No. of subjects = {res}{ralign 7:248}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:248}
+{txt}No. of failures = {res}{ralign 7:62}
+{txt}Time at risk    = {res}{ralign 7:500,452}
+{col 57}{txt}{lalign 13:LR chi2({res:5})} = {res}{ralign 6:33.35}
+{txt}Log likelihood = {res}-131.55892{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}               _t{col 19}{c |} Haz. ratio{col 31}   Std. err.{col 43}      z{col 51}   P>|z|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+continent_NUMERIC {c |}
+{space 10}Africa  {c |}{col 19}{res}{space 2} .2736219{col 31}{space 2}  .099129{col 42}{space 1}   -3.58{col 51}{space 3}0.000{col 59}{space 4}  .134516{col 72}{space 3} .5565804
+{txt}{space 8}Americas  {c |}{col 19}{res}{space 2} .3052592{col 31}{space 2} .1105907{col 42}{space 1}   -3.28{col 51}{space 3}0.001{col 59}{space 4} .1500692{col 72}{space 3} .6209345
+{txt}{space 12}Asia  {c |}{col 19}{res}{space 2} .2489781{col 31}{space 2} .0984172{col 42}{space 1}   -3.52{col 51}{space 3}0.000{col 59}{space 4} .1147345{col 72}{space 3} .5402914
+{txt}{space 14}NA  {c |}{col 19}{res}{space 2} .1586176{col 31}{space 2} .1610769{col 42}{space 1}   -1.81{col 51}{space 3}0.070{col 59}{space 4} .0216746{col 72}{space 3} 1.160782
+{txt}{space 9}Oceania  {c |}{col 19}{res}{space 2}  .061017{col 31}{space 2}  .061963{col 42}{space 1}   -2.75{col 51}{space 3}0.006{col 59}{space 4} .0083378{col 72}{space 3} .4465293
+{txt}{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2}  .000312{col 31}{space 2} .0000552{col 42}{space 1}  -45.67{col 51}{space 3}0.000{col 59}{space 4} .0002206{col 72}{space 3} .0004412
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
+
+{com}. //_14
+. stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
+
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
+
+{txt}Iteration 0:   log likelihood = {res}-333.92184
+{txt}Iteration 1:   log likelihood = {res}-317.94407
+{txt}Iteration 2:   log likelihood = {res}-308.96171
+{txt}Iteration 3:   log likelihood = {res}-308.00801
+{txt}Iteration 4:   log likelihood = {res}-308.00737
+{txt}Refining estimates:
+Iteration 0:   log likelihood = {res}-308.00737
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 7:248}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:248}
+{txt}No. of failures = {res}{ralign 7:62}
+{txt}Time at risk    = {res}{ralign 7:500,452}
+{col 57}{txt}{lalign 13:LR chi2({res:5})} = {res}{ralign 6:51.83}
+{txt}Log likelihood = {res}-308.00737{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}               _t{col 19}{c |} Haz. ratio{col 31}   Std. err.{col 43}      z{col 51}   P>|z|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+continent_NUMERIC {c |}
+{space 10}Africa  {c |}{col 19}{res}{space 2} .1769827{col 31}{space 2} .0643396{col 42}{space 1}   -4.76{col 51}{space 3}0.000{col 59}{space 4} .0867938{col 72}{space 3} .3608887
+{txt}{space 8}Americas  {c |}{col 19}{res}{space 2} .2023186{col 31}{space 2} .0735008{col 42}{space 1}   -4.40{col 51}{space 3}0.000{col 59}{space 4} .0992661{col 72}{space 3} .4123544
+{txt}{space 12}Asia  {c |}{col 19}{res}{space 2} .1610376{col 31}{space 2} .0638871{col 42}{space 1}   -4.60{col 51}{space 3}0.000{col 59}{space 4} .0740009{col 72}{space 3} .3504428
+{txt}{space 14}NA  {c |}{col 19}{res}{space 2} .0969297{col 31}{space 2} .0984941{col 42}{space 1}   -2.30{col 51}{space 3}0.022{col 59}{space 4} .0132287{col 72}{space 3} .7102257
+{txt}{space 9}Oceania  {c |}{col 19}{res}{space 2} .0380401{col 31}{space 2}  .038653{col 42}{space 1}   -3.22{col 51}{space 3}0.001{col 59}{space 4} .0051919{col 72}{space 3} .2787139
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. //_15
+. stcurve, survival scheme(michigan) // survival curve
+{res}{txt}
+{com}. //_16
+. graph export survival1A.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+survival1A.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_17
+. stcurve, failure scheme(michigan) // failure curve
+{res}{txt}
+{com}. //_18
+. graph export survival1B.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+survival1B.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_19
+. stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
+> legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
+> 4 "Europe" 5 "NA" 6 "Oceania")) ///
+> scheme(michigan) // survival curve by continent
+{res}{txt}
+{com}. //_20
+. graph export survival2.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+survival2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_21
+. estat phtest // formal test of PH assumption
+
+{txt}Test of proportional-hazards assumption
+
+Time function: Analysis time
+{hline 13}{c TT}{hline 34}
+             {c |}     chi2       df       Prob>chi2
+{hline 13}{c +}{hline 34}
+ Global test {c |}{res}{col 15}     6.20{col 28}    5{col 43}0.2870
+{txt}{hline 13}{c BT}{hline 34}
+
+{com}. //_22
+. stphplot, by(continent_NUMERIC) scheme(michigan) // graphical test of PH assumption
+
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
+{txt}
+{com}. //_23
+. graph export ph.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+ph.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_24
+. ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
 
 {txt}{col 18}Beg.{col 44}Cum.{col 55}Std.
 {col 4}Interval{col 17}Total{col 25}Deaths{col 34}Lost{col 42}Failure{col 54}Error{col 64}[95% Conf. Int.]
 {hline 79}
- 1979  1980{res}        62        1      0     0.0161    0.0160     0.0023    0.1090
-{txt} 1983  1984{res}        61        1      0     0.0323    0.0224     0.0082    0.1229
-{txt} 1987  1988{res}        60        1      0     0.0484    0.0273     0.0159    0.1426
-{txt} 1989  1990{res}        59        1      0     0.0645    0.0312     0.0247    0.1628
-{txt} 1994  1995{res}        58        1      0     0.0806    0.0346     0.0344    0.1830
-{txt} 1997  1998{res}        57        1      0     0.0968    0.0375     0.0447    0.2028
-{txt} 1998  1999{res}        56        1      0     0.1129    0.0402     0.0555    0.2223
-{txt} 1999  2000{res}        55        1      0     0.1290    0.0426     0.0667    0.2415
-{txt} 2000  2001{res}        54        3      0     0.1774    0.0485     0.1024    0.2974
-{txt} 2002  2003{res}        51        1      0     0.1935    0.0502     0.1149    0.3156
-{txt} 2003  2004{res}        50        1      0     0.2097    0.0517     0.1276    0.3335
-{txt} 2004  2005{res}        49        2      0     0.2419    0.0544     0.1536    0.3688
-{txt} 2005  2006{res}        47        1      0     0.2581    0.0556     0.1668    0.3862
-{txt} 2006  2007{res}        46        1      0     0.2742    0.0567     0.1803    0.4034
-{txt} 2007  2008{res}        45        7      0     0.3871    0.0619     0.2788    0.5197
-{txt} 2008  2009{res}        38        4      0     0.4516    0.0632     0.3380    0.5831
-{txt} 2010  2011{res}        34        5      0     0.5323    0.0634     0.4148    0.6596
-{txt} 2011  2012{res}        29        1      0     0.5484    0.0632     0.4305    0.6745
-{txt} 2013  2014{res}        28        2      0     0.5806    0.0627     0.4623    0.7040
-{txt} 2014  2015{res}        26        8      0     0.7097    0.0576     0.5946    0.8162
-{txt} 2015  2016{res}        18        4      0     0.7742    0.0531     0.6644    0.8684
-{txt} 2016  2017{res}        14        4      0     0.8387    0.0467     0.7373    0.9171
-{txt} 2017  2018{res}        10        1      0     0.8548    0.0447     0.7562    0.9286
-{txt} 2018  2019{res}         9        1      0     0.8710    0.0426     0.7753    0.9397
-{txt} 2019  2020{res}         8        5      0     0.9516    0.0273     0.8780    0.9872
-{txt} 2020  2021{res}         3        1      0     0.9677    0.0224     0.9006    0.9939
-{txt} 2021  2022{res}         2        2      0     1.0000         .          .         .
+ 1979  1980{res}       248        1      0     0.0040    0.0040     0.0006    0.0283
+{txt} 1983  1984{res}       247        1      0     0.0081    0.0057     0.0020    0.0319
+{txt} 1987  1988{res}       246        1      0     0.0121    0.0069     0.0039    0.0370
+{txt} 1989  1990{res}       245        1      0     0.0161    0.0080     0.0061    0.0424
+{txt} 1994  1995{res}       244        1      0     0.0202    0.0089     0.0084    0.0478
+{txt} 1997  1998{res}       243        1      0     0.0242    0.0098     0.0109    0.0531
+{txt} 1998  1999{res}       242        1      0     0.0282    0.0105     0.0136    0.0583
+{txt} 1999  2000{res}       241        1      0     0.0323    0.0112     0.0163    0.0635
+{txt} 2000  2001{res}       240        3      0     0.0444    0.0131     0.0248    0.0787
+{txt} 2002  2003{res}       237        1      0     0.0484    0.0136     0.0278    0.0836
+{txt} 2003  2004{res}       236        1      0     0.0524    0.0142     0.0308    0.0886
+{txt} 2004  2005{res}       235        2      0     0.0605    0.0151     0.0369    0.0983
+{txt} 2005  2006{res}       233        1      0     0.0645    0.0156     0.0400    0.1032
+{txt} 2006  2007{res}       232        1      0     0.0685    0.0160     0.0432    0.1080
+{txt} 2007  2008{res}       231        7      0     0.0968    0.0188     0.0659    0.1409
+{txt} 2008  2009{res}       224        4      0     0.1129    0.0201     0.0794    0.1593
+{txt} 2010  2011{res}       220        5      0     0.1331    0.0216     0.0965    0.1820
+{txt} 2011  2012{res}       215        1      0     0.1371    0.0218     0.1000    0.1865
+{txt} 2013  2014{res}       214        2      0     0.1452    0.0224     0.1069    0.1955
+{txt} 2014  2015{res}       212        8      0     0.1774    0.0243     0.1352    0.2309
+{txt} 2015  2016{res}       204        4      0     0.1935    0.0251     0.1496    0.2484
+{txt} 2016  2017{res}       200        4      0     0.2097    0.0258     0.1641    0.2658
+{txt} 2017  2018{res}       196        1      0     0.2137    0.0260     0.1677    0.2701
+{txt} 2018  2019{res}       195        1      0     0.2177    0.0262     0.1713    0.2745
+{txt} 2019  2020{res}       194        5      0     0.2379    0.0270     0.1897    0.2960
+{txt} 2020  2021{res}       189        1      0     0.2419    0.0272     0.1934    0.3002
+{txt} 2021  2022{res}       188        2    186     0.2579    0.0289     0.2062    0.3196
 {txt}{hline 79}
 
-{com}. //_10
+{com}. //_25
 . graph export myltable.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -119,7 +319,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}18 May 2021, 19:19:59
+ {txt}closed on:  {res}19 May 2021, 13:31:41
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

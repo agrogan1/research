@@ -8,15 +8,27 @@ geometry: margin=.5 in
 
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
+# Introduction
+
+Corporal punishment is associated with a number of deleterious outcomes for children, including increases in behavior problems and mental health problems.
+
+A number of countries have instituted country wide bans upon the use of corporal punishment with children.
+
+Below, we employ a variety of empirical strategies to explore the institution of these bans.
+
 # Get The Data
 
-    use "../CPBans.dta"
+    use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
 	
-> NB This isn't actually the 100% correct data since the correct *risk set* would include *all countries*, not just *countries that eventually ban corporal punishment*.	
+> NB It is important to have data with the *correct risk set* which includes *all countries*, not just *countries that eventually ban corporal punishment*.	
 
 # `stset` The Data
 
-    stset year_of_prohibition // stset the data
+    replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
+	
+	generate f = type == "CP Ban" // "failure" variable
+
+    stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
 
 # Graphs
 
@@ -38,18 +50,67 @@ geometry: margin=.5 in
 	
 # Survival Analysis
 
-> Needs Covariates in the Data
+> Unlike other regression commands in Stata, survival analysis commands seem to require covariates.
 
-## Parametric Survival Model
+## Data Wrangling
+
+    encode continent, generate(continent_NUMERIC) // numeric version of continent
+	
+> Since Europe is where these bans started, we will use Europe (category 4) as the reference category.
+
+## Parametric Survival Models
+
+### Weibull
+
+    streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
+	
+### Exponential
+
+    streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
 
 ## Cox Proportional Hazards Model
 
+    stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
+		
+### Survival Curves
+
+	stcurve, survival scheme(michigan) // survival curve
+
+	graph export survival1A.png, width(500) replace
+	
+![Survival Curve](survival1A.png)
+
+	stcurve, failure scheme(michigan) // failure curve
+
+	graph export survival1B.png, width(500) replace
+	
+![Failure Curve](survival1B.png)
+	
+	stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
+	legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
+	4 "Europe" 5 "NA" 6 "Oceania")) ///
+	scheme(michigan) // survival curve by continent
+	
+	graph export survival2.png, width(500) replace
+
+![Failure Curve By Continent](survival2.png)
+
+### Proportional Hazards Assumption
+	
+	estat phtest // formal test of PH assumption
+	
+	stphplot, by(continent_NUMERIC) scheme(michigan) // graphical test of PH assumption
+	
+    graph export ph.png, width(500) replace
+
+![Graphical Test of Proportional Hazards Assumption](ph.png)
+
 # Life Table
 
-    ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+    ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
 
 	graph export myltable.png, width(500) replace
-
+	
 ![Graph Of Life Table](myltable.png)
 
 

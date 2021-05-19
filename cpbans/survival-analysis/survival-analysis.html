@@ -49,32 +49,40 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">18 May 2021 19:19:34</h3>
+<h3 class="date">19 May 2021 13:30:54</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<h1 id="introduction">Introduction</h1>
+<p>Corporal punishment is associated with a number of deleterious outcomes for children, including increases in behavior problems and mental health problems.</p>
+<p>A number of countries have instituted country wide bans upon the use of corporal punishment with children.</p>
+<p>Below, we employ a variety of empirical strategies to explore the institution of these bans.</p>
 <h1 id="get-the-data">Get The Data</h1>
-<pre class='stata'>. use "../CPBans.dta"
-(Written by R.              )
+<pre class='stata'>. use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
 </pre>
 <blockquote>
-<p>NB This isn't actually the 100% correct data since the correct <em>risk set</em> would include <em>all countries</em>, not just <em>countries that eventually ban corporal punishment</em>.</p>
+<p>NB It is important to have data with the <em>correct risk set</em> which includes <em>all countries</em>, not just <em>countries that eventually ban corporal punishment</em>.</p>
 </blockquote>
 <h1 id="stset-the-data"><code>stset</code> The Data</h1>
-<pre class='stata'>. stset year_of_prohibition // stset the data
+<pre class='stata'>. replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
+(186 real changes made)
+</pre>
+<pre class='stata'>. generate f = type == "CP Ban" // "failure" variable
+</pre>
+<pre class='stata'>. stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
 
 Survival-time data settings
 
-         Failure event: (assumed to fail at time=year_of_prohibition)
+         Failure event: f==1
 Observed time interval: (0, year_of_prohibition]
      Exit on or before: failure
 
 ──────────────────────────────────────────────────────────────────────────
-         62  total observations
+        248  total observations
           0  exclusions
 ──────────────────────────────────────────────────────────────────────────
-         62  observations remaining, representing
+        248  observations remaining, representing
          62  failures in single-record/single-failure data
-    124,546  total analysis time at risk and under observation
+    500,452  total analysis time at risk and under observation
                                                 At risk from t =         0
                                      Earliest observed entry t =         0
                                           Last observed exit t =     2,021
@@ -83,7 +91,7 @@ Observed time interval: (0, year_of_prohibition]
 <h2 id="survival-function">Survival Function</h2>
 <pre class='stata'>. sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
 
-        Failure _d: 1 (meaning all fail)
+        Failure _d: f==1
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export mysurvival.png, width(500) replace
@@ -96,7 +104,7 @@ file mysurvival.png saved as PNG format
 <h2 id="failure-function">Failure Function</h2>
 <pre class='stata'>. sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
-        Failure _d: 1 (meaning all fail)
+        Failure _d: f==1
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export myfailure.png, width(500) replace
@@ -108,43 +116,224 @@ file myfailure.png saved as PNG format
 </div>
 <h1 id="survival-analysis">Survival Analysis</h1>
 <blockquote>
-<p>Needs Covariates in the Data</p>
+<p>Unlike other regression commands in Stata, survival analysis commands seem to require covariates.</p>
 </blockquote>
-<h2 id="parametric-survival-model">Parametric Survival Model</h2>
+<h2 id="data-wrangling">Data Wrangling</h2>
+<pre class='stata'>. encode continent, generate(continent_NUMERIC) // numeric version of continent
+</pre>
+<blockquote>
+<p>Since Europe is where these bans started, we will use Europe (category 4) as the reference category.</p>
+</blockquote>
+<h2 id="parametric-survival-models">Parametric Survival Models</h2>
+<h3 id="weibull">Weibull</h3>
+<pre class='stata'>. streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
+
+        Failure _d: f==1
+  Analysis time _t: year_of_prohibition
+
+Fitting constant-only model:
+Iteration 0:   log likelihood =  -148.2325
+Iteration 1:   log likelihood = -86.999055
+Iteration 2:   log likelihood = -27.073844
+Iteration 3:   log likelihood =  29.365489
+Iteration 4:   log likelihood =  77.015953
+Iteration 5:   log likelihood =  106.62899
+Iteration 6:   log likelihood =  115.32234
+Iteration 7:   log likelihood =  115.88805
+Iteration 8:   log likelihood =  115.89021
+Iteration 9:   log likelihood =  115.89021
+
+Fitting full model:
+Iteration 0:   log likelihood =  115.89021  
+Iteration 1:   log likelihood =  139.32561  
+Iteration 2:   log likelihood =  142.87372  
+Iteration 3:   log likelihood =  143.05492  
+Iteration 4:   log likelihood =  143.05732  
+Iteration 5:   log likelihood =  143.05732  
+
+Weibull PH regression
+
+No. of subjects =     248                               Number of obs =    248
+No. of failures =      62
+Time at risk    = 500,452
+                                                        LR chi2(5)    =  54.33
+Log likelihood = 143.05732                              Prob > chi2   = 0.0000
+
+──────────────────┬────────────────────────────────────────────────────────────────
+               _t │ Haz. ratio   Std. err.      z    P>|z|     [95% conf. interval]
+──────────────────┼────────────────────────────────────────────────────────────────
+continent_NUMERIC │
+          Africa  │   .1684617   .0612563    -4.90   0.000     .0826011    .3435709
+        Americas  │   .1938708   .0704541    -4.51   0.000     .0950997     .395226
+            Asia  │   .1520997   .0603348    -4.75   0.000     .0698995    .3309653
+              NA  │   .0916735   .0931508    -2.35   0.019     .0125119    .6716806
+         Oceania  │   .0356574   .0362323    -3.28   0.001     .0048666    .2612621
+                  │
+            _cons │          0          0    -8.57   0.000            0           0
+──────────────────┼────────────────────────────────────────────────────────────────
+            /ln_p │   5.278967   .1166492    45.26   0.000     5.050339    5.507596
+──────────────────┼────────────────────────────────────────────────────────────────
+                p │   196.1672   22.88274                      156.0754    246.5576
+              1/p │   .0050977   .0005946                      .0040558    .0064072
+──────────────────┴────────────────────────────────────────────────────────────────
+Note: _cons estimates baseline hazard.
+</pre>
+<h3 id="exponential">Exponential</h3>
+<pre class='stata'>. streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
+
+        Failure _d: f==1
+  Analysis time _t: year_of_prohibition
+
+Iteration 0:   log likelihood =  -148.2325  
+Iteration 1:   log likelihood = -139.40941  
+Iteration 2:   log likelihood = -131.58499  
+Iteration 3:   log likelihood = -131.55897  
+Iteration 4:   log likelihood = -131.55892  
+Iteration 5:   log likelihood = -131.55892  
+
+Exponential PH regression
+
+No. of subjects =     248                               Number of obs =    248
+No. of failures =      62
+Time at risk    = 500,452
+                                                        LR chi2(5)    =  33.35
+Log likelihood = -131.55892                             Prob > chi2   = 0.0000
+
+──────────────────┬────────────────────────────────────────────────────────────────
+               _t │ Haz. ratio   Std. err.      z    P>|z|     [95% conf. interval]
+──────────────────┼────────────────────────────────────────────────────────────────
+continent_NUMERIC │
+          Africa  │   .2736219    .099129    -3.58   0.000      .134516    .5565804
+        Americas  │   .3052592   .1105907    -3.28   0.001     .1500692    .6209345
+            Asia  │   .2489781   .0984172    -3.52   0.000     .1147345    .5402914
+              NA  │   .1586176   .1610769    -1.81   0.070     .0216746    1.160782
+         Oceania  │    .061017    .061963    -2.75   0.006     .0083378    .4465293
+                  │
+            _cons │    .000312   .0000552   -45.67   0.000     .0002206    .0004412
+──────────────────┴────────────────────────────────────────────────────────────────
+Note: _cons estimates baseline hazard.
+</pre>
 <h2 id="cox-proportional-hazards-model">Cox Proportional Hazards Model</h2>
+<pre class='stata'>. stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
+
+        Failure _d: f==1
+  Analysis time _t: year_of_prohibition
+
+Iteration 0:   log likelihood = -333.92184
+Iteration 1:   log likelihood = -317.94407
+Iteration 2:   log likelihood = -308.96171
+Iteration 3:   log likelihood = -308.00801
+Iteration 4:   log likelihood = -308.00737
+Refining estimates:
+Iteration 0:   log likelihood = -308.00737
+
+Cox regression with Breslow method for ties
+
+No. of subjects =     248                               Number of obs =    248
+No. of failures =      62
+Time at risk    = 500,452
+                                                        LR chi2(5)    =  51.83
+Log likelihood = -308.00737                             Prob > chi2   = 0.0000
+
+──────────────────┬────────────────────────────────────────────────────────────────
+               _t │ Haz. ratio   Std. err.      z    P>|z|     [95% conf. interval]
+──────────────────┼────────────────────────────────────────────────────────────────
+continent_NUMERIC │
+          Africa  │   .1769827   .0643396    -4.76   0.000     .0867938    .3608887
+        Americas  │   .2023186   .0735008    -4.40   0.000     .0992661    .4123544
+            Asia  │   .1610376   .0638871    -4.60   0.000     .0740009    .3504428
+              NA  │   .0969297   .0984941    -2.30   0.022     .0132287    .7102257
+         Oceania  │   .0380401    .038653    -3.22   0.001     .0051919    .2787139
+──────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<h3 id="survival-curves">Survival Curves</h3>
+<pre class='stata'>. stcurve, survival scheme(michigan) // survival curve
+</pre>
+<pre class='stata'>. graph export survival1A.png, width(500) replace
+file survival1A.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="survival1A.png" alt="Survival Curve" />
+<p class="caption">Survival Curve</p>
+</div>
+<pre class='stata'>. stcurve, failure scheme(michigan) // failure curve
+</pre>
+<pre class='stata'>. graph export survival1B.png, width(500) replace
+file survival1B.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="survival1B.png" alt="Failure Curve" />
+<p class="caption">Failure Curve</p>
+</div>
+<pre class='stata'>. stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
+> legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
+> 4 "Europe" 5 "NA" 6 "Oceania")) ///
+> scheme(michigan) // survival curve by continent
+</pre>
+<pre class='stata'>. graph export survival2.png, width(500) replace
+file survival2.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="survival2.png" alt="Failure Curve By Continent" />
+<p class="caption">Failure Curve By Continent</p>
+</div>
+<h3 id="proportional-hazards-assumption">Proportional Hazards Assumption</h3>
+<pre class='stata'>. estat phtest // formal test of PH assumption
+
+Test of proportional-hazards assumption
+
+Time function: Analysis time
+─────────────┬──────────────────────────────────
+             │     chi2       df       Prob>chi2
+─────────────┼──────────────────────────────────
+ Global test │     6.20        5          0.2870
+─────────────┴──────────────────────────────────
+</pre>
+<pre class='stata'>. stphplot, by(continent_NUMERIC) scheme(michigan) // graphical test of PH assumption
+
+        Failure _d: f==1
+  Analysis time _t: year_of_prohibition
+</pre>
+<pre class='stata'>. graph export ph.png, width(500) replace
+file ph.png saved as PNG format
+</pre>
+<div class="figure">
+<img src="ph.png" alt="Graphical Test of Proportional Hazards Assumption" />
+<p class="caption">Graphical Test of Proportional Hazards Assumption</p>
+</div>
 <h1 id="life-table">Life Table</h1>
-<pre class='stata'>. ltable year_of_prohibition, graph failure scheme(michigan) // lifetable
+<pre class='stata'>. ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
 
                  Beg.                      Cum.       Std.
    Interval     Total   Deaths   Lost    Failure     Error     [95% Conf. Int.]
 ───────────────────────────────────────────────────────────────────────────────
- 1979  1980        62        1      0     0.0161    0.0160     0.0023    0.1090
- 1983  1984        61        1      0     0.0323    0.0224     0.0082    0.1229
- 1987  1988        60        1      0     0.0484    0.0273     0.0159    0.1426
- 1989  1990        59        1      0     0.0645    0.0312     0.0247    0.1628
- 1994  1995        58        1      0     0.0806    0.0346     0.0344    0.1830
- 1997  1998        57        1      0     0.0968    0.0375     0.0447    0.2028
- 1998  1999        56        1      0     0.1129    0.0402     0.0555    0.2223
- 1999  2000        55        1      0     0.1290    0.0426     0.0667    0.2415
- 2000  2001        54        3      0     0.1774    0.0485     0.1024    0.2974
- 2002  2003        51        1      0     0.1935    0.0502     0.1149    0.3156
- 2003  2004        50        1      0     0.2097    0.0517     0.1276    0.3335
- 2004  2005        49        2      0     0.2419    0.0544     0.1536    0.3688
- 2005  2006        47        1      0     0.2581    0.0556     0.1668    0.3862
- 2006  2007        46        1      0     0.2742    0.0567     0.1803    0.4034
- 2007  2008        45        7      0     0.3871    0.0619     0.2788    0.5197
- 2008  2009        38        4      0     0.4516    0.0632     0.3380    0.5831
- 2010  2011        34        5      0     0.5323    0.0634     0.4148    0.6596
- 2011  2012        29        1      0     0.5484    0.0632     0.4305    0.6745
- 2013  2014        28        2      0     0.5806    0.0627     0.4623    0.7040
- 2014  2015        26        8      0     0.7097    0.0576     0.5946    0.8162
- 2015  2016        18        4      0     0.7742    0.0531     0.6644    0.8684
- 2016  2017        14        4      0     0.8387    0.0467     0.7373    0.9171
- 2017  2018        10        1      0     0.8548    0.0447     0.7562    0.9286
- 2018  2019         9        1      0     0.8710    0.0426     0.7753    0.9397
- 2019  2020         8        5      0     0.9516    0.0273     0.8780    0.9872
- 2020  2021         3        1      0     0.9677    0.0224     0.9006    0.9939
- 2021  2022         2        2      0     1.0000         .          .         .
+ 1979  1980       248        1      0     0.0040    0.0040     0.0006    0.0283
+ 1983  1984       247        1      0     0.0081    0.0057     0.0020    0.0319
+ 1987  1988       246        1      0     0.0121    0.0069     0.0039    0.0370
+ 1989  1990       245        1      0     0.0161    0.0080     0.0061    0.0424
+ 1994  1995       244        1      0     0.0202    0.0089     0.0084    0.0478
+ 1997  1998       243        1      0     0.0242    0.0098     0.0109    0.0531
+ 1998  1999       242        1      0     0.0282    0.0105     0.0136    0.0583
+ 1999  2000       241        1      0     0.0323    0.0112     0.0163    0.0635
+ 2000  2001       240        3      0     0.0444    0.0131     0.0248    0.0787
+ 2002  2003       237        1      0     0.0484    0.0136     0.0278    0.0836
+ 2003  2004       236        1      0     0.0524    0.0142     0.0308    0.0886
+ 2004  2005       235        2      0     0.0605    0.0151     0.0369    0.0983
+ 2005  2006       233        1      0     0.0645    0.0156     0.0400    0.1032
+ 2006  2007       232        1      0     0.0685    0.0160     0.0432    0.1080
+ 2007  2008       231        7      0     0.0968    0.0188     0.0659    0.1409
+ 2008  2009       224        4      0     0.1129    0.0201     0.0794    0.1593
+ 2010  2011       220        5      0     0.1331    0.0216     0.0965    0.1820
+ 2011  2012       215        1      0     0.1371    0.0218     0.1000    0.1865
+ 2013  2014       214        2      0     0.1452    0.0224     0.1069    0.1955
+ 2014  2015       212        8      0     0.1774    0.0243     0.1352    0.2309
+ 2015  2016       204        4      0     0.1935    0.0251     0.1496    0.2484
+ 2016  2017       200        4      0     0.2097    0.0258     0.1641    0.2658
+ 2017  2018       196        1      0     0.2137    0.0260     0.1677    0.2701
+ 2018  2019       195        1      0     0.2177    0.0262     0.1713    0.2745
+ 2019  2020       194        5      0     0.2379    0.0270     0.1897    0.2960
+ 2020  2021       189        1      0     0.2419    0.0272     0.1934    0.3002
+ 2021  2022       188        2    186     0.2579    0.0289     0.2062    0.3196
 ───────────────────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. graph export myltable.png, width(500) replace
