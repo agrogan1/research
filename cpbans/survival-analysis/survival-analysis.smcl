@@ -3,27 +3,30 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}19 May 2021, 13:31:35
+ {txt}opened on:  {res}25 May 2021, 15:31:38
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}19 May 2021
+{res}25 May 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}13:31:35
+{res}15:31:38
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
 {txt}
 {com}. //_4
-. replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
+. generate current_year = year(today()) // variable with current year
+{txt}
+{com}. //_5
+. replace year_of_prohibition = current_year if year_of_prohibition == . // replace missing w/ current year
 {txt}(186 real changes made)
 
-{com}. //_5
+{com}. //_6
 . generate f = type == "CP Ban" // "failure" variable
 {txt}
-{com}. //_6
+{com}. //_7
 . stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
 
 {txt}Survival-time data settings
@@ -43,13 +46,13 @@
                                      {txt}Earliest observed entry t = {res}        0
                                           {txt}Last observed exit t = {res}    2,021
 {txt}
-{com}. //_7
+{com}. //_8
 . sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_8
+{com}. //_9
 . graph export mysurvival.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -59,13 +62,13 @@ PNG
 format
 {p_end}
 
-{com}. //_9
+{com}. //_10
 . sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_10
+{com}. //_11
 . graph export myfailure.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -75,10 +78,10 @@ PNG
 format
 {p_end}
 
-{com}. //_11
+{com}. //_12
 . encode continent, generate(continent_NUMERIC) // numeric version of continent
 {txt}
-{com}. //_12
+{com}. //_13
 . streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -131,7 +134,7 @@ continent_NUMERIC {c |}
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
 
-{com}. //_13
+{com}. //_14
 . streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -166,7 +169,7 @@ continent_NUMERIC {c |}
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
 
-{com}. //_14
+{com}. //_15
 . stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -199,10 +202,10 @@ continent_NUMERIC {c |}
 {txt}{space 9}Oceania  {c |}{col 19}{res}{space 2} .0380401{col 31}{space 2}  .038653{col 42}{space 1}   -3.22{col 51}{space 3}0.001{col 59}{space 4} .0051919{col 72}{space 3} .2787139
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
-{com}. //_15
+{com}. //_16
 . stcurve, survival scheme(michigan) // survival curve
 {res}{txt}
-{com}. //_16
+{com}. //_17
 . graph export survival1A.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -212,10 +215,10 @@ PNG
 format
 {p_end}
 
-{com}. //_17
+{com}. //_18
 . stcurve, failure scheme(michigan) // failure curve
 {res}{txt}
-{com}. //_18
+{com}. //_19
 . graph export survival1B.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -225,13 +228,13 @@ PNG
 format
 {p_end}
 
-{com}. //_19
+{com}. //_20
 . stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
 > legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
 > 4 "Europe" 5 "NA" 6 "Oceania")) ///
 > scheme(michigan) // survival curve by continent
 {res}{txt}
-{com}. //_20
+{com}. //_21
 . graph export survival2.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -241,7 +244,7 @@ PNG
 format
 {p_end}
 
-{com}. //_21
+{com}. //_22
 . estat phtest // formal test of PH assumption
 
 {txt}Test of proportional-hazards assumption
@@ -253,13 +256,13 @@ Time function: Analysis time
  Global test {c |}{res}{col 15}     6.20{col 28}    5{col 43}0.2870
 {txt}{hline 13}{c BT}{hline 34}
 
-{com}. //_22
+{com}. //_23
 . stphplot, by(continent_NUMERIC) scheme(michigan) // graphical test of PH assumption
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_23
+{com}. //_24
 . graph export ph.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -269,7 +272,7 @@ PNG
 format
 {p_end}
 
-{com}. //_24
+{com}. //_25
 . ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
 
 {txt}{col 18}Beg.{col 44}Cum.{col 55}Std.
@@ -304,7 +307,7 @@ format
 {txt} 2021  2022{res}       188        2    186     0.2579    0.0289     0.2062    0.3196
 {txt}{hline 79}
 
-{com}. //_25
+{com}. //_26
 . graph export myltable.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -314,12 +317,129 @@ PNG
 format
 {p_end}
 
+{com}. //_27
+. generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
+{txt}
+{com}. //_28
+. expand years_at_risk // "expand" the data; 1 row for every year at risk
+{txt}(9,908 observations created)
+
+{com}. //_29
+. bysort country_code: generate year = _n + 1977 // generate a year variable for each row
+{txt}
+{com}. //_30
+. generate event = type == "CP Ban" & year_of_prohibition == year // generate an event indicator
+{txt}
+{com}. //_31
+. list country_code year_of_prohibition event continent years_at_risk year ///
+> if country_code == "NOR" | country_code == "GBR" , ab(20) // list out a sample of the data
+{txt}
+       {c TLC}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c TRC}
+       {c |} {res}country_code   year_of_prohibition   event   continent   years_at_risk   year {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3172. {c |} {res}         GBR                  2021       0      Europe              44   1978 {txt}{c |}
+ 3173. {c |} {res}         GBR                  2021       0      Europe              44   1979 {txt}{c |}
+ 3174. {c |} {res}         GBR                  2021       0      Europe              44   1980 {txt}{c |}
+ 3175. {c |} {res}         GBR                  2021       0      Europe              44   1981 {txt}{c |}
+ 3176. {c |} {res}         GBR                  2021       0      Europe              44   1982 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3177. {c |} {res}         GBR                  2021       0      Europe              44   1983 {txt}{c |}
+ 3178. {c |} {res}         GBR                  2021       0      Europe              44   1984 {txt}{c |}
+ 3179. {c |} {res}         GBR                  2021       0      Europe              44   1985 {txt}{c |}
+ 3180. {c |} {res}         GBR                  2021       0      Europe              44   1986 {txt}{c |}
+ 3181. {c |} {res}         GBR                  2021       0      Europe              44   1987 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3182. {c |} {res}         GBR                  2021       0      Europe              44   1988 {txt}{c |}
+ 3183. {c |} {res}         GBR                  2021       0      Europe              44   1989 {txt}{c |}
+ 3184. {c |} {res}         GBR                  2021       0      Europe              44   1990 {txt}{c |}
+ 3185. {c |} {res}         GBR                  2021       0      Europe              44   1991 {txt}{c |}
+ 3186. {c |} {res}         GBR                  2021       0      Europe              44   1992 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3187. {c |} {res}         GBR                  2021       0      Europe              44   1993 {txt}{c |}
+ 3188. {c |} {res}         GBR                  2021       0      Europe              44   1994 {txt}{c |}
+ 3189. {c |} {res}         GBR                  2021       0      Europe              44   1995 {txt}{c |}
+ 3190. {c |} {res}         GBR                  2021       0      Europe              44   1996 {txt}{c |}
+ 3191. {c |} {res}         GBR                  2021       0      Europe              44   1997 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3192. {c |} {res}         GBR                  2021       0      Europe              44   1998 {txt}{c |}
+ 3193. {c |} {res}         GBR                  2021       0      Europe              44   1999 {txt}{c |}
+ 3194. {c |} {res}         GBR                  2021       0      Europe              44   2000 {txt}{c |}
+ 3195. {c |} {res}         GBR                  2021       0      Europe              44   2001 {txt}{c |}
+ 3196. {c |} {res}         GBR                  2021       0      Europe              44   2002 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3197. {c |} {res}         GBR                  2021       0      Europe              44   2003 {txt}{c |}
+ 3198. {c |} {res}         GBR                  2021       0      Europe              44   2004 {txt}{c |}
+ 3199. {c |} {res}         GBR                  2021       0      Europe              44   2005 {txt}{c |}
+ 3200. {c |} {res}         GBR                  2021       0      Europe              44   2006 {txt}{c |}
+ 3201. {c |} {res}         GBR                  2021       0      Europe              44   2007 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3202. {c |} {res}         GBR                  2021       0      Europe              44   2008 {txt}{c |}
+ 3203. {c |} {res}         GBR                  2021       0      Europe              44   2009 {txt}{c |}
+ 3204. {c |} {res}         GBR                  2021       0      Europe              44   2010 {txt}{c |}
+ 3205. {c |} {res}         GBR                  2021       0      Europe              44   2011 {txt}{c |}
+ 3206. {c |} {res}         GBR                  2021       0      Europe              44   2012 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3207. {c |} {res}         GBR                  2021       0      Europe              44   2013 {txt}{c |}
+ 3208. {c |} {res}         GBR                  2021       0      Europe              44   2014 {txt}{c |}
+ 3209. {c |} {res}         GBR                  2021       0      Europe              44   2015 {txt}{c |}
+ 3210. {c |} {res}         GBR                  2021       0      Europe              44   2016 {txt}{c |}
+ 3211. {c |} {res}         GBR                  2021       0      Europe              44   2017 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 3212. {c |} {res}         GBR                  2021       0      Europe              44   2018 {txt}{c |}
+ 3213. {c |} {res}         GBR                  2021       0      Europe              44   2019 {txt}{c |}
+ 3214. {c |} {res}         GBR                  2021       0      Europe              44   2020 {txt}{c |}
+ 3215. {c |} {res}         GBR                  2021       0      Europe              44   2021 {txt}{c |}
+ 6811. {c |} {res}         NOR                  1987       0      Europe              10   1978 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 6812. {c |} {res}         NOR                  1987       0      Europe              10   1979 {txt}{c |}
+ 6813. {c |} {res}         NOR                  1987       0      Europe              10   1980 {txt}{c |}
+ 6814. {c |} {res}         NOR                  1987       0      Europe              10   1981 {txt}{c |}
+ 6815. {c |} {res}         NOR                  1987       0      Europe              10   1982 {txt}{c |}
+ 6816. {c |} {res}         NOR                  1987       0      Europe              10   1983 {txt}{c |}
+       {c LT}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c RT}
+ 6817. {c |} {res}         NOR                  1987       0      Europe              10   1984 {txt}{c |}
+ 6818. {c |} {res}         NOR                  1987       0      Europe              10   1985 {txt}{c |}
+ 6819. {c |} {res}         NOR                  1987       0      Europe              10   1986 {txt}{c |}
+ 6820. {c |} {res}         NOR                  1987       1      Europe              10   1987 {txt}{c |}
+       {c BLC}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c BRC}
+
+{com}. //_32
+. logit event ib4.continent_NUMERIC, cluster(country_code) or
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res:-377.92887}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-375.10409}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-356.66291}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-356.57244}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-356.57228}  
+Iteration 5:{space 3}log pseudolikelihood = {res:-356.57228}  
+{res}
+{txt}Logistic regression{col 57}{lalign 13:Number of obs}{col 70} = {res}{ralign 6:10,156}
+{txt}{col 57}{lalign 13:Wald chi2({res:5})}{col 70} = {res}{ralign 6:51.46}
+{txt}{col 57}{lalign 13:Prob > chi2}{col 70} = {res}{ralign 6:0.0000}
+{txt}Log pseudolikelihood = {res:-356.57228}{col 57}{lalign 13:Pseudo R2}{col 70} = {res}{ralign 6:0.0565}
+
+{txt}{ralign 83:(Std. err. adjusted for {res:248} clusters in country_code)}
+{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 19}{c |}{col 31}    Robust
+{col 1}            event{col 19}{c |} Odds ratio{col 31}   std. err.{col 43}      z{col 51}   P>|z|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+continent_NUMERIC {c |}
+{space 10}Africa  {c |}{col 19}{res}{space 2} .2166869{col 31}{space 2} .0718543{col 42}{space 1}   -4.61{col 51}{space 3}0.000{col 59}{space 4} .1131281{col 72}{space 3} .4150446
+{txt}{space 8}Americas  {c |}{col 19}{res}{space 2} .2442922{col 31}{space 2} .0809085{col 42}{space 1}   -4.26{col 51}{space 3}0.000{col 59}{space 4} .1276425{col 72}{space 3} .4675456
+{txt}{space 12}Asia  {c |}{col 19}{res}{space 2} .1984237{col 31}{space 2} .0731346{col 42}{space 1}   -4.39{col 51}{space 3}0.000{col 59}{space 4} .0963517{col 72}{space 3} .4086277
+{txt}{space 14}NA  {c |}{col 19}{res}{space 2} .1224256{col 31}{space 2}  .118522{col 42}{space 1}   -2.17{col 51}{space 3}0.030{col 59}{space 4} .0183574{col 72}{space 3} .8164555
+{txt}{space 9}Oceania  {c |}{col 19}{res}{space 2} .0473871{col 31}{space 2} .0476801{col 42}{space 1}   -3.03{col 51}{space 3}0.002{col 59}{space 4} .0065947{col 72}{space 3} .3405066
+{txt}{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2} .0186916{col 31}{space 2} .0027184{col 42}{space 1}  -27.36{col 51}{space 3}0.000{col 59}{space 4} .0140557{col 72}{space 3} .0248566
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}19 May 2021, 13:31:41
+ {txt}closed on:  {res}25 May 2021, 15:31:46
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

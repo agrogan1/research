@@ -49,7 +49,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">19 May 2021 13:30:54</h3>
+<h3 class="date">25 May 2021 15:31:31</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -63,7 +63,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>NB It is important to have data with the <em>correct risk set</em> which includes <em>all countries</em>, not just <em>countries that eventually ban corporal punishment</em>.</p>
 </blockquote>
 <h1 id="stset-the-data"><code>stset</code> The Data</h1>
-<pre class='stata'>. replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
+<pre class='stata'>. generate current_year = year(today()) // variable with current year
+</pre>
+<pre class='stata'>. replace year_of_prohibition = current_year if year_of_prohibition == . // replace missing w/ current year
 (186 real changes made)
 </pre>
 <pre class='stata'>. generate f = type == "CP Ban" // "failure" variable
@@ -343,5 +345,127 @@ file myltable.png saved as PNG format
 <img src="myltable.png" alt="Graph Of Life Table" />
 <p class="caption">Graph Of Life Table</p>
 </div>
+<h1 id="discrete-time-survival-analysis">Discrete Time Survival Analysis</h1>
+<p>Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a <em>country-year</em>.</p>
+<h2 id="restructuring-the-data">Restructuring the Data</h2>
+<p>We first need to generate a variable for the years during which a country was &quot;at risk&quot; of enacting a ban. Countries that have never enacted a ban are at risk up until the current year. Countries that enacted a ban leave the risk set once they have enacted a ban, and are thus at risk for a shorter time period.</p>
+<pre class='stata'>. generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
+</pre>
+<p>We <em>expand</em> the data to generate one row of data for every year that each country is at risk.</p>
+<pre class='stata'>. expand years_at_risk // "expand" the data; 1 row for every year at risk
+(9,908 observations created)
+</pre>
+<p>We create a year variable.</p>
+<pre class='stata'>. bysort country_code: generate year = _n + 1977 // generate a year variable for each row
+</pre>
+<p>Lastly, we generate an indicator of the event, a <code>0/1</code>' variable, which takes the value 1 for rows in which a ban was enacted, and 0 otherwise.</p>
+<pre class='stata'>. generate event = type == "CP Ban" &amp; year_of_prohibition == year // generate an event indicator
+</pre>
+<p>We list out a sample of the data to make sure that the data conform to our expectations. We focus on Norway, a country that <em>has</em> enacted a ban, and Great Britain, a country that <em>has not</em> enacted a ban.</p>
+<pre class='stata'>. list country_code year_of_prohibition event continent years_at_risk year ///
+> if country_code == "NOR" | country_code == "GBR" , ab(20) // list out a sample of the data
+
+       ┌───────────────────────────────────────────────────────────────────────────────┐
+       │ country_code   year_of_prohibition   event   continent   years_at_risk   year │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3172. │          GBR                  2021       0      Europe              44   1978 │
+ 3173. │          GBR                  2021       0      Europe              44   1979 │
+ 3174. │          GBR                  2021       0      Europe              44   1980 │
+ 3175. │          GBR                  2021       0      Europe              44   1981 │
+ 3176. │          GBR                  2021       0      Europe              44   1982 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3177. │          GBR                  2021       0      Europe              44   1983 │
+ 3178. │          GBR                  2021       0      Europe              44   1984 │
+ 3179. │          GBR                  2021       0      Europe              44   1985 │
+ 3180. │          GBR                  2021       0      Europe              44   1986 │
+ 3181. │          GBR                  2021       0      Europe              44   1987 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3182. │          GBR                  2021       0      Europe              44   1988 │
+ 3183. │          GBR                  2021       0      Europe              44   1989 │
+ 3184. │          GBR                  2021       0      Europe              44   1990 │
+ 3185. │          GBR                  2021       0      Europe              44   1991 │
+ 3186. │          GBR                  2021       0      Europe              44   1992 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3187. │          GBR                  2021       0      Europe              44   1993 │
+ 3188. │          GBR                  2021       0      Europe              44   1994 │
+ 3189. │          GBR                  2021       0      Europe              44   1995 │
+ 3190. │          GBR                  2021       0      Europe              44   1996 │
+ 3191. │          GBR                  2021       0      Europe              44   1997 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3192. │          GBR                  2021       0      Europe              44   1998 │
+ 3193. │          GBR                  2021       0      Europe              44   1999 │
+ 3194. │          GBR                  2021       0      Europe              44   2000 │
+ 3195. │          GBR                  2021       0      Europe              44   2001 │
+ 3196. │          GBR                  2021       0      Europe              44   2002 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3197. │          GBR                  2021       0      Europe              44   2003 │
+ 3198. │          GBR                  2021       0      Europe              44   2004 │
+ 3199. │          GBR                  2021       0      Europe              44   2005 │
+ 3200. │          GBR                  2021       0      Europe              44   2006 │
+ 3201. │          GBR                  2021       0      Europe              44   2007 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3202. │          GBR                  2021       0      Europe              44   2008 │
+ 3203. │          GBR                  2021       0      Europe              44   2009 │
+ 3204. │          GBR                  2021       0      Europe              44   2010 │
+ 3205. │          GBR                  2021       0      Europe              44   2011 │
+ 3206. │          GBR                  2021       0      Europe              44   2012 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3207. │          GBR                  2021       0      Europe              44   2013 │
+ 3208. │          GBR                  2021       0      Europe              44   2014 │
+ 3209. │          GBR                  2021       0      Europe              44   2015 │
+ 3210. │          GBR                  2021       0      Europe              44   2016 │
+ 3211. │          GBR                  2021       0      Europe              44   2017 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 3212. │          GBR                  2021       0      Europe              44   2018 │
+ 3213. │          GBR                  2021       0      Europe              44   2019 │
+ 3214. │          GBR                  2021       0      Europe              44   2020 │
+ 3215. │          GBR                  2021       0      Europe              44   2021 │
+ 6811. │          NOR                  1987       0      Europe              10   1978 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 6812. │          NOR                  1987       0      Europe              10   1979 │
+ 6813. │          NOR                  1987       0      Europe              10   1980 │
+ 6814. │          NOR                  1987       0      Europe              10   1981 │
+ 6815. │          NOR                  1987       0      Europe              10   1982 │
+ 6816. │          NOR                  1987       0      Europe              10   1983 │
+       ├───────────────────────────────────────────────────────────────────────────────┤
+ 6817. │          NOR                  1987       0      Europe              10   1984 │
+ 6818. │          NOR                  1987       0      Europe              10   1985 │
+ 6819. │          NOR                  1987       0      Europe              10   1986 │
+ 6820. │          NOR                  1987       1      Europe              10   1987 │
+       └───────────────────────────────────────────────────────────────────────────────┘
+</pre>
+<h1 id="analysis">Analysis</h1>
+<p>Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose to cluster the standard errors on country, because of the repeated rows of data per country.</p>
+<p>We ask for <em>odds ratios</em> so that our results are roughly comparable to those from the continuous time survival models.</p>
+<pre class='stata'>. logit event ib4.continent_NUMERIC, cluster(country_code) or
+
+Iteration 0:   log pseudolikelihood = -377.92887  
+Iteration 1:   log pseudolikelihood = -375.10409  
+Iteration 2:   log pseudolikelihood = -356.66291  
+Iteration 3:   log pseudolikelihood = -356.57244  
+Iteration 4:   log pseudolikelihood = -356.57228  
+Iteration 5:   log pseudolikelihood = -356.57228  
+
+Logistic regression                                     Number of obs = 10,156
+                                                        Wald chi2(5)  =  51.46
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -356.57228                       Pseudo R2     = 0.0565
+
+                              (Std. err. adjusted for 248 clusters in country_code)
+──────────────────┬────────────────────────────────────────────────────────────────
+                  │               Robust
+            event │ Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+──────────────────┼────────────────────────────────────────────────────────────────
+continent_NUMERIC │
+          Africa  │   .2166869   .0718543    -4.61   0.000     .1131281    .4150446
+        Americas  │   .2442922   .0809085    -4.26   0.000     .1276425    .4675456
+            Asia  │   .1984237   .0731346    -4.39   0.000     .0963517    .4086277
+              NA  │   .1224256    .118522    -2.17   0.030     .0183574    .8164555
+         Oceania  │   .0473871   .0476801    -3.03   0.002     .0065947    .3405066
+                  │
+            _cons │   .0186916   .0027184   -27.36   0.000     .0140557    .0248566
+──────────────────┴────────────────────────────────────────────────────────────────
+Note: _cons estimates baseline odds.
+</pre>
 </body>
 </html>

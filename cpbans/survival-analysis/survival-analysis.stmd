@@ -117,18 +117,40 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 # Discrete Time Survival Analysis
 
-Discrete time survival analysis is placed at the end because it requires us to restructure the data.
+Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a *country-year*.
 
-    use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
+## Restructuring the Data
+
+We first need to generate a variable for the years during which a country was "at risk" of enacting a ban. Countries that have never enacted a ban are at risk up until the current year. Countries that enacted a ban leave the risk set once they have enacted a ban, and are thus at risk for a shorter time period.
 
     generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
+	
+We *expand* the data to generate one row of data for every year that each country is at risk.
     
 	expand years_at_risk // "expand" the data; 1 row for every year at risk
 	
+We create a year variable.
+	
 	bysort country_code: generate year = _n + 1977 // generate a year variable for each row
 	
-	list in 1/10, ab(20) // list out a sample of the data
+Lastly, we generate an indicator of the event, a `0/1`' variable, which takes the value 1 for rows in which a ban was enacted, and 0 otherwise.
+	
+	generate event = type == "CP Ban" & year_of_prohibition == year // generate an event indicator
 
+We list out a sample of the data to make sure that the data conform to our expectations. We focus on Norway, a country that *has* enacted a ban, and Great Britain, a country that *has not* enacted a ban.
 
+	list country_code year_of_prohibition event continent years_at_risk year ///
+	if country_code == "NOR" | country_code == "GBR" , ab(20) // list out a sample of the data
+	
+# Analysis
 
+Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose to cluster the standard errors on country, because of the repeated rows of data per country.
+
+We ask for *odds ratios* so that our results are roughly comparable to those from the continuous time survival models.
+
+    logit event ib4.continent_NUMERIC, cluster(country_code) or
+	
+	
+	
+	
 	
