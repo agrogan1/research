@@ -24,8 +24,10 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 # `stset` The Data
 
-    replace year_of_prohibition = 2021 if year_of_prohibition == . // replace missing w/ current year
-	
+	generate current_year = year(today()) // variable with current year
+
+	replace year_of_prohibition = current_year if year_of_prohibition == . // replace missing w/ current year
+		
 	generate f = type == "CP Ban" // "failure" variable
 
     stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
@@ -113,6 +115,19 @@ Below, we employ a variety of empirical strategies to explore the institution of
 	
 ![Graph Of Life Table](myltable.png)
 
+# Discrete Time Survival Analysis
+
+Discrete time survival analysis is placed at the end because it requires us to restructure the data.
+
+    use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
+
+    generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
+    
+	expand years_at_risk // "expand" the data; 1 row for every year at risk
+	
+	bysort country_code: generate year = _n + 1977 // generate a year variable for each row
+	
+	list in 1/10, ab(20) // list out a sample of the data
 
 
 
