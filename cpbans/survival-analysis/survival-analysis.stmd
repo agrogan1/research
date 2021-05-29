@@ -144,13 +144,18 @@ We list out a sample of the data to make sure that the data conform to our expec
 	
 # Analysis
 
-Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose to cluster the standard errors on country, because of the repeated rows of data per country.
+Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to cluster the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are *conditionally* independent.
 
 We ask for *odds ratios* so that our results are roughly comparable to those from the continuous time survival models.
 
     logit event ib4.continent_NUMERIC, cluster(country_code) or
 	
+# References
+
+Allison, P. D. (1984). *Event History Analysis: Regression for Longitudinal Event Data*. SAGE Publications. Retrieved from https://books.google.com/books?id=XkACeUEiEsUC
 	
-	
+Singer, J. D., & Willett, J. B. (2003). *Applied longitudinal data analysis : modeling change and event occurrence*. Oxford ; New York : Oxford University Press.	
+
+StataCorp. 2021. *Stata 17 Survival Analysis Reference Manual*. College Station, TX: Stata Press
 	
 	

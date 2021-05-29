@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}25 May 2021, 15:46:13
+ {txt}opened on:  {res}29 May 2021, 17:29:43
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}25 May 2021
+{res}29 May 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}15:46:13
+{res}17:29:43
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
@@ -439,7 +439,7 @@ continent_NUMERIC {c |}
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}25 May 2021, 15:46:21
+ {txt}closed on:  {res}29 May 2021, 17:29:50
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
