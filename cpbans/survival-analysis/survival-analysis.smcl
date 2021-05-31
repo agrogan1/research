@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}29 May 2021, 17:29:43
+ {txt}opened on:  {res}31 May 2021, 14:53:20
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}29 May 2021
+{res}31 May 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}17:29:43
+{res}14:53:20
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
@@ -47,12 +47,15 @@
                                           {txt}Last observed exit t = {res}    2,021
 {txt}
 {com}. //_8
+. encode continent, generate(continent_NUMERIC) // numeric version of continent
+{txt}
+{com}. //_9
 . sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_9
+{com}. //_10
 . graph export mysurvival.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -62,13 +65,13 @@ PNG
 format
 {p_end}
 
-{com}. //_10
+{com}. //_11
 . sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_11
+{com}. //_12
 . graph export myfailure.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -78,9 +81,6 @@ PNG
 format
 {p_end}
 
-{com}. //_12
-. encode continent, generate(continent_NUMERIC) // numeric version of continent
-{txt}
 {com}. //_13
 . streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
 
@@ -439,7 +439,7 @@ continent_NUMERIC {c |}
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}29 May 2021, 17:29:50
+ {txt}closed on:  {res}31 May 2021, 14:53:27
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -8,6 +8,69 @@ geometry: margin=.5 in
 
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
+<style>
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  color: #ffcb05;
+  background-color: #00274C;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  color: #ffcb05;
+  background-color: #00274C;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+
+<script>
+function openCity(evt, cityName) {
+// Declare all variables
+var i, tabcontent, tablinks;
+
+// Get all elements with class="tabcontent" and hide them
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+// Get all elements with class="tablinks" and remove the class "active"
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+// Show the current tab, and add an "active" class to the button that opened the tab
+document.getElementById(cityName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+</script>
+
 # Introduction
 
 Corporal punishment is associated with a number of deleterious outcomes for children, including increases in behavior problems and mental health problems.
@@ -22,7 +85,22 @@ Below, we employ a variety of empirical strategies to explore the institution of
 	
 > NB It is important to have data with the *correct risk set* which includes *all countries*, not just *countries that eventually ban corporal punishment*.	
 
-# `stset` The Data
+> In web versions of this tutorial, click the buttons to access different sections of the tutorial.
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Setup')">Setup</button>
+  <button class="tablinks" onclick="openCity(event, 'Parametric')">Parametric Survival Models</button>
+  <button class="tablinks" onclick="openCity(event, 'Cox')">Cox Model</button>
+  <button class="tablinks" onclick="openCity(event, 'Lifetable')">Life Table</button>
+  <button class="tablinks" onclick="openCity(event, 'Discrete')">Discrete Time Survival Analysis</button>
+</div>
+
+<div id="Setup" class="tabcontent">
+
+# Setup
+
+## `stset` The Data
 
 	generate current_year = year(today()) // variable with current year
 
@@ -32,9 +110,13 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
     stset year_of_prohibition, failure(f = 1) // stset the data with time and failure variables
 
-# Graphs
+## Data Wrangling
 
-## Survival Function
+    encode continent, generate(continent_NUMERIC) // numeric version of continent
+	
+## Graphs
+
+### Survival Function
 
     sts graph, scheme(michigan) tmin(1970) // Kaplan-Meier Survivor Function
 	
@@ -42,39 +124,39 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 ![Kaplan-Meier Survivor Function](mysurvival.png)
  
-## Failure Function
+### Failure Function
 
     sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 	
 	graph export myfailure.png, width(500) replace
 
 ![Kaplan-Meier Failure Function](myfailure.png)
-	
-# Survival Analysis
 
-> Unlike other regression commands in Stata, survival analysis commands seem to require covariates.
+</div>
 
-## Data Wrangling
+<div id="Parametric" class="tabcontent">
 
-    encode continent, generate(continent_NUMERIC) // numeric version of continent
-	
-> Since Europe is where these bans started, we will use Europe (category 4) as the reference category.
+# Parametric Survival Models
 
-## Parametric Survival Models
+> Unlike other regression commands in Stata, survival analysis commands seem to require covariates. Since Europe is where these bans started, we will use Europe (category 4) as the reference category.
 
-### Weibull
+## Weibull
 
     streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
 	
-### Exponential
+## Exponential
 
     streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
 
-## Cox Proportional Hazards Model
+</div>
+
+<div id="Cox" class="tabcontent">
+
+# Cox Proportional Hazards Model
 
     stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
 		
-### Survival Curves
+## Survival Curves
 
 	stcurve, survival scheme(michigan) // survival curve
 
@@ -97,7 +179,7 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 ![Failure Curve By Continent](survival2.png)
 
-### Proportional Hazards Assumption
+## Proportional Hazards Assumption
 	
 	estat phtest // formal test of PH assumption
 	
@@ -107,6 +189,10 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 ![Graphical Test of Proportional Hazards Assumption](ph.png)
 
+</div>
+
+<div id="Lifetable" class="tabcontent">
+
 # Life Table
 
     ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
@@ -114,6 +200,10 @@ Below, we employ a variety of empirical strategies to explore the institution of
 	graph export myltable.png, width(500) replace
 	
 ![Graph Of Life Table](myltable.png)
+
+</div>
+
+<div id="Discrete" class="tabcontent">
 
 # Discrete Time Survival Analysis
 
@@ -142,17 +232,19 @@ We list out a sample of the data to make sure that the data conform to our expec
 	list country_code year_of_prohibition event continent years_at_risk year ///
 	if country_code == "NOR" | country_code == "GBR" , ab(20) // list out a sample of the data
 	
-# Analysis
+## Analysis
 
 Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to cluster the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are *conditionally* independent.
 
 We ask for *odds ratios* so that our results are roughly comparable to those from the continuous time survival models.
 
     logit event ib4.continent_NUMERIC, cluster(country_code) or
-	
+
+</div>
+
 # References
 
-Allison, P. D. (1984). *Event History Analysis: Regression for Longitudinal Event Data*. SAGE Publications. Retrieved from https://books.google.com/books?id=XkACeUEiEsUC
+Allison, P. D. (1984). *Event History Analysis: Regression for Longitudinal Event Data*. SAGE Publications. 
 	
 Singer, J. D., & Willett, J. B. (2003). *Applied longitudinal data analysis : modeling change and event occurrence*. Oxford ; New York : Oxford University Press.	
 
