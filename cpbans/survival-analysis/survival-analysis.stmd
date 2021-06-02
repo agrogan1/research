@@ -13,6 +13,7 @@ geometry: margin=.5 in
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
+  border-style: none solid solid solid;
   background-color: #f1f1f1;
 }
 
@@ -85,7 +86,7 @@ Below, we employ a variety of empirical strategies to explore the institution of
 	
 > NB It is important to have data with the *correct risk set* which includes *all countries*, not just *countries that eventually ban corporal punishment*.	
 
-> In web versions of this tutorial, click the buttons to access different sections of the tutorial.
+<mark>In web versions of this tutorial, click the tabs below to access different sections of the tutorial.</mark>
 
 <!-- Tab links -->
 <div class="tab">

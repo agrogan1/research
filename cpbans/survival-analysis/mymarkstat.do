@@ -22,6 +22,8 @@ markstat using "survival-analysis.stmd", pdf // PDF
 
 graph close _all
 
+* use TeX to render .tex file to TeX
+
 erase "survival-analysis.tex" // erase TeX file
 
 erase "survival-analysis.md" // erase markdown file
