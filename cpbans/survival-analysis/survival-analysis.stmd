@@ -3,10 +3,10 @@
 % `s c(current_date)` `s c(current_time)`
 
 ---
-geometry: margin=.5 in
+geometry: margin=1.0 in
 ---
 
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 <style>
 /* Style the tab */
@@ -86,7 +86,7 @@ Below, we employ a variety of empirical strategies to explore the institution of
 	
 > NB It is important to have data with the *correct risk set* which includes *all countries*, not just *countries that eventually ban corporal punishment*.	
 
-<mark>In web versions of this tutorial, click the tabs below to access different sections of the tutorial.</mark>
+In web versions of this tutorial, click the <mark>tabs below</mark> to access different sections of the tutorial.
 
 <!-- Tab links -->
 <div class="tab">
@@ -95,6 +95,9 @@ Below, we employ a variety of empirical strategies to explore the institution of
   <button class="tablinks" onclick="openCity(event, 'Cox')">Cox Model</button>
   <button class="tablinks" onclick="openCity(event, 'Lifetable')">Life Table</button>
   <button class="tablinks" onclick="openCity(event, 'Discrete')">Discrete Time Survival Analysis</button>
+  <button class="tablinks" onclick="openCity(event, 'Cox2')">Cox Model 2</button>
+  <button class="tablinks" onclick="openCity(event, 'compare')">Compare Estimates</button>
+
 </div>
 
 <div id="Setup" class="tabcontent">
@@ -145,9 +148,13 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
     streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
 	
+	est store Weibull
+	
 ## Exponential
 
     streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
+	
+	est store Exponential
 
 </div>
 
@@ -156,6 +163,8 @@ Below, we employ a variety of empirical strategies to explore the institution of
 # Cox Proportional Hazards Model
 
     stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
+	
+	est store Cox
 		
 ## Survival Curves
 
@@ -208,7 +217,7 @@ Below, we employ a variety of empirical strategies to explore the institution of
 
 # Discrete Time Survival Analysis
 
-Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a *country-year*.
+> Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a *country-year*.
 
 ## Restructuring the Data
 
@@ -235,11 +244,36 @@ We list out a sample of the data to make sure that the data conform to our expec
 	
 ## Analysis
 
-Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to cluster the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are *conditionally* independent.
+Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to `cluster` the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are *conditionally* independent.
 
 We ask for *odds ratios* so that our results are roughly comparable to those from the continuous time survival models.
 
-    logit event ib4.continent_NUMERIC, cluster(country_code) or
+    logit event ib4.continent_NUMERIC year, or
+	
+	est store Discrete
+
+</div>
+
+<div id="Cox2" class="tabcontent">
+
+# Cox Model With Multiple Records Per Observation and Time Varying Covariates
+
+> We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a *time varying covariate*. **I am not sure how to use the `tvc` option to program this when there is only one record per *individual*.**
+
+    stcox ib4.continent_NUMERIC year
+	
+	est store CoxTVC2
+
+</div>
+
+<div id="compare" class="tabcontent">
+
+# Compare Estimates
+
+> Note the difference in the effect of *year* in the two models where this is included.
+
+    estimates table Weibull Exponential Cox Discrete CoxTVC2, ///
+	b(%9.3f) star stats(N r2_a) equations(1) // nice table of estimates
 
 </div>
 

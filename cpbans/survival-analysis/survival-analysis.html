@@ -49,9 +49,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">2 Jun 2021 15:26:01</h3>
+<h3 class="date">14 Jun 2021 13:54:26</h3>
 </div>
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <style>
 /* Style the tab */
 .tab {
@@ -124,7 +124,7 @@ evt.currentTarget.className += " active";
 <blockquote>
 <p>NB It is important to have data with the <em>correct risk set</em> which includes <em>all countries</em>, not just <em>countries that eventually ban corporal punishment</em>.</p>
 </blockquote>
-<p><mark>In web versions of this tutorial, click the tabs below to access different sections of the tutorial.</mark></p>
+<p>In web versions of this tutorial, click the <mark>tabs below</mark> to access different sections of the tutorial.</p>
 <!-- Tab links -->
 <div class="tab">
 <button class="tablinks" onclick="openCity(event, 'Setup')">
@@ -141,6 +141,12 @@ Life Table
 </button>
 <button class="tablinks" onclick="openCity(event, 'Discrete')">
 Discrete Time Survival Analysis
+</button>
+<button class="tablinks" onclick="openCity(event, 'Cox2')">
+Cox Model 2
+</button>
+<button class="tablinks" onclick="openCity(event, 'compare')">
+Compare Estimates
 </button>
 </div>
 <div id="Setup" class="tabcontent">
@@ -261,6 +267,8 @@ continent_NUMERIC │
 ──────────────────┴────────────────────────────────────────────────────────────────
 Note: _cons estimates baseline hazard.
 </pre>
+<pre class='stata'>. est store Weibull
+</pre>
 <h2 id="exponential">Exponential</h2>
 <pre class='stata'>. streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
 
@@ -296,6 +304,8 @@ continent_NUMERIC │
 ──────────────────┴────────────────────────────────────────────────────────────────
 Note: _cons estimates baseline hazard.
 </pre>
+<pre class='stata'>. est store Exponential
+</pre>
 </div>
 <div id="Cox" class="tabcontent">
 <h1 id="cox-proportional-hazards-model">Cox Proportional Hazards Model</h1>
@@ -330,6 +340,8 @@ continent_NUMERIC │
               NA  │   .0969297   .0984941    -2.30   0.022     .0132287    .7102257
          Oceania  │   .0380401    .038653    -3.22   0.001     .0051919    .2787139
 ──────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. est store Cox
 </pre>
 <h2 id="survival-curves">Survival Curves</h2>
 <pre class='stata'>. stcurve, survival scheme(michigan) // survival curve
@@ -433,7 +445,9 @@ file myltable.png saved as PNG format
 </div>
 <div id="Discrete" class="tabcontent">
 <h1 id="discrete-time-survival-analysis">Discrete Time Survival Analysis</h1>
+<blockquote>
 <p>Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a <em>country-year</em>.</p>
+</blockquote>
 <h2 id="restructuring-the-data">Restructuring the Data</h2>
 <p>We first need to generate a variable for the years during which a country was &quot;at risk&quot; of enacting a ban. Countries that have never enacted a ban are at risk up until the current year. Countries that enacted a ban leave the risk set once they have enacted a ban, and are thus at risk for a shorter time period.</p>
 <pre class='stata'>. generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
@@ -522,37 +536,114 @@ file myltable.png saved as PNG format
        └───────────────────────────────────────────────────────────────────────────────┘
 </pre>
 <h2 id="analysis">Analysis</h2>
-<p>Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to cluster the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are <em>conditionally</em> independent.</p>
+<p>Lastly, we analyze the data using a straightforward logistic regression model. While there is some discussion on this point, we choose not to <code>cluster</code> the standard errors on country, because of the argument from Singer and Willett (2003) that the rows of data are <em>conditionally</em> independent.</p>
 <p>We ask for <em>odds ratios</em> so that our results are roughly comparable to those from the continuous time survival models.</p>
-<pre class='stata'>. logit event ib4.continent_NUMERIC, cluster(country_code) or
+<pre class='stata'>. logit event ib4.continent_NUMERIC year, or
 
-Iteration 0:   log pseudolikelihood = -377.92887  
-Iteration 1:   log pseudolikelihood = -375.10409  
-Iteration 2:   log pseudolikelihood = -356.66291  
-Iteration 3:   log pseudolikelihood = -356.57244  
-Iteration 4:   log pseudolikelihood = -356.57228  
-Iteration 5:   log pseudolikelihood = -356.57228  
+Iteration 0:   log likelihood = -377.92887  
+Iteration 1:   log likelihood =  -372.7393  
+Iteration 2:   log likelihood = -330.01528  
+Iteration 3:   log likelihood = -328.96762  
+Iteration 4:   log likelihood = -328.96528  
+Iteration 5:   log likelihood = -328.96528  
 
 Logistic regression                                     Number of obs = 10,156
-                                                        Wald chi2(5)  =  51.46
+                                                        LR chi2(6)    =  97.93
                                                         Prob > chi2   = 0.0000
-Log pseudolikelihood = -356.57228                       Pseudo R2     = 0.0565
+Log likelihood = -328.96528                             Pseudo R2     = 0.1296
 
-                              (Std. err. adjusted for 248 clusters in country_code)
 ──────────────────┬────────────────────────────────────────────────────────────────
-                  │               Robust
-            event │ Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+            event │ Odds ratio   Std. err.      z    P>|z|     [95% conf. interval]
 ──────────────────┼────────────────────────────────────────────────────────────────
 continent_NUMERIC │
-          Africa  │   .2166869   .0718543    -4.61   0.000     .1131281    .4150446
-        Americas  │   .2442922   .0809085    -4.26   0.000     .1276425    .4675456
-            Asia  │   .1984237   .0731346    -4.39   0.000     .0963517    .4086277
-              NA  │   .1224256    .118522    -2.17   0.030     .0183574    .8164555
-         Oceania  │   .0473871   .0476801    -3.03   0.002     .0065947    .3405066
+          Africa  │   .1666907   .0611921    -4.88   0.000     .0811775    .3422843
+        Americas  │   .1916195   .0703136    -4.50   0.000     .0933462    .3933534
+            Asia  │   .1507161   .0603004    -4.73   0.000     .0688019    .3301562
+              NA  │   .0906814    .092426    -2.36   0.019      .012301    .6684916
+         Oceania  │   .0351902   .0358209    -3.29   0.001     .0047859    .2587488
                   │
-            _cons │   .0186916   .0027184   -27.36   0.000     .0140557    .0248566
+             year │   1.088786    .013881     6.67   0.000     1.061917    1.116335
+            _cons │   2.05e-76   5.25e-75    -6.81   0.000     3.38e-98    1.24e-54
 ──────────────────┴────────────────────────────────────────────────────────────────
 Note: _cons estimates baseline odds.
+</pre>
+<pre class='stata'>. est store Discrete
+</pre>
+</div>
+<div id="Cox2" class="tabcontent">
+<h1 id="cox-model-with-multiple-records-per-observation-and-time-varying-covariates">Cox Model With Multiple Records Per Observation and Time Varying Covariates</h1>
+<blockquote>
+<p>We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a <em>time varying covariate</em>. <strong>I am not sure how to use the <code>tvc</code> option to program this when there is only one record per <em>individual</em>.</strong></p>
+</blockquote>
+<pre class='stata'>. stcox ib4.continent_NUMERIC year
+
+        Failure _d: f==1
+  Analysis time _t: year_of_prohibition
+
+Iteration 0:   log likelihood = -18004.477
+Iteration 1:   log likelihood = -17501.348
+Iteration 2:   log likelihood = -17184.551
+Iteration 3:   log likelihood = -17166.754
+Iteration 4:   log likelihood = -17166.743
+Refining estimates:
+Iteration 0:   log likelihood = -17166.743
+
+Cox regression with Breslow method for ties
+
+No. of subjects =     10,156                           Number of obs =  10,156
+No. of failures =      1,972
+Time at risk    = 20,506,348
+                                                       LR chi2(6)    = 1675.47
+Log likelihood = -17166.743                            Prob > chi2   =  0.0000
+
+──────────────────┬────────────────────────────────────────────────────────────────
+               _t │ Haz. ratio   Std. err.      z    P>|z|     [95% conf. interval]
+──────────────────┼────────────────────────────────────────────────────────────────
+continent_NUMERIC │
+          Africa  │   .2095718   .0129973   -25.20   0.000      .185585    .2366588
+        Americas  │    .231531   .0145656   -23.26   0.000     .2046728    .2619136
+            Asia  │   .1758169   .0121687   -25.12   0.000     .1535135    .2013605
+              NA  │   .1294716   .0204464   -12.94   0.000      .095006    .1764404
+         Oceania  │    .036336   .0067455   -17.86   0.000     .0252533    .0522826
+                  │
+             year │   .9727888   .0018314   -14.65   0.000     .9692059    .9763849
+──────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. est store CoxTVC2
+</pre>
+</div>
+<div id="compare" class="tabcontent">
+<h1 id="compare-estimates">Compare Estimates</h1>
+<blockquote>
+<p>Note the difference in the effect of <em>year</em> in the two models where this is included.</p>
+</blockquote>
+<pre class='stata'>. estimates table Weibull Exponential Cox Discrete CoxTVC2, ///
+> b(%9.3f) star stats(N r2_a) equations(1) // nice table of estimates
+
+─────────────┬───────────────────────────────────────────────────────────────────────────
+    Variable │   Weibull      Exponential        Cox          Discrete       CoxTVC2     
+─────────────┼───────────────────────────────────────────────────────────────────────────
+#1           │
+continent_~C │
+     Africa  │    -1.781***      -1.296***      -1.732***      -1.792***      -1.563***  
+   Americas  │    -1.641***      -1.187**       -1.598***      -1.652***      -1.463***  
+       Asia  │    -1.883***      -1.390***      -1.826***      -1.892***      -1.738***  
+             │
+continent_~C │
+         NA  │    -2.390*        -1.841         -2.334*        -2.400*        -2.044***  
+    Oceania  │    -3.334**       -2.797**       -3.269**       -3.347**       -3.315***  
+             │
+        year │                                                  0.085***      -0.028***  
+       _cons │ -1492.992***      -8.073***                   -174.278***                 
+─────────────┼───────────────────────────────────────────────────────────────────────────
+ln_p         │
+       _cons │     5.279***                                                              
+─────────────┼───────────────────────────────────────────────────────────────────────────
+Statistics   │                                                                           
+           N │       248            248            248          10156          10156     
+        r2_a │                                                                           
+─────────────┴───────────────────────────────────────────────────────────────────────────
+                                                 Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
 </pre>
 </div>
 <h1 id="references">References</h1>

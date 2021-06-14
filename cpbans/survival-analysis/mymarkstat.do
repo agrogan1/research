@@ -30,6 +30,8 @@ erase "survival-analysis.md" // erase markdown file
 
 erase "survival-analysis.pdx" // erase pdx file
 
+erase "survival-analysis.synctex.gz" // erase gz file
+
 * MS Word
 
 markstat using "survival-analysis.stmd", docx // MS Word
