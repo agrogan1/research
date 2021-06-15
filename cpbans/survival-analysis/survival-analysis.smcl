@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}14 Jun 2021, 13:57:44
+ {txt}opened on:  {res}15 Jun 2021, 09:49:35
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}14 Jun 2021
+{res}15 Jun 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}13:57:44
+{res}09:49:35
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
@@ -446,78 +446,40 @@ continent_NUMERIC {c |}
 . est store Discrete
 {txt}
 {com}. //_37
-. stcox ib4.continent_NUMERIC year
-
-{col 9}{txt}Failure {bf:_d}: {res}f==1
-{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
-
-{txt}Iteration 0:   log likelihood = {res}-18004.477
-{txt}Iteration 1:   log likelihood = {res}-17501.348
-{txt}Iteration 2:   log likelihood = {res}-17184.551
-{txt}Iteration 3:   log likelihood = {res}-17166.754
-{txt}Iteration 4:   log likelihood = {res}-17166.743
-{txt}Refining estimates:
-Iteration 0:   log likelihood = {res}-17166.743
-
-{txt}Cox regression with Breslow method for ties
-
-No. of subjects = {res}{ralign 10:10,156}{col 56}{txt}{lalign 13:Number of obs} = {res}{ralign 7:10,156}
-{txt}No. of failures = {res}{ralign 10:1,972}
-{txt}Time at risk    = {res}{ralign 10:20,506,348}
-{col 56}{txt}{lalign 13:LR chi2({res:6})} = {res}{ralign 7:1675.47}
-{txt}Log likelihood = {res}-17166.743{col 56}{txt}{lalign 13:Prob > chi2} = {res}{ralign 7:0.0000}
-
-{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 1}               _t{col 19}{c |} Haz. ratio{col 31}   Std. err.{col 43}      z{col 51}   P>|z|{col 59}     [95% con{col 72}f. interval]
-{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-continent_NUMERIC {c |}
-{space 10}Africa  {c |}{col 19}{res}{space 2} .2095718{col 31}{space 2} .0129973{col 42}{space 1}  -25.20{col 51}{space 3}0.000{col 59}{space 4}  .185585{col 72}{space 3} .2366588
-{txt}{space 8}Americas  {c |}{col 19}{res}{space 2}  .231531{col 31}{space 2} .0145656{col 42}{space 1}  -23.26{col 51}{space 3}0.000{col 59}{space 4} .2046728{col 72}{space 3} .2619136
-{txt}{space 12}Asia  {c |}{col 19}{res}{space 2} .1758169{col 31}{space 2} .0121687{col 42}{space 1}  -25.12{col 51}{space 3}0.000{col 59}{space 4} .1535135{col 72}{space 3} .2013605
-{txt}{space 14}NA  {c |}{col 19}{res}{space 2} .1294716{col 31}{space 2} .0204464{col 42}{space 1}  -12.94{col 51}{space 3}0.000{col 59}{space 4}  .095006{col 72}{space 3} .1764404
-{txt}{space 9}Oceania  {c |}{col 19}{res}{space 2}  .036336{col 31}{space 2} .0067455{col 42}{space 1}  -17.86{col 51}{space 3}0.000{col 59}{space 4} .0252533{col 72}{space 3} .0522826
-{txt}{space 17} {c |}
-{space 13}year {c |}{col 19}{res}{space 2} .9727888{col 31}{space 2} .0018314{col 42}{space 1}  -14.65{col 51}{space 3}0.000{col 59}{space 4} .9692059{col 72}{space 3} .9763849
-{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{com}. //_38
-. est store CoxTVC2
-{txt}
-{com}. //_39
-. estimates table Weibull Exponential Cox Discrete CoxTVC2, ///
+. estimates table Weibull Exponential Cox Discrete, ///
 > b(%9.3f) star stats(N r2_a) equations(1) // nice table of estimates
 {res}
-{txt}{hline 12}{c -}{c TT}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
-{ralign 12:Variable} {c |} {center 12:Weibull} {space 1} {center 12:Exponential} {space 1} {center 12:Cox} {space 1} {center 12:Discrete} {space 1} {center 12:CoxTVC2} {space 1}
-{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
+{txt}{hline 12}{c -}{c TT}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
+{ralign 12:Variable} {c |} {center 12:Weibull} {space 1} {center 12:Exponential} {space 1} {center 12:Cox} {space 1} {center 12:Discrete} {space 1}
+{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
 {res}{txt}{res}#1           {txt}{c |}{res}
 {txt}continent_~C {c |}
-{space 5}Africa  {c |}{res} {ralign 9:-1.781}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.296}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.732}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.792}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.563}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 3}Americas  {c |}{res} {ralign 9:-1.641}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.187}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-1.598}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.652}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.463}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 7}Asia  {c |}{res} {ralign 9:-1.883}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.390}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.826}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.892}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.738}{lalign 3:***}{txt} {space 1}
+{space 5}Africa  {c |}{res} {ralign 9:-1.781}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.296}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.732}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.792}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 3}Americas  {c |}{res} {ralign 9:-1.641}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.187}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-1.598}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.652}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 7}Asia  {c |}{res} {ralign 9:-1.883}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.390}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.826}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-1.892}{lalign 3:***}{txt} {space 1}
 {res}{txt}{space 12} {c |}
 continent_~C {c |}
-{space 9}NA  {c |}{res} {ralign 9:-2.390}{lalign 3:*}{txt} {space 1}{res} {ralign 9:-1.841}{lalign 3:}{txt} {space 1}{res} {ralign 9:-2.334}{lalign 3:*}{txt} {space 1}{res} {ralign 9:-2.400}{lalign 3:*}{txt} {space 1}{res} {ralign 9:-2.044}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 4}Oceania  {c |}{res} {ralign 9:-3.334}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-2.797}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-3.269}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-3.347}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-3.315}{lalign 3:***}{txt} {space 1}
+{space 9}NA  {c |}{res} {ralign 9:-2.390}{lalign 3:*}{txt} {space 1}{res} {ralign 9:-1.841}{lalign 3:}{txt} {space 1}{res} {ralign 9:-2.334}{lalign 3:*}{txt} {space 1}{res} {ralign 9:-2.400}{lalign 3:*}{txt} {space 1}
+{res}{txt}{space 4}Oceania  {c |}{res} {ralign 9:-3.334}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-2.797}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-3.269}{lalign 3:**}{txt} {space 1}{res} {ralign 9:-3.347}{lalign 3:**}{txt} {space 1}
 {res}{txt}{space 12} {c |}
-{space 8}year {c |}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:0.085}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-0.028}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 7}_cons {c |}{res} {ralign 9:-1492.992}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-8.073}{lalign 3:***}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:-174.278}{lalign 3:***}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
+{space 8}year {c |}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:0.085}{lalign 3:***}{txt} {space 1}
+{res}{txt}{space 7}_cons {c |}{res} {ralign 9:-1492.992}{lalign 3:***}{txt} {space 1}{res} {ralign 9:-8.073}{lalign 3:***}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:-174.278}{lalign 3:***}{txt} {space 1}
+{res}{txt}{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
 {res}{txt}{res}ln_p         {txt}{c |}{res}
-{txt}{space 7}_cons {c |}{res} {ralign 9:5.279}{lalign 3:***}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
-{res}{lalign 12:Statistics}{txt} {c |} {center 12:} {space 1} {center 12:} {space 1} {center 12:} {space 1} {center 12:} {space 1} {center 12:} {space 1}
-{res}{txt}{ralign 12:N} {c |}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:10156}{lalign 3:}{txt} {space 1}{res} {ralign 9:10156}{lalign 3:}{txt} {space 1}
-{res}{txt}{ralign 12:r2_a} {c |}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c BT}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
-{ralign 89:Legend: * p<0.05; ** p<0.01; *** p<0.001}
+{txt}{space 7}_cons {c |}{res} {ralign 9:5.279}{lalign 3:***}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}
+{res}{txt}{hline 12}{c -}{c +}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
+{res}{lalign 12:Statistics}{txt} {c |} {center 12:} {space 1} {center 12:} {space 1} {center 12:} {space 1} {center 12:} {space 1}
+{res}{txt}{ralign 12:N} {c |}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:248}{lalign 3:}{txt} {space 1}{res} {ralign 9:10156}{lalign 3:}{txt} {space 1}
+{res}{txt}{ralign 12:r2_a} {c |}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}{res} {ralign 9:}{lalign 3:}{txt} {space 1}
+{res}{txt}{hline 12}{c -}{c BT}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}{c -}{hline 12}{c -}{c -}
+{ralign 74:Legend: * p<0.05; ** p<0.01; *** p<0.001}
 {res}{txt}
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}14 Jun 2021, 13:57:51
+ {txt}closed on:  {res}15 Jun 2021, 09:49:42
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -258,11 +258,19 @@ We ask for *odds ratios* so that our results are roughly comparable to those fro
 
 # Cox Model With Multiple Records Per Observation and Time Varying Covariates
 
-> We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a *time varying covariate*. **I am not sure how to use the `tvc` option to program this when there is only one record per *individual*.**
+> We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a *time varying covariate*. We need to newly `stset` the data to account for the multiple records per individual.
 
-    stcox ib4.continent_NUMERIC year
-	
-	est store CoxTVC2
+> **I am not sure how to use the `tvc` option to program this when there is only one record per *individual*.**
+
+//     bysort country_y: egen maxyear = max(year)
+//	
+//     bysort country_y: generate f2 = (f ==1) & (year ==maxyear)
+//
+//     stset year, failure(f2 = 1) id(country_y) origin(time 1978) // stset the data with time, failure & id variables
+//
+//     stcox ib4.continent_NUMERIC year
+//	
+// 	est store CoxTVC2
 
 </div>
 
@@ -272,7 +280,7 @@ We ask for *odds ratios* so that our results are roughly comparable to those fro
 
 > Note the difference in the effect of *year* in the two models where this is included.
 
-    estimates table Weibull Exponential Cox Discrete CoxTVC2, ///
+    estimates table Weibull Exponential Cox Discrete, ///
 	b(%9.3f) star stats(N r2_a) equations(1) // nice table of estimates
 
 </div>
