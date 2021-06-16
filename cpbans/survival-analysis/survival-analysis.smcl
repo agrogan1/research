@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
+       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}15 Jun 2021, 09:52:47
+ {txt}opened on:  {res}16 Jun 2021, 08:03:57
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}15 Jun 2021
+{res}16 Jun 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}09:52:47
+{res}08:03:57
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
@@ -59,7 +59,7 @@
 . graph export mysurvival.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-mysurvival.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/mysurvival.png{rm}
 saved as
 PNG
 format
@@ -75,13 +75,29 @@ format
 . graph export myfailure.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-myfailure.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myfailure.png{rm}
 saved as
 PNG
 format
 {p_end}
 
 {com}. //_13
+. sts graph, hazard scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
+
+{col 9}{txt}Failure {bf:_d}: {res}f==1
+{col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
+{txt}
+{com}. //_14
+. graph export myhazard.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myhazard.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_15
 . streg ib4.continent_NUMERIC, distribution(weibull) // Weibull distribution
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -134,10 +150,10 @@ continent_NUMERIC {c |}
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
 
-{com}. //_14
+{com}. //_16
 . est store Weibull
 {txt}
-{com}. //_15
+{com}. //_17
 . streg ib4.continent_NUMERIC, distribution(exponential) // Exponential distribution
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -172,10 +188,10 @@ continent_NUMERIC {c |}
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 2}Note: {bf:_cons} estimates baseline hazard{txt}.{p_end}
 
-{com}. //_16
+{com}. //_18
 . est store Exponential
 {txt}
-{com}. //_17
+{com}. //_19
 . stcox ib4.continent_NUMERIC // Cox Proportional Hazards Model
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
@@ -208,52 +224,52 @@ continent_NUMERIC {c |}
 {txt}{space 9}Oceania  {c |}{col 19}{res}{space 2} .0380401{col 31}{space 2}  .038653{col 42}{space 1}   -3.22{col 51}{space 3}0.001{col 59}{space 4} .0051919{col 72}{space 3} .2787139
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
-{com}. //_18
+{com}. //_20
 . est store Cox
 {txt}
-{com}. //_19
+{com}. //_21
 . stcurve, survival scheme(michigan) // survival curve
 {res}{txt}
-{com}. //_20
+{com}. //_22
 . graph export survival1A.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-survival1A.png{rm}
-saved as
-PNG
-format
-{p_end}
-
-{com}. //_21
-. stcurve, failure scheme(michigan) // failure curve
-{res}{txt}
-{com}. //_22
-. graph export survival1B.png, width(500) replace
-{txt}{p 0 4 2}
-file {bf}
-survival1B.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1A.png{rm}
 saved as
 PNG
 format
 {p_end}
 
 {com}. //_23
-. stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
-> legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
-> 4 "Europe" 5 "NA" 6 "Oceania")) ///
-> scheme(michigan) // survival curve by continent
+. stcurve, failure scheme(michigan) // failure curve
 {res}{txt}
 {com}. //_24
-. graph export survival2.png, width(500) replace
+. graph export survival1B.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-survival2.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1B.png{rm}
 saved as
 PNG
 format
 {p_end}
 
 {com}. //_25
+. stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
+> legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
+> 4 "Europe" 5 "NA" 6 "Oceania")) ///
+> scheme(michigan) // survival curve by continent
+{res}{txt}
+{com}. //_26
+. graph export survival2.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_27
 . estat phtest // formal test of PH assumption
 
 {txt}Test of proportional-hazards assumption
@@ -265,23 +281,23 @@ Time function: Analysis time
  Global test {c |}{res}{col 15}     6.20{col 28}    5{col 43}0.2870
 {txt}{hline 13}{c BT}{hline 34}
 
-{com}. //_26
+{com}. //_28
 . stphplot, by(continent_NUMERIC) scheme(michigan) // graphical test of PH assumption
 
 {col 9}{txt}Failure {bf:_d}: {res}f==1
 {col 3}{txt}Analysis time {bf:_t}: {res}year_of_prohibition
 {txt}
-{com}. //_27
+{com}. //_29
 . graph export ph.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-ph.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/ph.png{rm}
 saved as
 PNG
 format
 {p_end}
 
-{com}. //_28
+{com}. //_30
 . ltable year_of_prohibition f, graph failure scheme(michigan) // lifetable
 
 {txt}{col 18}Beg.{col 44}Cum.{col 55}Std.
@@ -316,30 +332,30 @@ format
 {txt} 2021  2022{res}       188        2    186     0.2579    0.0289     0.2062    0.3196
 {txt}{hline 79}
 
-{com}. //_29
+{com}. //_31
 . graph export myltable.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-myltable.png{rm}
+/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myltable.png{rm}
 saved as
 PNG
 format
 {p_end}
 
-{com}. //_30
+{com}. //_32
 . generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
 {txt}
-{com}. //_31
+{com}. //_33
 . expand years_at_risk // "expand" the data; 1 row for every year at risk
 {txt}(9,908 observations created)
 
-{com}. //_32
+{com}. //_34
 . bysort country_code: generate year = _n + 1977 // generate a year variable for each row
 {txt}
-{com}. //_33
+{com}. //_35
 . generate event = type == "CP Ban" & year_of_prohibition == year // generate an event indicator
 {txt}
-{com}. //_34
+{com}. //_36
 . list country_code year_of_prohibition event continent years_at_risk year ///
 > if country_code == "NOR" | country_code == "GBR" , ab(20) // list out a sample of the data
 {txt}
@@ -412,7 +428,7 @@ format
  6820. {c |} {res}         NOR                  1987       1      Europe              10   1987 {txt}{c |}
        {c BLC}{hline 14}{c -}{hline 21}{c -}{hline 7}{c -}{hline 11}{c -}{hline 15}{c -}{hline 6}{c BRC}
 
-{com}. //_35
+{com}. //_37
 . logit event ib4.continent_NUMERIC year, or
 
 {res}{txt}Iteration 0:{space 3}log likelihood = {res:-377.92887}  
@@ -442,10 +458,10 @@ continent_NUMERIC {c |}
 {txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
 
-{com}. //_36
+{com}. //_38
 . est store Discrete
 {txt}
-{com}. //_37
+{com}. //_39
 . estimates table Weibull Exponential Cox Discrete, ///
 > b(%9.3f) star stats(N r2_a) equations(1) // nice table of estimates
 {res}
@@ -477,9 +493,9 @@ continent_~C {c |}
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
+       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}15 Jun 2021, 09:52:55
+ {txt}closed on:  {res}16 Jun 2021, 08:04:15
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

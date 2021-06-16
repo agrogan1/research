@@ -136,6 +136,14 @@ In web versions of this tutorial, click the <mark>tabs below</mark> to access di
 
 ![Kaplan-Meier Failure Function](myfailure.png)
 
+### Hazard Function
+
+    sts graph, hazard scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
+	
+	graph export myhazard.png, width(500) replace
+
+![Hazard Function](myhazard.png)
+
 </div>
 
 <div id="Parametric" class="tabcontent">
