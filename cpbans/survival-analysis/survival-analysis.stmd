@@ -95,7 +95,6 @@ In web versions of this tutorial, click the <mark>tabs below</mark> to access di
   <button class="tablinks" onclick="openCity(event, 'Cox')">Cox Model</button>
   <button class="tablinks" onclick="openCity(event, 'Lifetable')">Life Table</button>
   <button class="tablinks" onclick="openCity(event, 'Discrete')">Discrete Time Survival Analysis</button>
-  <button class="tablinks" onclick="openCity(event, 'Cox2')">Cox Model 2</button>
   <button class="tablinks" onclick="openCity(event, 'compare')">Compare Estimates</button>
 
 </div>
@@ -259,26 +258,6 @@ We ask for *odds ratios* so that our results are roughly comparable to those fro
     logit event ib4.continent_NUMERIC year, or
 	
 	est store Discrete
-
-</div>
-
-<div id="Cox2" class="tabcontent">
-
-# Cox Model With Multiple Records Per Observation and Time Varying Covariates
-
-> We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a *time varying covariate*. We need to newly `stset` the data to account for the multiple records per individual.
-
-> **I am not sure how to use the `tvc` option to program this when there is only one record per *individual*.**
-
-//     bysort country_y: egen maxyear = max(year)
-//	
-//     bysort country_y: generate f2 = (f ==1) & (year ==maxyear)
-//
-//     stset year, failure(f2 = 1) id(country_y) origin(time 1978) // stset the data with time, failure & id variables
-//
-//     stcox ib4.continent_NUMERIC year
-//	
-// 	est store CoxTVC2
 
 </div>
 

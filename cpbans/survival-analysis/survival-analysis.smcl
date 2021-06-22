@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival-analysis.smcl
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}16 Jun 2021, 08:03:57
+ {txt}opened on:  {res}22 Jun 2021, 18:16:39
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}16 Jun 2021
+{res}22 Jun 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}08:03:57
+{res}18:16:39
 {txt}
 {com}. //_3
 . use "../CPBans_w_AllCountries.dta", clear // data with ALL Countries; not just bans
@@ -59,7 +59,7 @@
 . graph export mysurvival.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/mysurvival.png{rm}
+mysurvival.png{rm}
 saved as
 PNG
 format
@@ -75,7 +75,7 @@ format
 . graph export myfailure.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myfailure.png{rm}
+myfailure.png{rm}
 saved as
 PNG
 format
@@ -91,7 +91,7 @@ format
 . graph export myhazard.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myhazard.png{rm}
+myhazard.png{rm}
 saved as
 PNG
 format
@@ -234,7 +234,7 @@ continent_NUMERIC {c |}
 . graph export survival1A.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1A.png{rm}
+survival1A.png{rm}
 saved as
 PNG
 format
@@ -247,7 +247,7 @@ format
 . graph export survival1B.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1B.png{rm}
+survival1B.png{rm}
 saved as
 PNG
 format
@@ -263,7 +263,7 @@ format
 . graph export survival2.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival2.png{rm}
+survival2.png{rm}
 saved as
 PNG
 format
@@ -291,7 +291,7 @@ Time function: Analysis time
 . graph export ph.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/ph.png{rm}
+ph.png{rm}
 saved as
 PNG
 format
@@ -336,7 +336,7 @@ format
 . graph export myltable.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myltable.png{rm}
+myltable.png{rm}
 saved as
 PNG
 format
@@ -493,9 +493,9 @@ continent_~C {c |}
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival-analysis.smcl
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\research\cpbans\survival-analysis\survival-analysis.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}16 Jun 2021, 08:04:15
+ {txt}closed on:  {res}22 Jun 2021, 18:16:48
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

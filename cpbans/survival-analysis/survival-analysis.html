@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
@@ -38,159 +38,19 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Andy Grogan-Kaylor" />
   <title>Survival Analysis of Corporal Punishment Bans</title>
-  <style>
-    html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      word-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-    }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <style type="text/css">code{white-space: pre;}</style>
 </head>
 <body>
-<header id="title-block-header">
+<div id="header">
 <h1 class="title">Survival Analysis of Corporal Punishment Bans</h1>
-<p class="author">Andy Grogan-Kaylor</p>
-<p class="date">16 Jun 2021 08:00:54</p>
-</header>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">22 Jun 2021 18:13:48</h3>
+</div>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <style>
 /* Style the tab */
@@ -267,15 +127,31 @@ evt.currentTarget.className += " active";
 <p>In web versions of this tutorial, click the <mark>tabs below</mark> to access different sections of the tutorial.</p>
 <!-- Tab links -->
 <div class="tab">
-<p><button class="tablinks" onclick="openCity(event, 'Setup')">Setup</button> <button class="tablinks" onclick="openCity(event, 'Parametric')">Parametric Survival Models</button> <button class="tablinks" onclick="openCity(event, 'Cox')">Cox Model</button> <button class="tablinks" onclick="openCity(event, 'Lifetable')">Life Table</button> <button class="tablinks" onclick="openCity(event, 'Discrete')">Discrete Time Survival Analysis</button> <button class="tablinks" onclick="openCity(event, 'Cox2')">Cox Model 2</button> <button class="tablinks" onclick="openCity(event, 'compare')">Compare Estimates</button></p>
+<button class="tablinks" onclick="openCity(event, 'Setup')">
+Setup
+</button>
+<button class="tablinks" onclick="openCity(event, 'Parametric')">
+Parametric Survival Models
+</button>
+<button class="tablinks" onclick="openCity(event, 'Cox')">
+Cox Model
+</button>
+<button class="tablinks" onclick="openCity(event, 'Lifetable')">
+Life Table
+</button>
+<button class="tablinks" onclick="openCity(event, 'Discrete')">
+Discrete Time Survival Analysis
+</button>
+<button class="tablinks" onclick="openCity(event, 'compare')">
+Compare Estimates
+</button>
 </div>
 <div id="Setup" class="tabcontent">
 <h1 id="setup">Setup</h1>
 <h2 id="stset-the-data"><code>stset</code> The Data</h2>
 <pre class='stata'>. generate current_year = year(today()) // variable with current year
 </pre>
-<pre class='stata'>. replace year_of_prohibition = current_year if year_of_prohibition == . // replace missing w/ curre
-> nt year
+<pre class='stata'>. replace year_of_prohibition = current_year if year_of_prohibition == . // replace missing w/ current year
 (186 real changes made)
 </pre>
 <pre class='stata'>. generate f = type == "CP Ban" // "failure" variable
@@ -310,12 +186,12 @@ Observed time interval: (0, year_of_prohibition]
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export mysurvival.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/mysurvival.png saved as PNG
-    format
+file mysurvival.png saved as PNG format
 </pre>
-<figure>
-<img src="mysurvival.png" alt="Kaplan-Meier Survivor Function" /><figcaption aria-hidden="true">Kaplan-Meier Survivor Function</figcaption>
-</figure>
+<div class="figure">
+<img src="mysurvival.png" alt="Kaplan-Meier Survivor Function" />
+<p class="caption">Kaplan-Meier Survivor Function</p>
+</div>
 <h3 id="failure-function">Failure Function</h3>
 <pre class='stata'>. sts graph, failure scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
@@ -323,12 +199,12 @@ file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/mysurvival
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export myfailure.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myfailure.png saved as PNG
-    format
+file myfailure.png saved as PNG format
 </pre>
-<figure>
-<img src="myfailure.png" alt="Kaplan-Meier Failure Function" /><figcaption aria-hidden="true">Kaplan-Meier Failure Function</figcaption>
-</figure>
+<div class="figure">
+<img src="myfailure.png" alt="Kaplan-Meier Failure Function" />
+<p class="caption">Kaplan-Meier Failure Function</p>
+</div>
 <h3 id="hazard-function">Hazard Function</h3>
 <pre class='stata'>. sts graph, hazard scheme(michigan) tmin(1970) // Kaplan-Meier Failure Function
 
@@ -336,12 +212,12 @@ file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myfailure.
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export myhazard.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myhazard.png saved as PNG
-    format
+file myhazard.png saved as PNG format
 </pre>
-<figure>
-<img src="myhazard.png" alt="Hazard Function" /><figcaption aria-hidden="true">Hazard Function</figcaption>
-</figure>
+<div class="figure">
+<img src="myhazard.png" alt="Hazard Function" />
+<p class="caption">Hazard Function</p>
+</div>
 </div>
 <div id="Parametric" class="tabcontent">
 <h1 id="parametric-survival-models">Parametric Survival Models</h1>
@@ -481,33 +357,33 @@ continent_NUMERIC │
 <pre class='stata'>. stcurve, survival scheme(michigan) // survival curve
 </pre>
 <pre class='stata'>. graph export survival1A.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1A.png saved as PNG
-    format
+file survival1A.png saved as PNG format
 </pre>
-<figure>
-<img src="survival1A.png" alt="Survival Curve" /><figcaption aria-hidden="true">Survival Curve</figcaption>
-</figure>
+<div class="figure">
+<img src="survival1A.png" alt="Survival Curve" />
+<p class="caption">Survival Curve</p>
+</div>
 <pre class='stata'>. stcurve, failure scheme(michigan) // failure curve
 </pre>
 <pre class='stata'>. graph export survival1B.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival1B.png saved as PNG
-    format
+file survival1B.png saved as PNG format
 </pre>
-<figure>
-<img src="survival1B.png" alt="Failure Curve" /><figcaption aria-hidden="true">Failure Curve</figcaption>
-</figure>
+<div class="figure">
+<img src="survival1B.png" alt="Failure Curve" />
+<p class="caption">Failure Curve</p>
+</div>
 <pre class='stata'>. stcurve, failure at(continent_NUMERIC= (1 2 3 4 5 6)) ///
 > legend(order(1 "Africa" 2 "Americas" 3 "Asia" ///
 > 4 "Europe" 5 "NA" 6 "Oceania")) ///
 > scheme(michigan) // survival curve by continent
 </pre>
 <pre class='stata'>. graph export survival2.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/survival2.png saved as PNG
-    format
+file survival2.png saved as PNG format
 </pre>
-<figure>
-<img src="survival2.png" alt="Failure Curve By Continent" /><figcaption aria-hidden="true">Failure Curve By Continent</figcaption>
-</figure>
+<div class="figure">
+<img src="survival2.png" alt="Failure Curve By Continent" />
+<p class="caption">Failure Curve By Continent</p>
+</div>
 <h2 id="proportional-hazards-assumption">Proportional Hazards Assumption</h2>
 <pre class='stata'>. estat phtest // formal test of PH assumption
 
@@ -526,11 +402,12 @@ Time function: Analysis time
   Analysis time _t: year_of_prohibition
 </pre>
 <pre class='stata'>. graph export ph.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/ph.png saved as PNG format
+file ph.png saved as PNG format
 </pre>
-<figure>
-<img src="ph.png" alt="Graphical Test of Proportional Hazards Assumption" /><figcaption aria-hidden="true">Graphical Test of Proportional Hazards Assumption</figcaption>
-</figure>
+<div class="figure">
+<img src="ph.png" alt="Graphical Test of Proportional Hazards Assumption" />
+<p class="caption">Graphical Test of Proportional Hazards Assumption</p>
+</div>
 </div>
 <div id="Lifetable" class="tabcontent">
 <h1 id="life-table">Life Table</h1>
@@ -569,12 +446,12 @@ file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/ph.png sav
 ───────────────────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. graph export myltable.png, width(500) replace
-file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myltable.png saved as PNG
-    format
+file myltable.png saved as PNG format
 </pre>
-<figure>
-<img src="myltable.png" alt="Graph Of Life Table" /><figcaption aria-hidden="true">Graph Of Life Table</figcaption>
-</figure>
+<div class="figure">
+<img src="myltable.png" alt="Graph Of Life Table" />
+<p class="caption">Graph Of Life Table</p>
+</div>
 </div>
 <div id="Discrete" class="tabcontent">
 <h1 id="discrete-time-survival-analysis">Discrete Time Survival Analysis</h1>
@@ -582,7 +459,7 @@ file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myltable.p
 <p>Discrete time survival analysis is placed at the end because it requires us to restructure the data into a long format, where every row is a <em>country-year</em>.</p>
 </blockquote>
 <h2 id="restructuring-the-data">Restructuring the Data</h2>
-<p>We first need to generate a variable for the years during which a country was “at risk” of enacting a ban. Countries that have never enacted a ban are at risk up until the current year. Countries that enacted a ban leave the risk set once they have enacted a ban, and are thus at risk for a shorter time period.</p>
+<p>We first need to generate a variable for the years during which a country was &quot;at risk&quot; of enacting a ban. Countries that have never enacted a ban are at risk up until the current year. Countries that enacted a ban leave the risk set once they have enacted a ban, and are thus at risk for a shorter time period.</p>
 <pre class='stata'>. generate years_at_risk =  year_of_prohibition - 1978 + 1 // years "at risk" of enacting a ban
 </pre>
 <p>We <em>expand</em> the data to generate one row of data for every year that each country is at risk.</p>
@@ -592,7 +469,7 @@ file /Users/agrogan/Box Sync/GitHub/research/cpbans/survival-analysis/myltable.p
 <p>We create a year variable.</p>
 <pre class='stata'>. bysort country_code: generate year = _n + 1977 // generate a year variable for each row
 </pre>
-<p>Lastly, we generate an indicator of the event, a <code>0/1</code>’ variable, which takes the value 1 for rows in which a ban was enacted, and 0 otherwise.</p>
+<p>Lastly, we generate an indicator of the event, a <code>0/1</code>' variable, which takes the value 1 for rows in which a ban was enacted, and 0 otherwise.</p>
 <pre class='stata'>. generate event = type == "CP Ban" &amp; year_of_prohibition == year // generate an event indicator
 </pre>
 <p>We list out a sample of the data to make sure that the data conform to our expectations. We focus on Norway, a country that <em>has</em> enacted a ban, and Great Britain, a country that <em>has not</em> enacted a ban.</p>
@@ -702,18 +579,6 @@ Note: _cons estimates baseline odds.
 </pre>
 <pre class='stata'>. est store Discrete
 </pre>
-</div>
-<div id="Cox2" class="tabcontent">
-<h1 id="cox-model-with-multiple-records-per-observation-and-time-varying-covariates">Cox Model With Multiple Records Per Observation and Time Varying Covariates</h1>
-<blockquote>
-<p>We make use of the fact that the data are structured with multiple records per individual to include the effect of year, which is a <em>time varying covariate</em>. We need to newly <code>stset</code> the data to account for the multiple records per individual.</p>
-</blockquote>
-<blockquote>
-<p><strong>I am not sure how to use the <code>tvc</code> option to program this when there is only one record per <em>individual</em>.</strong></p>
-</blockquote>
-<p>// bysort country_y: egen maxyear = max(year) //<br />
-// bysort country_y: generate f2 = (f ==1) &amp; (year ==maxyear) // // stset year, failure(f2 = 1) id(country_y) origin(time 1978) // stset the data with time, failure &amp; id variables // // stcox ib4.continent_NUMERIC year //<br />
-// est store CoxTVC2</p>
 </div>
 <div id="compare" class="tabcontent">
 <h1 id="compare-estimates">Compare Estimates</h1>
