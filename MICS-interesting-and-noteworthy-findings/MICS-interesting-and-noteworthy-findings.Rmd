@@ -3,6 +3,10 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  pdf_document: 
+    toc: yes
+    number_sections: yes
+    highlight: haddock
   distill::distill_article:
     highlight: haddock
     toc: yes
@@ -99,14 +103,15 @@ p0 <- MICScountries %>%
 
 # dynamically choose between plotly and png based on output type
 
-# if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html5") {
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html5") {
   
   p0
   
-# } else {
+} else {
   
-  # knitr::include_graphics("MICScountries.png")
-# }
+  knitr::include_graphics("MICScountries.png")
+  
+}
 
 
 
