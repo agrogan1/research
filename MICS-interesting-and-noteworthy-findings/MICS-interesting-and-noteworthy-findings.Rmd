@@ -3,13 +3,17 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: 
-    toc: yes
-    number_sections: yes
-    highlight: haddock
   distill::distill_article:
     highlight: haddock
     toc: yes
+  pdf_document:
+    toc: yes
+    number_sections: yes
+    highlight: haddock
+  word_document: 
+    toc: yes
+    highlight: haddock
+    fig_caption: yes
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
@@ -18,7 +22,7 @@ nocite: |
 citation_url: https://agrogan1.github.io/research/MICS-interesting-and-noteworthy-findings/MICS-interesting-and-noteworthy-findings.html
 mainfont: Tw Cen MT
 fontsize: 12pt
-always_allow_html: true
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
