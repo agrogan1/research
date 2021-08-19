@@ -3,13 +3,13 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
   pdf_document:
     toc: yes
     number_sections: yes
     highlight: haddock
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
   word_document: 
     toc: yes
     highlight: haddock
