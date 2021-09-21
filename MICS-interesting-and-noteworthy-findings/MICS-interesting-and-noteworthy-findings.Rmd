@@ -14,6 +14,7 @@ output:
     toc: yes
     highlight: haddock
     fig_caption: yes
+    reference_docx: markstat.docx
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
