@@ -19,7 +19,7 @@ description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
 nocite: |
-  @Grogan-Kaylor2021, @WardA, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma
+  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma
 citation_url: https://agrogan1.github.io/research/MICS-interesting-and-noteworthy-findings/MICS-interesting-and-noteworthy-findings.html
 mainfont: Tw Cen MT
 fontsize: 12pt
