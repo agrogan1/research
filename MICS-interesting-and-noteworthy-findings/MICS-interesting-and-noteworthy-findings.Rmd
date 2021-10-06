@@ -6,15 +6,15 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
-  pdf_document:
-    toc: yes
-    number_sections: yes
-    highlight: haddock
   word_document: 
     toc: yes
     highlight: haddock
     fig_caption: yes
     reference_docx: markstat.docx
+  pdf_document:
+    toc: yes
+    number_sections: yes
+    highlight: haddock
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
