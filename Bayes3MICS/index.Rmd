@@ -76,7 +76,7 @@ p0 <- MICScountries %>%
   plot_geo() %>% 
   add_trace(z = 1,
     text = ~country, 
-    colors = "gold",
+    colors = "#009edb",
     hoverinfo = 'text',
     locations = ~country_iso, 
     showscale = FALSE,
