@@ -1,8 +1,15 @@
 ---
 title: "Country Level Bans on Corporal Punishment"
-author: "Andrew Grogan-Kaylor"
+author:
+  - name: Andy Grogan-Kaylor 
+    url: https://agrogan1.github.io/
+    affiliation: University of Michigan
+    affiliation_url: https://www.umich.edu
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
   html_document: 
     highlight: haddock
     toc: yes
@@ -25,35 +32,15 @@ knitr::opts_chunk$set(echo=FALSE,
 
 ```{css, echo=FALSE}
 
-h1, h2 {
+d-article blockquote {
   color: black;
-  font-family: "Helvetica", "Arial", sans-serif; 
-  font-weight: normal;
+  border-left: 2px solid #FFCB05; 
+  padding: 0.5em 10px;
 }
-.list-group-item.active, 
-.list-group-item.active:focus, 
-.list-group-item.active:hover {
-    z-index: 2;
-    color: gold;
-    background-color: navy;
-    border-color: blue;
+.panelset {  
+  color: #9A3324;
 }
-blockquote { 
-    margin: 0 0 .85em;
-    padding: 0 15px;
-    opacity: 1.00;
-    border-left: 5px solid #ffcb05;
-}
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
-    color: gold;
-    background-color: navy;
-}
-.nav-pills > li.active > a:hover {
-    color: gold;
-    background-color: navy;
-
-}
-
+  
 ```
 
 ```{r call_libraries, eval = TRUE}
@@ -63,10 +50,10 @@ library(readr) # get data
 library(foreign) # read and write other formats
 
 library(maps) # basic mapping
-
-library(maptools) # additional map tools
-
-library(mapdata) # map data
+# 
+# library(maptools) # additional map tools
+# 
+# library(mapdata) # map data
 
 library(countrycode) # code country names
 
@@ -85,6 +72,10 @@ library(DT) # nifty data table
 library(plotly) # interactive plots
 
 library(fontawesome) # Font Awesome icons
+
+library(xaringanExtra)
+
+xaringanExtra::use_panelset()
 
 ```
 
@@ -119,13 +110,18 @@ write.dta(CPBans_w_AllCountries,
 
 ```
 
-# Background {.tabset .tabset-fade .tabset-pills}
+# Background 
 
 **`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r mydata$country[1]`**.
 
 Information on countries that have banned corporal punishment available from  [endcorporalpunishment.org](http://endcorporalpunishment.org/)
 
-## Interactive Globe
+# Visualizations
+
+::::: {.panelset}
+
+::: {.panel}
+[Interactive Globe]{.panel-name}
 
 ```{r, eval = TRUE}
 
@@ -149,7 +145,10 @@ plot_geo(mydata) %>%
 
 ```
 
-## Map 
+:::
+
+::: {.panel}
+[Map]{.panel-name}
 
 ```{r}
 
@@ -171,7 +170,10 @@ plot_geo(mydata) %>%
 
 ```
 
-## Motion Chart
+:::
+
+::: {.panel}
+[Motion Chart]{.panel-name}
 
 ```{r, eval = TRUE, echo = FALSE}
 
@@ -205,8 +207,6 @@ mydata2$country_iso <- countrycode(mydata2$country,
                                  'country.name', 
                                  'iso3c')
 
-# head(mydata2)
-
 ```
 
 ```{r plotly_motion_chart, fig.height = 8, eval = TRUE, echo = FALSE}
@@ -235,30 +235,10 @@ mydata2 %>%
 
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+:::
 
-plot_geo(mydata2) %>%
-  add_trace(locations = ~country_iso, 
-            color = ~year.of.prohibition,
-            z = ~year.of.prohibition,
-            frame = ~year,
-            # hoverinfo = "text",
-            text = ~paste(country, 
-                          "<br>year of prohibition:", 
-                          year.of.prohibition)) %>%
-  layout(title = "Countries With Bans on Corporal Punishment of Children",
-         width = 1000,
-         height = 500,
-         geo = list(showland = FALSE,
-                    showcountries = TRUE,
-                    projection = list(type = 'Mollweide'))) %>%
-  colorbar(title = 'year of prohibition')
-
-```
-
-## Data Table
-
-### Countries With Bans on Corporal Punishment of Children
+::: {.panel}
+[Data Table]{.panel-name}
 
 ```{r}
 
@@ -286,29 +266,10 @@ datatable(mynewdata,
 
 ```
 
-## Static Map
+:::
 
-```{r, eval = TRUE}
-
-map('world', 
-    fill = TRUE, 
-    # projection='mollweide',
-    col = "lightgrey", 
-    add = FALSE)
-
-map('world', 
-    mydata$country, 
-    fill = TRUE, 
-    # projection='mollweide',
-    add = TRUE, 
-    col="gold")
-
-title("Countries With Corporal Punishment Bans", 
-      col.main="black")
-
-```
-
-## Graph
+::: {.panel}
+[Graph]{.panel-name}
 
 ```{r, eval = TRUE, fig.height=6}
 
@@ -340,7 +301,10 @@ p1
 
 ```
 
-## Interactive Graph
+:::
+
+::: {.panel}
+[Interactive Graph]{.panel-name}
 
 ```{r, fig.height=8}
 
@@ -368,14 +332,9 @@ plot_ly(data = mydata,
 
 ```
 
-# Created By  
+:::
 
-[Andrew Grogan-Kaylor](http://www.umich.edu/~agrogan) @  [agrogan@umich.edu](agrogan@umich.edu). 
-
-"Country Level Bans on Corporal Punishment" is written entirely in [R Markdown](http://rmarkdown.rstudio.com/) using [RStudio](http://www.rstudio.com/).
-
-Last updated: ```r format(Sys.Date(), format="%B %d, %Y")``` at ```r format(Sys.time(),"%H:%M")```
-
+:::::
 
 
 
