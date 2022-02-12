@@ -21,8 +21,8 @@ description: |
 bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma
-citation_url: https://agrogan1.github.io/research/MICS-interesting-and-noteworthy-findings/MICS-interesting-and-noteworthy-findings.html
-mainfont: Futura
+citation_url: https://agrogan1.github.io/research/MICS
+mainfont: Tw Cen MT
 fontsize: 12pt
 always_allow_html: yes
 ---
