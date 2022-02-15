@@ -11,7 +11,8 @@ library(rmarkdown) # for most rendering
 render("./MICS/MICS.Rmd",
        output_format = slidy_presentation(incremental = TRUE,
                                           css = "UMslidy.css",
-                                          slide_level = 2),
+                                          slide_level = 2,
+                                          fig_height = 2),
        output_file = "MICS-slidy.html")
 
 # render("./MICS/MICS.Rmd",
