@@ -8,15 +8,14 @@ library(rmarkdown) # for most rendering
 
 # library(tufte) # tufte handouts
 
-
-
-render("index.Rmd",
+render("./MICS/MICS.Rmd",
        output_format = slidy_presentation(incremental = TRUE,
-                                          css = "UNslidy.css"),
+                                          css = "UMslidy.css",
+                                          slide_level = 2),
        output_file = "MICS-slidy.html")
 
-
-
-
+# render("./MICS/MICS.Rmd",
+#        output_format = pdf_document(),
+#        output_file = "MICS.pdf")
 
 
