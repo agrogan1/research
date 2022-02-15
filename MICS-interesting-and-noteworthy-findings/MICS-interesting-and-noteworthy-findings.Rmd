@@ -17,4 +17,4 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```
 
-This file [has moved](../MICS/index.html).
+This file [has moved](../MICS/MICS.html).
