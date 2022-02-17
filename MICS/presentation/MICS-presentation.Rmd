@@ -7,7 +7,7 @@ date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [default, default-fonts, animate.css]
+    css: [michigan.css, michigan-fonts.css]
     nature:
       highlightStyle: github
       highlightLines: true
@@ -23,10 +23,25 @@ options(htmltools.dir.version = FALSE)
 ```{css, echo=FALSE}
 
 .title-slide {
-  background-image: url(network.png);
+  background-image: url(earth.png);
   background-size: cover;
 }
 
+.title-slide body {
+  font-size: 100%;
+}
+
+.title-slide h1 {
+  font-size: 2.5em;
+}
+
+.title-slide h2 {
+  font-size: 1.875em;
+}
+
+.title-slide p {
+  font-size: 0.875em;
+}
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -125,7 +140,7 @@ When studied in global context, across a diverse group of Low and Middle Income 
     + There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the *effects* of parental discipline (including spanking) are *remarkably consistent and nearly universal*.
     + Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
 
----    
+---
 > Put more succinctly, there are differences in the disciplinary **methods** employed by parents--and a modest percentage of these differences are attributable to the country in which parents live--but the **effects** of various forms of discipline are remarkably consistent.
 
 ---
