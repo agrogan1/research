@@ -3,6 +3,11 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  word_document: 
+    toc: yes
+    highlight: haddock
+    fig_caption: yes
+    reference_docx: markstat.docx
   distill::distill_article:
     highlight: haddock
     toc: yes
@@ -11,18 +16,13 @@ output:
     number_sections: yes
     highlight: haddock
     latex_engine: xelatex
-  word_document: 
-    toc: yes
-    highlight: haddock
-    fig_caption: yes
-    reference_docx: markstat.docx
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
 nocite: |
   @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma
 citation_url: https://agrogan1.github.io/research/MICS
-mainfont: Tw Cen MT
+mainfont: Futura
 fontsize: 12pt
 always_allow_html: yes
 ---
@@ -119,7 +119,7 @@ if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html5") {
   
 } else {
   
-  knitr::include_graphics("MICScountries.png")
+  knitr::include_graphics("images/MICScountries.png")
   
 }
 
