@@ -42,6 +42,11 @@ options(htmltools.dir.version = FALSE)
 .title-slide p {
   font-size: 0.875em;
 }
+
+.inverse {
+  color: #ffcb05;
+  background-color: #00274C; 
+}
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
