@@ -3,11 +3,6 @@ title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  word_document: 
-    toc: yes
-    highlight: haddock
-    fig_caption: yes
-    reference_docx: markstat.docx
   distill::distill_article:
     highlight: haddock
     toc: yes
@@ -16,6 +11,11 @@ output:
     number_sections: yes
     highlight: haddock
     latex_engine: xelatex
+  word_document: 
+    toc: yes
+    highlight: haddock
+    fig_caption: yes
+    reference_docx: markstat.docx
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
@@ -141,6 +141,8 @@ When studied in global context, across a diverse group of Low and Middle Income 
 * These differences in parenting *behaviors* notwithstanding, physical punishment (spanking) is consistently associated with *decreases in child socio-emotional development*, and particularly with *increases in child aggression*.
     + There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the *effects* of parental discipline (including spanking) are *remarkably consistent and nearly universal*.
     + Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
+    
+## Key Takeaway
     
 > Put more succinctly, there are differences in the disciplinary **methods** employed by parents--and a modest percentage of these differences are attributable to the country in which parents live--but the **effects** of various forms of discipline are remarkably consistent.
 
