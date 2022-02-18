@@ -50,6 +50,8 @@ options(htmltools.dir.version = FALSE)
 
 .large { font-size: 150% }
 
+.small { font-size: 50% }
+
 .taubmanteal {
   color: #00B2A9;
 }
@@ -178,8 +180,21 @@ class: animated, slideInRight
 
 * Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
+---
+class: animated, slideInRight
+## References
 
+.small[Grogan-Kaylor, Andrew, Berenice Castillo, Garrett T Pace, Kaitlin P Ward, Julie Ma, Shawna J Lee, and Heather Knauer. 2021. "Global perspectives on physical and nonphysical discipline: A Bayesian multilevel analysis." *International Journal of Behavioral Development*, January, 0165025420981642. https://doi.org/10.1177/0165025420981642.
 
+Ma, Julie, Andrew C. Grogan-Kaylor, Shawna J. Lee, Garrett T. Pace, and Kaitlin P. Ward. n.d. "Globally, What Would Happen If We Eliminated Spanking?"
+
+Pace, Garrett T., Shawna J. Lee, and Andrew Grogan-Kaylor. 2019. "Spanking and young children’s socioemotional development in low- and middle-income countries." *Child Abuse and Neglect* 88: 84–95. https://doi.org/10.1016/j.chiabu.2018.11.003.
+
+Ward, Kaitlin P., Andrew C. Grogan-Kaylor, Garrett T. Pace, Jorge Cuartas, and Shawna J. Lee. 2021a. "A Multilevel Ecological Analysis of the Predictors of Spanking Across 65 Countries." *BMJ Open* 11 (e046075). https://doi.org/10.1136/bmjopen-2020-046075.
+
+Ward, Kaitlin P, Andrew Grogan-Kaylor, Julie Ma, Garrett T Pace, and Shawna J Lee. 2021b. "Associations Between 11 Parental Discipline Behaviors and Child Outcomes Across 60 Countries." PsyArXiv. https://doi.org/10.31234/osf.io/f5t8x.
+
+Ward, Kaitlin P., Shawna J. Lee, Andrew C. Grogan-Kaylor, Julie Ma, and Garrett T. Pace. n.d. "Patterns of Caregiver Aggressive and Nonaggressive Discipline Toward Young Children in Low- and Middle-Income Countries: A Latent Class Approach."]
 
 
 
