@@ -18,3 +18,5 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 This file [has moved](../MICS/MICS.html).
+
+You could also look at the new version [here](https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html#1).
