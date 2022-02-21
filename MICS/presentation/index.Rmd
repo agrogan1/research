@@ -1,0 +1,32 @@
+---
+title: "Interesting and Noteworthy Findings From MICS Analyses"
+author: "Andy Grogan-Kaylor"
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+  html_document: 
+    highlight: haddock
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.margin=TRUE)
+
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+
+```
+
+
+```{r}
+
+xaringanExtra::embed_xaringan(url = "https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html", 
+                              ratio = "4:3")
+
+```
+
