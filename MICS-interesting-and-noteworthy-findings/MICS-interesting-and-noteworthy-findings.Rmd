@@ -6,6 +6,9 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
+  html_document: 
+    highlight: haddock
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -15,8 +18,18 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE,
                       fig.margin=TRUE)
 
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+
 ```
 
 This file [has moved](../MICS/MICS.html).
 
-You could also look at the new version [here](https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html#1).
+You could also look at the new version [here](https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html#1), or as shown below.
+
+```{r}
+
+xaringanExtra::embed_xaringan(url = "https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html", 
+                              ratio = "4:3")
+
+```
+
