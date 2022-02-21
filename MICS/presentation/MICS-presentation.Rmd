@@ -23,8 +23,22 @@ options(htmltools.dir.version = FALSE)
 ```{css, echo=FALSE}
 
 .title-slide {
-  background-image: url(earth.png);
-  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.title-slide::before {    
+      content: "";
+      background-image: url('earth.png');
+      background-size: cover;
+      background-position: center; 
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.5;
+      z-index: -1;
 }
 
 .title-slide body {
@@ -75,6 +89,13 @@ library(xaringanExtra)
 xaringanExtra::use_tile_view()
 
 xaringanExtra::use_animate_css()
+
+xaringanExtra::use_share_again()
+
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "facebook"))
+
+xaringanExtra::use_progress_bar(color = "#ffcb05", location = "bottom")
 
 ```
 
