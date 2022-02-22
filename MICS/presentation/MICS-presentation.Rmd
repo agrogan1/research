@@ -203,6 +203,14 @@ class: animated, slideInRight
 
 ---
 class: animated, slideInRight
+## Conclusion
+
+Physical punishment has detrimental consequences for children across countries, around the world. Social service providers and intervention programs should encourage parents to find alternative ways of disciplining their children. 
+
+While the research on the detrimental effects of physical punishment is clear, more research is needed on the forms of positive parenting that are helpful for child development.
+
+---
+class: animated, slideInRight
 ## References
 
 .small[Grogan-Kaylor, Andrew, Berenice Castillo, Garrett T Pace, Kaitlin P Ward, Julie Ma, Shawna J Lee, and Heather Knauer. 2021. "Global perspectives on physical and nonphysical discipline: A Bayesian multilevel analysis." *International Journal of Behavioral Development*, January, 0165025420981642. https://doi.org/10.1177/0165025420981642.

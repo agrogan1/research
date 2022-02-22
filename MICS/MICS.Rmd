@@ -6,16 +6,16 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
-  pdf_document: 
-    toc: yes
-    number_sections: yes
-    highlight: haddock
-    latex_engine: xelatex
   word_document: 
     toc: yes
     highlight: haddock
     fig_caption: yes
     reference_docx: markstat.docx
+  pdf_document: 
+    toc: yes
+    number_sections: yes
+    highlight: haddock
+    latex_engine: xelatex
 description: |
   Implications For The Cross Cultural Study Of Parenting And Child Development
 bibliography: ../MICS.bib
@@ -159,6 +159,11 @@ When studied in global context, across a diverse group of Low and Middle Income 
 
 * Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
+# Conclusion
+
+Physical punishment has detrimental consequences for children across countries, around the world. Social service providers and intervention programs should encourage parents to find alternative ways of disciplining their children. 
+
+While the research on the detrimental effects of physical punishment is clear, more research is needed on the forms of positive parenting that are helpful for child development.
 
 ```{r, echo=FALSE, results='asis'}
 
