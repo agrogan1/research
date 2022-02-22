@@ -70,6 +70,25 @@ options(htmltools.dir.version = FALSE)
   color: #00B2A9;
 }
 
+conclusion {
+  position: relative;
+  z-index: 1;
+}
+
+.conclusion::before {    
+      content: "";
+      background-image: url('earth.png');
+      background-size: cover;
+      background-position: center; 
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.25;
+      z-index: -1;
+}
+
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -202,12 +221,12 @@ class: animated, slideInRight
 * Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
 ---
-class: animated, slideInRight
+class: animated, slideInRight, conclusion, inverse
 ## Conclusion
 
-Physical punishment has detrimental consequences for children across countries, around the world. Social service providers and intervention programs should encourage parents to find alternative ways of disciplining their children. 
+.large[Physical punishment has detrimental consequences for children across countries, around the world. Social service providers and intervention programs should encourage parents to find alternative ways of disciplining their children. 
 
-While the research on the detrimental effects of physical punishment is clear, more research is needed on the forms of positive parenting that are helpful for child development.
+While the research on the detrimental effects of physical punishment is clear, more research is needed on the forms of positive parenting that are helpful for child development.]
 
 ---
 class: animated, slideInRight
