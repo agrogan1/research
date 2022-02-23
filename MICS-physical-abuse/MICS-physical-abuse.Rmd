@@ -123,39 +123,51 @@ xaringanExtra::use_progress_bar(color = "#ffcb05", location = "bottom")
 ```
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 # Background
 
 Nearly half of children under five in low- and middle-income countries (LMICs) experience spanking. Studies from North America suggest that spanking is associated with heightened risk of physical abuse. 
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 # Objective
 
 To examine the association between caregivers’ spanking and physical abuse of young children in LMICs, and to estimate the extent to which physical abuse might be reduced if spanking were eliminated.  
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 # Participants
 
 We used nationally representative data from 156,166 1- to 4-year-old children in 56 LMICs from the fourth and fifth rounds of UNICEF Multiple Indicator Cluster Surveys. 
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 # Methods
 
 A nationally weighted multilevel logistic regression model examined the association between spanking and physical abuse. We calculated predicted probabilities of physical abuse, which we present using natural frequencies. 
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 # Results
 
-Spanking was associated with higher odds of physical abuse (OR = 5.74, p <.001). The predicted probability of physical abuse decreased by 14% comparing children who were spanked (22%) and who were not spanked (8%). When our estimates were translated to a hypothetical sample of 100 children using the natural frequency approach, 32 children were spanked; of those, seven experienced physical abuse. The elimination of spanking would result in four fewer children who were exposed to physical abuse. In relation to the population of abused children, estimates suggest that physical abuse could reduce by up to 33% if spanking were eliminated. 
+Spanking was associated with higher odds of physical abuse (OR = 5.74, p <.001). 
+
+--
+
+The predicted probability of physical abuse decreased by 14% comparing children who were spanked (22%) and who were not spanked (8%). 
+
+--
+
+When our estimates were translated to a hypothetical sample of 100 children using the natural frequency approach, 32 children were spanked; of those, seven experienced physical abuse. 
+
+--
+
+The elimination of spanking would result in four fewer children who were exposed to physical abuse. In relation to the population of abused children, estimates suggest that physical abuse could be reduced by up to 33% if spanking were eliminated. 
 
 ---
-class: animated, slideInRight
+class: animated, fadeIn
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=4}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=3, dev='svg'}
 
 mydata <- tribble(
   ~status, ~count,
@@ -192,7 +204,7 @@ mydata$status <- factor(mydata$status,
 
 # ggsave("MICS-physical-abuse.png")   
 
-p <- mydata %>% 
+p0 <- mydata %>% 
   uncount(count) %>%
   ggplot(aes(x = status,
              fill = status)) +
@@ -218,19 +230,29 @@ p <- mydata %>%
   scale_fill_viridis_d(name = "Status", 
                        option = "viridis") +
   theme_minimal() +
-  theme(axis.text.x = element_text(size = rel(1))) +
+  theme(axis.text.x = element_text(size = rel(1)),
+        legend.position = "none") 
+
+p1 <- p0 +
   transition_layers(layer_length = 1,
                     transition_length = 3) +
   enter_fade() +
   enter_grow() 
 
-animate(p, renderer = gifski_renderer(loop = FALSE))
+p0
+
+# animate(p1, 
+#         # res = 150,
+#         # height = 4,
+#         # width = 4, 
+#         # units = "in", 
+#         renderer = gifski_renderer(loop = FALSE))
 
 
 ```
 
 ---
-class: animated, slideInRight, inverse, conclusion
+class: animated, fadeIn, inverse, conclusion
 # Conclusions
 
 .large[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children. .taubmanteal[Child welfare advocates should discourage caregivers from using spanking, in order to prevent physical abuse.]]
