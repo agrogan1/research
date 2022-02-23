@@ -93,6 +93,14 @@ conclusion {
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
+library(tibble) 
+
+library(waffle)
+
+library(hrbrthemes)
+
+library(michigancolors)
+
 library(xaringanExtra)
 
 xaringanExtra::use_tile_view()
@@ -126,6 +134,8 @@ class: animated, slideInRight
 
 We used nationally representative data from 156,166 1- to 4-year-old children in 56 LMICs from the fourth and fifth rounds of UNICEF Multiple Indicator Cluster Surveys. 
 
+---
+class: animated, slideInRight
 # Methods
 
 A nationally weighted multilevel logistic regression model examined the association between spanking and physical abuse. We calculated predicted probabilities of physical abuse, which we present using natural frequencies. 
@@ -135,6 +145,49 @@ class: animated, slideInRight
 # Results
 
 Spanking was associated with higher odds of physical abuse (OR = 5.74, p <.001). The predicted probability of physical abuse decreased by 14% comparing children who were spanked (22%) and who were not spanked (8%). When our estimates were translated to a hypothetical sample of 100 children using the natural frequency approach, 32 children were spanked; of those, seven experienced physical abuse. The elimination of spanking would result in four fewer children who were exposed to physical abuse. In relation to the population of abused children, estimates suggest that physical abuse could reduce by up to 33% if spanking were eliminated. 
+
+---
+class: animated, slideInRight
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=3}
+
+mydata <- tribble(
+  ~status, ~count,
+  "Not Spanked and \nNot Abused", 63, 
+  "Not Spanked And \nAbused", 5, 
+  "Spanked And Not \nAbused", 25,
+  "Spanked And \nAbused", 3, 
+  "Would Not Be Abused \nWere Spanking Eliminated", 4) 
+
+mydata$status <- factor(mydata$status, 
+                        levels = c("Not Spanked and \nNot Abused", 
+                                   "Not Spanked And \nAbused", 
+                                   "Spanked And Not \nAbused",
+                                   "Spanked And \nAbused",
+                                   "Would Not Be Abused \nWere Spanking Eliminated"))
+
+
+ggplot(mydata,
+       aes(fill = status,
+           values = count)) +
+  geom_waffle(# n_rows = 10, 
+              size = 0.33, 
+              colour = "white", 
+              flip = TRUE,
+              make_proportional = FALSE) +
+  labs(title = "Spanking and Physical Abuse",
+       subtitle = "Among 100 Hypothetical Children",
+       caption = "MICS Data") +
+  scale_fill_viridis_d(name = "Status", option = "viridis") +
+  facet_wrap(~status) +
+  # scale_fill_manual(name = "Status", values = michigancolors()) +
+  theme_minimal() +
+  # theme_ipsum_rc(grid="") +
+  theme_enhance_waffle() 
+
+ggsave("MICS-physical-abuse.png")   
+
+```
 
 ---
 class: animated, slideInRight, inverse, conclusion
