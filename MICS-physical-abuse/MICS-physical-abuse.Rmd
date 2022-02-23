@@ -95,6 +95,12 @@ conclusion {
 
 library(tibble) 
 
+library(tidyr)
+
+library(ggplot2)
+
+library(gganimate)
+
 library(waffle)
 
 library(hrbrthemes)
@@ -149,7 +155,7 @@ Spanking was associated with higher odds of physical abuse (OR = 5.74, p <.001).
 ---
 class: animated, slideInRight
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=3}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=4}
 
 mydata <- tribble(
   ~status, ~count,
@@ -161,31 +167,65 @@ mydata <- tribble(
 
 mydata$status <- factor(mydata$status, 
                         levels = c("Not Spanked and \nNot Abused", 
-                                   "Not Spanked And \nAbused", 
                                    "Spanked And Not \nAbused",
+                                   "Not Spanked And \nAbused", 
                                    "Spanked And \nAbused",
                                    "Would Not Be Abused \nWere Spanking Eliminated"))
 
+# ggplot(mydata,
+#        aes(fill = status,
+#            values = count)) +
+#   geom_waffle(# n_rows = 10, 
+#               size = 0.33, 
+#               colour = "white", 
+#               flip = TRUE,
+#               make_proportional = FALSE) +
+#   labs(title = "Spanking and Physical Abuse",
+#        subtitle = "Among 100 Hypothetical Children",
+#        caption = "MICS Data") +
+#   scale_fill_viridis_d(name = "Status", option = "viridis") +
+#   facet_wrap(~status) +
+#   # scale_fill_manual(name = "Status", values = michigancolors()) +
+#   theme_minimal() +
+#   # theme_ipsum_rc(grid="") +
+#   theme_enhance_waffle() 
 
-ggplot(mydata,
-       aes(fill = status,
-           values = count)) +
-  geom_waffle(# n_rows = 10, 
-              size = 0.33, 
-              colour = "white", 
-              flip = TRUE,
-              make_proportional = FALSE) +
+# ggsave("MICS-physical-abuse.png")   
+
+p <- mydata %>% 
+  uncount(count) %>%
+  ggplot(aes(x = status,
+             fill = status)) +
+  geom_bar() +
+  annotate("text", 
+           x = 5, 
+           y = 40, 
+           size = 2.5,
+           color = "black",
+           label = c("Those children who would not be abused \nwere spanking eliminated are a large \npercentage of children who are abused.")) +
+  annotate("rect", 
+           xmin = 2.5, 
+           xmax = 5.5, 
+           ymin = 0, 
+           ymax = 10,
+           alpha = .25) +
   labs(title = "Spanking and Physical Abuse",
        subtitle = "Among 100 Hypothetical Children",
+       x = "status",
+       y = "count", 
        caption = "MICS Data") +
-  scale_fill_viridis_d(name = "Status", option = "viridis") +
-  facet_wrap(~status) +
-  # scale_fill_manual(name = "Status", values = michigancolors()) +
+  coord_flip() +
+  scale_fill_viridis_d(name = "Status", 
+                       option = "viridis") +
   theme_minimal() +
-  # theme_ipsum_rc(grid="") +
-  theme_enhance_waffle() 
+  theme(axis.text.x = element_text(size = rel(1))) +
+  transition_layers(layer_length = 1,
+                    transition_length = 3) +
+  enter_fade() +
+  enter_grow() 
 
-ggsave("MICS-physical-abuse.png")   
+animate(p, renderer = gifski_renderer(loop = FALSE))
+
 
 ```
 
