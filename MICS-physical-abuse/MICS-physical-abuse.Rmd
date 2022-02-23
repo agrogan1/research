@@ -18,6 +18,10 @@ output:
 
 options(htmltools.dir.version = FALSE)
 
+# gganimate gives grainy results
+# fadeIn is better, especially with incremental slides
+# dev = 'svg'
+
 ```
 
 ```{css, echo=FALSE}
