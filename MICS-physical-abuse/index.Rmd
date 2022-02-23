@@ -1,0 +1,32 @@
+---
+title: "Spanking and Physical Abuse among Children under Five In Low- and Middle-Income Countries"
+author: "Julie Ma, Andrew Grogan-Kaylor, Garrett T. Pace, Kaitlin P. Ward, Shawna J. Lee"
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+  html_document: 
+    highlight: haddock
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.margin=TRUE)
+
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+
+```
+
+
+```{r}
+
+xaringanExtra::embed_xaringan(url = "./MICS-physical-abuse.html", 
+                              ratio = "4:3")
+
+```
+
