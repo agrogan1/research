@@ -74,6 +74,10 @@ options(htmltools.dir.version = FALSE)
   color: #00B2A9;
 }
 
+.tappanred {
+  color: #9A3324;
+}
+
 conclusion {
   position: relative;
   z-index: 1;
@@ -104,6 +108,8 @@ library(tidyr)
 library(ggplot2)
 
 library(gganimate)
+
+library(scales)
 
 library(waffle)
 
@@ -166,12 +172,14 @@ When our estimates were translated to a hypothetical sample of 100 children usin
 
 --
 
-.taubmanteal[**The elimination of spanking would result in four fewer children who were exposed to physical abuse. In relation to the population of abused children, estimates suggest that physical abuse could be reduced by up to 33% if spanking were eliminated.**] 
+**The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse]. In relation to the population of abused children, estimates suggest that .tappanred[physical abuse could be reduced by up to 33%] if .tappanred[spanking were eliminated].** 
 
 ---
 class: animated, fadeIn
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.retina=3, dev='svg'}
+
+# show_col(viridis_pal(option = "turbo")(20)) # viridis turbo palette
 
 mydata <- tribble(
   ~status, ~count,
@@ -199,60 +207,22 @@ ggplot(mydata,
   labs(title = "Spanking and Physical Abuse Among 100 Hypothetical Children",
        subtitle = "The elimination of spanking would result in four fewer children who were exposed to physical abuse.",
        caption = "MICS Data") +
-  scale_fill_viridis_d(name = "Status", option = "viridis") +
+  scale_fill_manual(name = "Status",
+                    values = c("#30123BFF", 
+                               "#3F3994FF",
+                               "#C82803FF",
+                               "#A51301FF",
+                               "#23C3E4FF")) +
+  # scale_fill_viridis_d(name = "Status", 
+  #                      option = "viridis",
+  #                      end = .8) +
   facet_wrap(~status, ncol = 3) +
-  # scale_fill_manual(name = "Status", values = michigancolors()) +
   theme_bw() +
   # theme_ipsum_rc(grid="") +
   theme_enhance_waffle() +
   theme(axis.ticks = element_blank())
 
 ggsave("MICS-physical-abuse.png")
-
-# p0 <- mydata %>% 
-#   uncount(count) %>%
-#   ggplot(aes(x = status,
-#              fill = status)) +
-#   geom_bar() +
-#   annotate("text", 
-#            x = 5, 
-#            y = 40, 
-#            size = 2.5,
-#            color = "black",
-#            label = c("Those children who would not be abused \nwere spanking eliminated are a large \npercentage of children who are abused.")) +
-#   annotate("rect", 
-#            xmin = 2.5, 
-#            xmax = 5.5, 
-#            ymin = 0, 
-#            ymax = 10,
-#            alpha = .25) +
-#   labs(title = "Spanking and Physical Abuse",
-#        subtitle = "Among 100 Hypothetical Children",
-#        x = "status",
-#        y = "count", 
-#        caption = "MICS Data") +
-#   coord_flip() +
-#   scale_fill_viridis_d(name = "Status", 
-#                        option = "viridis") +
-#   theme_minimal() +
-#   theme(axis.text.x = element_text(size = rel(1)),
-#         legend.position = "none") 
-
-# p1 <- p0 +
-#   transition_layers(layer_length = 1,
-#                     transition_length = 3) +
-#   enter_fade() +
-#   enter_grow() 
-
-# p0
-
-# animate(p1, 
-#         # res = 150,
-#         # height = 4,
-#         # width = 4, 
-#         # units = "in", 
-#         renderer = gifski_renderer(loop = FALSE))
-
 
 ```
 
@@ -261,7 +231,9 @@ ggsave("MICS-physical-abuse.png")
 class: animated, fadeIn, inverse, conclusion
 # Conclusions
 
-.large[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children. .taubmanteal[Child welfare advocates should discourage caregivers from using spanking, in order to prevent physical abuse.]]
+.large[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children.
+
+.taubmanteal[Child welfare advocates should discourage caregivers from using spanking, in order to prevent physical abuse.]]
 
 
 
