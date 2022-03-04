@@ -132,6 +132,8 @@ xaringanExtra::use_progress_bar(color = "#ffcb05", location = "bottom")
 
 ```
 
+> Press `o` for an overview of the presentation
+
 ---
 class: animated, fadeIn
 # Background
