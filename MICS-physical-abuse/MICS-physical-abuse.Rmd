@@ -198,36 +198,39 @@ mydata$status <- factor(mydata$status,
                                    "Spanked And \nAbused",
                                    "Would Not Be Abused \nWere Spanking Eliminated"))
 
-ggplot(mydata,
-       aes(fill = status,
-           values = count)) +
-  geom_waffle(# n_rows = 10,
-              size = 0.33,
-              colour = "white",
-              flip = TRUE,
-              make_proportional = FALSE) +
-  labs(title = "Spanking and Physical Abuse Among 100 Hypothetical Children",
-       subtitle = "The elimination of spanking would result in four fewer children who were exposed to physical abuse.",
-       caption = "MICS Data") +
-  scale_fill_manual(name = "Status",
-                    values = c("#30123BFF", 
-                               "#3F3994FF",
-                               "#C82803FF",
-                               "#A51301FF",
-                               "#23C3E4FF")) +
-  # scale_fill_viridis_d(name = "Status", 
-  #                      option = "viridis",
-  #                      end = .8) +
-  facet_wrap(~status, ncol = 3) +
-  theme_bw() +
-  # theme_ipsum_rc(grid="") +
-  theme_enhance_waffle() +
-  theme(axis.ticks = element_blank())
+# ggplot(mydata,
+#        aes(fill = status,
+#            values = count)) +
+#   geom_waffle(# n_rows = 10,
+#               size = 0.33,
+#               colour = "white",
+#               flip = TRUE,
+#               make_proportional = FALSE) +
+#   labs(title = "Spanking and Physical Abuse Among 100 Hypothetical Children",
+#        subtitle = "The elimination of spanking would result in four fewer children who were exposed to physical abuse.",
+#        caption = "MICS Data") +
+#   scale_fill_manual(name = "Status",
+#                     values = c("#30123BFF", 
+#                                "#3F3994FF",
+#                                "#C82803FF",
+#                                "#A51301FF",
+#                                "#23C3E4FF")) +
+#   # scale_fill_viridis_d(name = "Status", 
+#   #                      option = "viridis",
+#   #                      end = .8) +
+#   facet_wrap(~status, ncol = 3) +
+#   theme_bw() +
+#   # theme_ipsum_rc(grid="") +
+#   theme_enhance_waffle() +
+#   theme(axis.ticks = element_blank())
+# 
+# ggsave("MICS-physical-abuse.png")
 
-ggsave("MICS-physical-abuse.png")
+knitr::include_graphics("peoplegraphic.png")
 
 ```
 
+> The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse].
 
 ---
 class: animated, fadeIn, inverse, conclusion
