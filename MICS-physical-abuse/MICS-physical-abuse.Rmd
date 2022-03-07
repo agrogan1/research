@@ -18,6 +18,12 @@ output:
 
 options(htmltools.dir.version = FALSE)
 
+library(countrycode)
+
+library(plotly)
+
+library(ggplot2)
+
 # gganimate gives grainy results
 # fadeIn is better, especially with incremental slides
 # dev = 'svg'
@@ -72,6 +78,10 @@ options(htmltools.dir.version = FALSE)
 
 .taubmanteal {
   color: #00B2A9;
+}
+
+.rossorange {
+  color: #D86018;
 }
 
 .tappanred {
@@ -140,7 +150,8 @@ class: animated, fadeIn
 
 Nearly half of children under five in low- and middle-income countries (LMICs) experience spanking. Studies from North America suggest that spanking is associated with heightened risk of physical abuse. 
 
----
+--
+
 class: animated, fadeIn
 # Objective
 
@@ -151,6 +162,56 @@ class: animated, fadeIn
 # Participants
 
 We used nationally representative data from 156,166 1- to 4-year-old children in 56 LMICs from the fourth and fifth rounds of UNICEF Multiple Indicator Cluster Surveys. 
+
+```{r, echo=FALSE, warning=FALSE}
+
+country <- c("Algeria",  "Argentina",  "Bangladesh",  "Barbados",  "Belarus",  "Belize",  "Benin",  "Bosnia and Herzegovina",  "Cameroon",  "Central African Republic",  "Chad",  "Democratic Republic of the Congo",  "Republic of the Congo",  "Costa Rica",  "Cote d'Ivoire",  "Dominican Republic",  "El Salvador",  "Eswatini",  "Ghana",  "Guinea",  "Guinea Bissau",  "Guyana",  "Iraq",  "Jamaica",  "Kazakhstan",  "Kenya",  "Kosovo",  "Kyrgyzstan",  "Laos", "Macedonia",  "Madagascar",  "Malawi",  "Mali",  "Mauritania",  "Mexico",  "Moldova",  "Mongolia",  "Montenegro",  "Nepal",  "Nigeria",  "Pakistan",  "Panama",  "Paraguay",  "Sao Tome and Principe",  "Senegal",  "Serbia",  "Sierra Leone",  "Somalia",  "St. Lucia",  "State of Palestine",  "Suriname",  "Thailand",  "The Gambia",  "Togo",  "Trinidad and Tobago",  "Tunisia",  "Turkmenistan",  "Ukraine",  "Uruguay",  "Vietnam",  "Zimbabwe")
+
+MICScountries <- data.frame(country)
+
+MICScountries$country_iso <- countrycode(MICScountries$country, 
+                                 'country.name', 
+                                 'iso3c')
+
+```
+
+```{r, echo=FALSE, fig.cap="Countries in MICS", fig.height=4}
+
+g <- list(showframe = TRUE, 
+          showcoastlines = TRUE, 
+          showcountries = TRUE,
+          showland = TRUE,
+          countrycolor = toRGB("grey"),
+          showocean = FALSE,
+          projection = list(type = 'orthographic',
+                            rotation = list(lon = 0,
+                                            lat = 0,
+                                            roll = 0)),
+          showland = TRUE,
+          landcolor = toRGB("lightgrey"))
+
+t <- list(family = "sans serif", 
+          size = 8, 
+          color = toRGB("black"))
+
+l <- list(color = toRGB("black"), 
+          width = 0.5)
+
+p0 <- MICScountries %>% 
+  plot_geo() %>% 
+  add_trace(z = 1,
+    text = ~country, 
+    colors = "#009edb",
+    hoverinfo = 'text',
+    locations = ~country_iso, 
+    showscale = FALSE,
+    marker = list(size=10, line = l)) %>%
+  layout(geo = g)
+
+p0
+
+```
+
 
 ---
 class: animated, fadeIn
@@ -174,7 +235,7 @@ When our estimates were translated to a hypothetical sample of 100 children usin
 
 --
 
-**The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse]. In relation to the population of abused children, estimates suggest that .tappanred[physical abuse could be reduced by up to 33%] if .tappanred[spanking were eliminated].** 
+> The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse]. In relation to the population of abused children, estimates suggest that .tappanred[physical abuse could be reduced by up to 33%] if .tappanred[spanking were eliminated].
 
 ---
 class: animated, fadeIn
@@ -236,7 +297,7 @@ knitr::include_graphics("peoplegraphic.png")
 class: animated, fadeIn, inverse, conclusion
 # Conclusions
 
-.large[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children.
+.large[.rossorange[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children.]
 
 .taubmanteal[Child welfare advocates should discourage caregivers from using spanking, in order to prevent physical abuse.]]
 

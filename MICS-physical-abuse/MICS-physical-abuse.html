@@ -4,7 +4,7 @@
     <title>Spanking and Physical Abuse among Children under Five</title>
     <meta charset="utf-8" />
     <meta name="author" content="Julie Ma, Andrew Grogan-Kaylor, Garrett T. Pace, Kaitlin P. Ward, Shawna J. Lee" />
-    <meta name="date" content="2022-03-06" />
+    <meta name="date" content="2022-03-07" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
@@ -15,6 +15,14 @@
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
     <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding/plotly.js"></script>
+    <script src="libs/typedarray/typedarray.min.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="michigan.css" type="text/css" />
     <link rel="stylesheet" href="michigan-fonts.css" type="text/css" />
   </head>
@@ -26,7 +34,7 @@ class: center, middle, inverse, title-slide
 ## in Low- and Middle-Income Countries
 ### Julie Ma, Andrew Grogan-Kaylor, Garrett T. Pace, Kaitlin P. Ward, Shawna J. Lee
 ### University of Michigan
-### 2022-03-06
+### 2022-03-07
 
 ---
 
@@ -81,6 +89,10 @@ class: center, middle, inverse, title-slide
 
 .taubmanteal {
   color: #00B2A9;
+}
+
+.rossorange {
+  color: #D86018;
 }
 
 .tappanred {
@@ -143,7 +155,8 @@ class: animated, fadeIn
 
 Nearly half of children under five in low- and middle-income countries (LMICs) experience spanking. Studies from North America suggest that spanking is associated with heightened risk of physical abuse. 
 
----
+--
+
 class: animated, fadeIn
 # Objective
 
@@ -154,6 +167,15 @@ class: animated, fadeIn
 # Participants
 
 We used nationally representative data from 156,166 1- to 4-year-old children in 56 LMICs from the fourth and fifth rounds of UNICEF Multiple Indicator Cluster Surveys. 
+
+
+
+&lt;div class="figure"&gt;
+<div id="htmlwidget-95903cfe667f83f4b3ae" style="width:504px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-95903cfe667f83f4b3ae">{"x":{"visdat":{"5e061d643be":["function () ","plotlyVisDat"]},"cur_data":"5e061d643be","attrs":{"5e061d643be":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"z":1,"text":{},"colors":"#009edb","hoverinfo":"text","locations":{},"showscale":false,"marker":{"size":10,"line":{"color":"rgba(0,0,0,1)","width":0.5}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"mapType":"geo","geo":{"domain":{"x":[0,1],"y":[0,1]},"showframe":true,"showcoastlines":true,"showcountries":true,"showland":true,"countrycolor":"rgba(190,190,190,1)","showocean":false,"projection":{"type":"orthographic","rotation":{"lon":0,"lat":0,"roll":0}},"landcolor":"rgba(211,211,211,1)"},"scene":{"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2},"colorscale":[["0","rgba(0,158,219,1)"],["1","rgba(0,158,219,1)"]],"showscale":false,"z":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"text":["Algeria","Argentina","Bangladesh","Barbados","Belarus","Belize","Benin","Bosnia and Herzegovina","Cameroon","Central African Republic","Chad","Democratic Republic of the Congo","Republic of the Congo","Costa Rica","Cote d'Ivoire","Dominican Republic","El Salvador","Eswatini","Ghana","Guinea","Guinea Bissau","Guyana","Iraq","Jamaica","Kazakhstan","Kenya","Kosovo","Kyrgyzstan","Laos","Macedonia","Madagascar","Malawi","Mali","Mauritania","Mexico","Moldova","Mongolia","Montenegro","Nepal","Nigeria","Pakistan","Panama","Paraguay","Sao Tome and Principe","Senegal","Serbia","Sierra Leone","Somalia","St. Lucia","State of Palestine","Suriname","Thailand","The Gambia","Togo","Trinidad and Tobago","Tunisia","Turkmenistan","Ukraine","Uruguay","Vietnam","Zimbabwe"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"locations":["DZA","ARG","BGD","BRB","BLR","BLZ","BEN","BIH","CMR","CAF","TCD","COD","COG","CRI","CIV","DOM","SLV","SWZ","GHA","GIN","GNB","GUY","IRQ","JAM","KAZ","KEN",null,"KGZ","LAO","MKD","MDG","MWI","MLI","MRT","MEX","MDA","MNG","MNE","NPL","NGA","PAK","PAN","PRY","STP","SEN","SRB","SLE","SOM","LCA","PSE","SUR","THA","GMB","TGO","TTO","TUN","TKM","UKR","URY","VNM","ZWE"],"marker":{"size":10,"line":{"color":"rgba(0,0,0,1)","width":0.5}},"type":"choropleth","geo":"geo","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+&lt;p class="caption"&gt;Countries in MICS&lt;/p&gt;
+&lt;/div&gt;
+
 
 ---
 class: animated, fadeIn
@@ -177,7 +199,7 @@ When our estimates were translated to a hypothetical sample of 100 children usin
 
 --
 
-**The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse]. In relation to the population of abused children, estimates suggest that .tappanred[physical abuse could be reduced by up to 33%] if .tappanred[spanking were eliminated].** 
+&gt; The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse]. In relation to the population of abused children, estimates suggest that .tappanred[physical abuse could be reduced by up to 33%] if .tappanred[spanking were eliminated].
 
 ---
 class: animated, fadeIn
@@ -190,7 +212,7 @@ class: animated, fadeIn
 class: animated, fadeIn, inverse, conclusion
 # Conclusions
 
-.large[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children.
+.large[.rossorange[Results support the UN Sustainable Development Goals Target 16.2 that calls for eliminating all forms of violence against children.]
 
 .taubmanteal[Child welfare advocates should discourage caregivers from using spanking, in order to prevent physical abuse.]]
 
