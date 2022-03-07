@@ -29,7 +29,9 @@ body {
 
 ```{r, echo=FALSE}
 
-backgroundtext <- "Caregivers use a variety of disciplinary methods to respond to undesired child behavior. Many caregivers use nonaggressive forms of discipline, such as verbal reasoning and redirection. Some caregivers use aggressive forms of discipline, such as spanking and yelling. However, most caregivers use a combination of aggressive and nonaggressive discipline. To date, a disproportionately small number of caregiver discipline studies are conducted in low- and middle-income countries (LMICs), and few studies in low-resource contexts examine aggressive and nonaggressive behaviors simultaneously."
+Background <- "Caregivers use a variety of disciplinary methods to respond to undesired child behavior. Many caregivers use nonaggressive forms of discipline, such as verbal reasoning and redirection. Some caregivers use aggressive forms of discipline, such as spanking and yelling. However, most caregivers use a combination of aggressive and nonaggressive discipline. To date, a disproportionately small number of caregiver discipline studies are conducted in low- and middle-income countries (LMICs), and few studies in low-resource contexts examine aggressive and nonaggressive behaviors simultaneously."
+
+background_data <- data.frame(Background)
 
 # backgroundtext
 
@@ -37,7 +39,9 @@ backgroundtext <- "Caregivers use a variety of disciplinary methods to respond t
 
 ```{r, echo=FALSE}
 
-knitr::kable(backgroundtext, caption = 'Background')
+knitr::kable(background_data)
+
+# pander::pander(background_data)
 
 ```
 
