@@ -112,6 +112,8 @@ library(xaringanExtra)
 
 xaringanExtra::use_tile_view()
 
+# xaringanExtra::use_logo(image_url = "https://raw.githubusercontent.com/agrogan1/research/master/MICS/images/children1.jpg")
+
 xaringanExtra::use_animate_css()
 
 xaringanExtra::use_share_again()
