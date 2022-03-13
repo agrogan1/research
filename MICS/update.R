@@ -15,8 +15,10 @@ render("./MICS/MICS.Rmd",
                                           fig_height = 2),
        output_file = "MICS-slidy.html")
 
-# render("./MICS/MICS.Rmd",
-#        output_format = pdf_document(),
-#        output_file = "MICS.pdf")
+render("./MICS/MICS.Rmd",
+       output_format = ioslides_presentation(incremental = TRUE,
+                                             widescreen = TRUE,
+                                             smaller = TRUE),
+       output_file = "MICS-ioslides.html")
 
 
