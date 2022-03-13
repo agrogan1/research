@@ -53,6 +53,11 @@ options(htmltools.dir.version = FALSE)
   font-size: 1.875em;
 }
 
+.title-slide h3 {
+  font-size: 1.5em;
+  color: #00B2A9;
+}
+
 .title-slide p {
   font-size: 0.875em;
 }
@@ -111,8 +116,8 @@ xaringanExtra::use_animate_css()
 
 xaringanExtra::use_share_again()
 
-xaringanExtra::style_share_again(
-  share_buttons = c("twitter", "linkedin", "facebook"))
+# xaringanExtra::style_share_again(
+#   share_buttons = c("twitter", "linkedin", "facebook"))
 
 xaringanExtra::use_progress_bar(color = "#ffcb05", location = "bottom")
 
