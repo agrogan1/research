@@ -60,12 +60,6 @@ library(fontawesome) # fontawesome from Rstudio
 
 ```
 
-```{r}
-
-knitr:: include_graphics("families.png")
-
-```
-
 # Data
 
 The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
