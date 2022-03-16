@@ -48,10 +48,10 @@ library(fontawesome)
 
 ```{r}
 
-country <- c("Algeria",  "Argentina",  "Bangladesh",  "Barbados",  "Belarus",  
+country <- c("Afghanistan", "Algeria",  "Argentina",  "Bangladesh",  "Barbados",  "Belarus",  
              "Belize",  "Benin",  "Bosnia and Herzegovina",  "Cameroon",  
              "Central African Republic",  
-             "Chad",  "Democratic Republic of the Congo",  "Republic of the Congo",
+             "Chad",  "Democratic Republic of the Congo", "Republic of the Congo",
              "Costa Rica",  "Cote d'Ivoire",  
              "Dominican Republic",  "El Salvador",  "Eswatini",  "Ghana",  "Guinea", 
              "Guinea Bissau",  "Guyana",  "Iraq",  "Jamaica",  "Kazakhstan",  
