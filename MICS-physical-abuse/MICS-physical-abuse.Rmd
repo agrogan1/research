@@ -141,10 +141,10 @@ xaringanExtra::use_animate_css()
 
 xaringanExtra::use_share_again()
 
-xaringanExtra::style_share_again(
-  share_buttons = c("twitter", "linkedin", "facebook"))
+xaringanExtra::style_share_again()
 
-xaringanExtra::use_progress_bar(color = "#ffcb05", location = "bottom")
+xaringanExtra::use_progress_bar(color = "#ffcb05", 
+                                location = "bottom")
 
 ```
 
@@ -246,13 +246,13 @@ When our estimates were translated to a hypothetical sample of 100 children usin
 ---
 class: animated, fadeIn
 
-```{r, results = 'asis'}
+```{r}
 
 # knitr::include_graphics("peoplegraphic.png")
 
-cat("63 Not Spanked and Not Abused")
-
 ```
+
+63 Not Spanked and Not Abused
 
 ```{r}
 
@@ -330,11 +330,7 @@ fa("child", fill = "grey")
 
 --
 
-```{r, results='asis'}
-
-cat("5 Not Spanked and Abused")
-
-```
+5 Not Spanked and Abused
 
 ```{r}
 
@@ -348,11 +344,7 @@ fa("child", fill = "deeppink")
 
 --
 
-```{r,results='asis'}
-
-cat("25 Spanked and Not Abused")
-
-```
+25 Spanked and Not Abused
 
 ```{r}
 
@@ -388,11 +380,7 @@ fa("child", fill = "limegreen")
 
 --
 
-```{r,results='asis'}
-
-cat("3 Spanked and Abused")
-
-```
+3 Spanked and Abused
 
 ```{r}
 
@@ -404,11 +392,7 @@ fa("child", fill = "red")
 
 --
 
-```{r,results='asis'}
-
-cat("4 Would Not Be Abused Were Spanking Eliminated")
-
-```
+4 Would Not Be Abused Were Spanking Eliminated
 
 ```{r}
 
@@ -418,6 +402,8 @@ fa("child", fill = "darkorange")
 fa("child", fill = "darkorange")
 
 ```
+
+--
 
 > The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse].
 
