@@ -20,8 +20,13 @@ knitr::opts_chunk$set(echo = FALSE,
 
 options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 
+library(fontawesome)
+
+# library(icon)
+
 ```
 
+Click <img src="maximize.png" alt="my caption" style="width: 25px;"/> to see fullscreen.
 
 ```{r}
 
