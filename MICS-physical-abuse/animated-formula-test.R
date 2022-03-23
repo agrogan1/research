@@ -23,8 +23,14 @@ p1 <- ggplot(data = mydata,
   xlim(0, 100) +
   ylim(0, 100) +
   geom_text(size = 5, color = "green") +
+  labs(title = "Multilevel Logistic Regression") +
   theme_void() +
-  theme(aspect.ratio= .25) +
+  theme(aspect.ratio = .10,
+        panel.background = element_rect(fill = "black")) +
   transition_manual(id, cumulative = FALSE) 
 
-animate(p1, fps = 10, renderer = gifski_renderer(loop = FALSE))
+animate(p1, 
+        fps = 10, 
+        renderer = gifski_renderer(loop = FALSE),
+        height = 200, # manually adjust height
+        width = 400)
