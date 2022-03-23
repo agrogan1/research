@@ -22,12 +22,6 @@ knitr::opts_chunk$set(echo = FALSE,
 
 options(htmltools.dir.version = FALSE)
 
-library(countrycode)
-
-library(plotly)
-
-library(ggplot2)
-
 # gganimate gives grainy results
 # fadeIn is better, especially with incremental slides
 # dev = 'svg'
@@ -123,15 +117,19 @@ library(ggplot2)
 
 library(gganimate)
 
+library(countrycode)
+
+library(plotly)
+
 library(fontawesome)
 
 library(scales)
 
-library(waffle)
+# library(waffle)
+# 
+# library(hrbrthemes)
 
-library(hrbrthemes)
-
-library(michigancolors)
+# library(michigancolors)
 
 library(xaringanExtra)
 
@@ -223,7 +221,7 @@ p0
 class: animated, fadeIn
 # Methods
 
-A nationally weighted multilevel logistic regression model examined the association between spanking and physical abuse. We calculated predicted probabilities of physical abuse, which we present using natural frequencies. 
+A nationally weighted multilevel logistic regression model examined the association between spanking and physical abuse. We calculated predicted probabilities of physical abuse, which we present using natural frequencies.
 
 ---
 class: animated, fadeIn
