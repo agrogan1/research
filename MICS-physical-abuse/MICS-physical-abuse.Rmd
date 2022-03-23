@@ -233,7 +233,7 @@ class: animated, fadeIn
 
 A nationally weighted multilevel logistic regression model examined the association between spanking and physical abuse. We calculated predicted probabilities of physical abuse, which we present using natural frequencies.
 
-```{r}
+```{r, eval = FALSE}
 
 library(ggplot2)
 
