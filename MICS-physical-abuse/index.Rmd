@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 
-library(fontawesome)
+# library(fontawesome)
 
 # library(icon)
 

@@ -7,7 +7,7 @@ date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [michigan.css, michigan-fonts.css]
+    css: ["default", michigan.css, michigan-fonts.css]
     nature:
       highlightStyle: github
       highlightLines: true
@@ -246,91 +246,91 @@ When our estimates were translated to a hypothetical sample of 100 children usin
 ---
 class: animated, fadeIn
 
-```{r}
-
-# knitr::include_graphics("peoplegraphic.png")
-
-```
-
-63 Not Spanked and Not Abused
-
-```{r}
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-fa("child", fill = "grey")
-
-```
+.left-column[The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse].]
 
 --
 
-5 Not Spanked and Abused
+.right-column[63 Not Spanked and Not Abused
+
+```{r}
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+```
+
+]
+
+--
+
+.right-column[5 Not Spanked and Abused
 
 ```{r}
 
@@ -342,9 +342,11 @@ fa("child", fill = "deeppink")
 
 ```
 
+]
+
 --
 
-25 Spanked and Not Abused
+.right-column[25 Spanked and Not Abused
 
 ```{r}
 
@@ -378,9 +380,11 @@ fa("child", fill = "limegreen")
 
 ```
 
+]
+
 --
 
-3 Spanked and Abused
+.right-column[3 Spanked and Abused
 
 ```{r}
 
@@ -390,9 +394,11 @@ fa("child", fill = "red")
 
 ```
 
+]
+
 --
 
-4 Would Not Be Abused Were Spanking Eliminated
+.right-column[4 Would Not Be Abused Were Spanking Eliminated
 
 ```{r}
 
@@ -403,9 +409,7 @@ fa("child", fill = "darkorange")
 
 ```
 
---
-
-> The .tappanred[elimination of spanking] would result in .tappanred[four fewer children who were exposed to physical abuse].
+]
 
 ---
 class: animated, fadeIn, inverse, conclusion
