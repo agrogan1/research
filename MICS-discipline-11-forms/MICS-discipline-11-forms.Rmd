@@ -112,12 +112,14 @@ library(leaflet)
 
 leaflet() %>%
   setView(0, 0, zoom = 1.5) %>%
-  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addProviderTiles(providers$Stamen.Terrain) %>%
   addPolygons(data = MICS, 
-              fillOpacity = .5, 
+              fillOpacity = .75, 
               color = "#5b92e5", 
-              # label = MICS$NAME
-              )
+              label = MICS$NAME,
+              highlightOptions = highlightOptions(color = "red", 
+                                                  weight = 2,
+                                                  bringToFront = TRUE))
 
 ```
 
