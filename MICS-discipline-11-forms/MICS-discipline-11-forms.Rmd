@@ -37,6 +37,8 @@ library(maps) # maps
 
 library(maptools) # maptools
 
+library(sp) # spatial data
+
 library(countrycode) # manipulate country names and codes
 
 library(dplyr) # data wrangling
@@ -55,7 +57,7 @@ library(tibble) # data frames
 
 ```{r}
 
-data(wrld_simpl) # world simple data
+data(wrld_simpl) # world map data
 
 global_data <- st_as_sf(wrld_simpl) %>% # make an sf dataset
   select(-POP2005) # remove POP2005
