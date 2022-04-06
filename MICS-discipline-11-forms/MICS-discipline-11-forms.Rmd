@@ -22,6 +22,7 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
+citation_url: https://agrogan1.github.io/
 ---
 
 ```{r setup, include=FALSE}
