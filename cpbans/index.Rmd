@@ -123,7 +123,7 @@ Information on countries that have banned corporal punishment available from  [e
 ::: {.panel}
 [Interactive Globe]{.panel-name}
 
-```{r, eval = TRUE}
+```{r make_globe, eval = TRUE}
 
 plot_geo(mydata) %>% 
   add_trace(locations = ~country_code, 
@@ -150,7 +150,7 @@ plot_geo(mydata) %>%
 ::: {.panel}
 [Map]{.panel-name}
 
-```{r}
+```{r make_map}
 
 plot_geo(mydata) %>%
   add_trace(locations = ~country_code, 
@@ -175,7 +175,7 @@ plot_geo(mydata) %>%
 ::: {.panel}
 [Motion Chart]{.panel-name}
 
-```{r, eval = TRUE, echo = FALSE}
+```{r make_motion_chart_data, eval = TRUE, echo = FALSE}
 
 # create data with repeated observations for animation
 
@@ -240,7 +240,7 @@ mydata2 %>%
 ::: {.panel}
 [Data Table]{.panel-name}
 
-```{r}
+```{r make_data_table}
 
 mynewdata <- subset(mydata, 
                     select = c(total.number.of.bans, 
@@ -271,7 +271,7 @@ datatable(mynewdata,
 ::: {.panel}
 [Graph]{.panel-name}
 
-```{r, eval = TRUE, fig.height=6}
+```{r make_graph, eval = TRUE, fig.height=6}
 
 p1 <- ggplot(mydata, 
              aes(x = year.of.prohibition, 
@@ -306,7 +306,7 @@ p1
 ::: {.panel}
 [Interactive Graph]{.panel-name}
 
-```{r, fig.height=8}
+```{r make_interactive_graph, fig.height=8}
 
 plot_ly(data = mydata, 
         x = ~year.of.prohibition, 
