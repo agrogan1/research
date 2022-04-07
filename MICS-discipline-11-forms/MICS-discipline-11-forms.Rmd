@@ -140,7 +140,7 @@ Random slopes suggested statistically credible cultural variation in the associa
 
 # Data Visualization
 
-```{r, fig.cap="Association of Disipline with Child Outcomes", layout = "l-page"}
+```{r, fig.cap="Association of Discipline with Child Outcomes", layout = "l-page"}
 
 myORs <- tribble(
   ~Discipline, ~Aggression, ~Distraction, ~Prosocial,
