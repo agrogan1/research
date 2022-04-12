@@ -172,6 +172,7 @@ p1 <- myORs %>%
   # geom_col() +
   geom_point(size = 5) +
   geom_hline(yintercept = 1.0, color = "red") +
+  labs(y = "Odds Ratio") +
   ylim(.7, 1.5) +
   coord_flip() +
   facet_wrap(~outcome) +
