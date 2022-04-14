@@ -26,6 +26,7 @@ options(htmltools.dir.version = FALSE)
 # fadeIn is better, especially with incremental slides
 # dev = 'svg'
 
+
 ```
 
 ```{css, echo=FALSE}
