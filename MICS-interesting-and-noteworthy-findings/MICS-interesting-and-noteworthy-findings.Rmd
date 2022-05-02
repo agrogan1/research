@@ -24,12 +24,12 @@ options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 
 This file [has moved](../MICS/MICS.html).
 
-You could also look at the new version [here](https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html#1), or as shown below.
+You could also look at the new version [here](https://agrogan1.github.io/research/MICS/MICS-slidy.html), or as shown below.
 
-```{r}
+```{r, eval=TRUE}
 
-xaringanExtra::embed_xaringan(url = "https://agrogan1.github.io/research/MICS/presentation/MICS-presentation.html", 
-                              ratio = "4:3")
+knitr::include_url("https://agrogan1.github.io/research/MICS/MICS-slidy.html",
+                   height = "600px")
 
 ```
 
