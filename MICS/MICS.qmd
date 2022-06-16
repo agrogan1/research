@@ -2,26 +2,35 @@
 title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-  word_document: 
-    toc: yes
-    highlight: haddock
-    fig_caption: yes
-    reference_docx: markstat.docx
-  pdf_document: 
-    toc: yes
-    number_sections: yes
-    highlight: haddock
-    latex_engine: xelatex
-description: |
-  Implications For The Cross Cultural Study Of Parenting And Child Development
+format: 
+  html:
+    theme: 
+      light: united
+      dark: vapor
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    highlight-style: haddock
+    code-fold: true
+    execute:
+      warning: false
+    comments:
+      hypothesis: true
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    highlight-style: haddock
+    execute:
+      echo: false
+      warning: false
+    shift-heading-level-by: 1    
+subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
 bibliography: ../MICS.bib
 biblio-style: apalike
 nocite: |
-  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma
+  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
 citation_url: https://agrogan1.github.io/research/MICS
 mainfont: Arial
 fontsize: 12pt
@@ -77,7 +86,10 @@ MICScountries$country_iso <- countrycode(MICScountries$country,
 
 ```
 
+
 ```{r, echo=FALSE, fig.cap="Countries in MICS"}
+#| label: fig-MICS
+#| column: margin
 
 g <- list(showframe = TRUE, 
           showcoastlines = TRUE, 
@@ -114,7 +126,7 @@ p0 <- MICScountries %>%
 
 # dynamically choose between plotly and png based on output type
 
-if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html5") {
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
   
   p0
   
