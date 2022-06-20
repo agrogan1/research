@@ -165,7 +165,7 @@ plot_geo(mydata) %>%
          height = 500,
          geo = list(showland = FALSE,
                     showcountries = TRUE,
-                    projection = list(type = 'Mollweide'))) %>%
+                    projection = list(type = 'mollweide'))) %>%
   colorbar(title = 'year of prohibition')
 
 ```
