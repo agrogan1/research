@@ -43,7 +43,7 @@ mydata %>%
   theme(legend.key.height = unit(2.25, "line")) +
   theme(legend.text = element_text(size = 10, 
                                    hjust = 0, 
-                                   vjust = 0.75))
+                                   vjust = 0.75)) 
 
 ggsave("./MICS-physical-abuse-waffle/pabuse.png")
 
