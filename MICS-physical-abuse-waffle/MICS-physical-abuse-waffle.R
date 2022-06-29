@@ -27,11 +27,11 @@ mydata %>%
                  make_proportional = TRUE,
                  size = 5) +
   scale_color_manual(name = NULL,
-                     values = c("red",
-                                "darkgreen",
-                                "darkorange",
-                                "deepskyblue",
-                                "blue")) +
+                     values = c("#CC0000",
+                                "#999999",
+                                "#FF9900",
+                                "#333399",
+                                "#009900")) +
   scale_label_pictogram(
     name = NULL,
     values = c("child", "child", "child", "child")) +
@@ -45,7 +45,9 @@ mydata %>%
                                    hjust = 0, 
                                    vjust = 0.75))
 
-ggsave("pabuse.png")
+ggsave("./MICS-physical-abuse-waffle/pabuse.png")
+
+
 
 
 
