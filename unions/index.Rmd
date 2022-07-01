@@ -1,0 +1,56 @@
+---
+title: "Union Membership and Share of Income Going to The Top 10%"
+author:
+- name: Andy Grogan-Kaylor
+  url: https://www.umich.edu/~agrogan
+  affiliation: University of Michigan
+  affiliation_url: https://www.umich.edu
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    code_folding: true
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+Experimenting with visualizing this data...
+
+"As union membership declines, income inequality increases: Union membership and share of income going to the top 10%, 1917–2019"
+
+"From [https://www.epi.org/publication/unions-help-reduce-disparities-and-strengthen-our-democracy/](https://www.epi.org/publication/unions-help-reduce-disparities-and-strengthen-our-democracy/)"
+
+```{r}
+
+library(readr)
+
+unions2 <- read_csv("unions2.csv")
+
+```
+
+```{r}
+
+library(plotly)
+
+plot_ly(unions2, 
+        x = ~Year, 
+        y = ~Union_membership, 
+        type = 'scatter', 
+        mode = 'lines')
+
+```
+
+
+
+"Source: Reproduced from Figure A in Heidi Shierholz, *Working People Have Been Thwarted in Their Efforts to Bargain for Better Wages by Attacks on Unions*, Economic Policy Institute, August 2019. "
+
+
+
+
+
+
