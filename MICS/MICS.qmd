@@ -221,7 +221,7 @@ fa("child", fill = "#009edb", width = "3em")
 ```{r}
 #| column: margin
 
-fa("child", fill = "#009edb", width = "3em")
+fa("book-medical", fill = "#009edb", width = "3em")
 
 ```
 
