@@ -32,9 +32,6 @@ biblio-style: apalike
 nocite: |
   @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
 citation_url: https://agrogan1.github.io/research/MICS
-mainfont: Arial
-fontsize: 12pt
-always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -70,7 +67,14 @@ library(fontawesome) # fontawesome from Rstudio
 
 ```
 
-# Data
+# Data 
+
+```{r}
+#| column: margin
+
+fa("table", fill = "#009edb", width = "3em")
+
+```
 
 The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
 
@@ -89,7 +93,6 @@ MICScountries$country_iso <- countrycode(MICScountries$country,
 
 ```{r, echo=FALSE, fig.cap="Countries in MICS"}
 #| label: fig-MICS
-#| column: margin
 
 g <- list(showframe = TRUE, 
           showcoastlines = TRUE, 
@@ -142,11 +145,24 @@ if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 
 # Analysis
 
+```{r}
+#| column: margin
+
+fa("desktop", fill = "#009edb", width = "3em")
+
+```
 The statistical methods employed in this work consist of various forms of multilevel models which are able to synthesize results across samples from multiple sources. Thus these findings are applicable to a diverse variety of cultures and contexts from around the globe.
 
 # Findings
 
 ## Parenting and Child Outcomes Across Countries
+
+```{r}
+#| column: margin
+
+fa("globe", fill = "#009edb", width = "3em")
+
+```
 
 When studied in global context, across a diverse group of Low and Middle Income Countries (LMICs), these results have important implications for reducing violence against children, for improving family and child well-being, and for the cross-cultural study of parenting and child development (particularly the origins of aggression and antisocial behavior):
 
@@ -154,29 +170,71 @@ When studied in global context, across a diverse group of Low and Middle Income 
 
 ## Physical Punishment
 
+```{r}
+#| column: margin
+
+fa("child", fill = "#009edb", width = "3em")
+
+```
+
 These differences in parenting *behaviors* notwithstanding, physical punishment (spanking) is consistently associated with *decreases in child socio-emotional development*, and particularly with *increases in child aggression*.
 
 * There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the *effects* of parental discipline (including spanking) are *remarkably consistent and nearly universal*.
 * Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
     
 ## Key Takeaway
+
+```{r}
+#| column: margin
+
+fa("comment", fill = "#009edb", width = "3em")
+
+```
     
 > Put more succinctly, there are differences in the disciplinary **methods** employed by parents--and a modest percentage of these differences are attributable to the country in which parents live--but the **effects** of various forms of discipline are remarkably consistent.
 
 ## Psychological Aggression
+
+```{r}
+#| column: margin
+
+fa("child", fill = "#009edb", width = "3em")
+
+```
     
 Psychological aggression (e.g. calling a child names) may have effects that are as harmful as those of physical punishment.
 
 ## Other Forms Of Discipline
+
+```{r}
+#| column: margin
+
+fa("child", fill = "#009edb", width = "3em")
+
+```
 
 * Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
 * The association of other forms of nonviolent discipline with child outcomes is less clear. It may be that the long term investments that parents make in children, such as spending time with children, letting children know that they love them, and listening to children have more positive effects than nonviolent discipline, but this has yet to be thoroughly researched in global context.
 
 ## Child Physical Abuse
 
+```{r}
+#| column: margin
+
+fa("child", fill = "#009edb", width = "3em")
+
+```
+
 Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
 # Conclusion
+
+```{r}
+#| column: margin
+
+fa("comment", fill = "#009edb", width = "3em")
+
+```
 
 Physical punishment has detrimental consequences for children across countries, around the world. Social service providers and intervention programs should encourage parents to find alternative ways of disciplining their children. 
 
