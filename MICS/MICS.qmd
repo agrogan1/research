@@ -25,7 +25,14 @@ format:
     execute:
       echo: false
       warning: false
-    shift-heading-level-by: 1    
+    shift-heading-level-by: 1   
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: haddock
+    execute:
+      echo: false
+      warning: false     
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
 bibliography: ../MICS.bib
 biblio-style: apalike
@@ -143,7 +150,7 @@ if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 
 ```
 
-# Analysis
+# Analysis 
 
 ```{r}
 #| column: margin
