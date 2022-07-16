@@ -25,7 +25,8 @@ format:
     execute:
       echo: false
       warning: false
-    shift-heading-level-by: 1   
+    shift-heading-level-by: 1  
+    title-block-banner: earth.png
   docx:
     toc: true
     number-sections: true
@@ -188,17 +189,15 @@ These differences in parenting *behaviors* notwithstanding, physical punishment 
 
 * There is some variation in the effects of parental discipline (including spanking), on child well-being, but across multiple diverse countries, the *effects* of parental discipline (including spanking) are *remarkably consistent and nearly universal*.
 * Country level norms seem to have an association with child outcomes. In countries where spanking is more normative, child aggression is higher. 
-    
+
+
+:::{.callout-note}
+
 ## Key Takeaway
-
-```{r}
-#| column: margin
-
-fa("comment", fill = "#009edb", width = "3em")
-
-```
     
-> Put more succinctly, there are differences in the disciplinary **methods** employed by parents--and a modest percentage of these differences are attributable to the country in which parents live--but the **effects** of various forms of discipline are remarkably consistent.
+Put more succinctly, there are differences in the disciplinary **methods** employed by parents--and a modest percentage of these differences are attributable to the country in which parents live--but the **effects** of various forms of discipline are remarkably consistent.
+
+:::
 
 ## Psychological Aggression
 
