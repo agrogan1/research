@@ -26,7 +26,6 @@ format:
       echo: false
       warning: false
     shift-heading-level-by: 1  
-    title-block-banner: earth.png
   docx:
     toc: true
     number-sections: true
@@ -34,6 +33,7 @@ format:
     execute:
       echo: false
       warning: false     
+title-block-banner: "#009edb"
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
 bibliography: ../MICS.bib
 biblio-style: apalike
