@@ -67,6 +67,8 @@ library(dplyr)
 
 library(plotly)
 
+library(ggthemes) # better colors
+
 library(countrycode)
 
 # library(icon) # icon from ropensci
@@ -96,6 +98,12 @@ MICScountries$country_iso <- countrycode(MICScountries$country,
                                  'country.name', 
                                  'iso3c')
 
+MICScountries$continent <- countrycode(MICScountries$country, 
+                                 'country.name', 
+                                 'continent')
+
+MICScountries$continent <- as.factor(MICScountries$continent)
+
 ```
 
 
@@ -109,8 +117,7 @@ g <- list(showframe = TRUE,
           countrycolor = toRGB("grey"),
           showocean = FALSE,
           # oceancolor = toRGB("steelblue1"),
-          # projection = list(type = 'robinson'),
-          projection = list(type = 'orthographic',
+          projection = list(type = 'robinson',
                             rotation = list(lon = 0,
                                             lat = 0,
                                             roll = 0)),
