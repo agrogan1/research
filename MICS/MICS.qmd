@@ -166,6 +166,7 @@ if(knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 fa("desktop", fill = "#009edb", width = "3em")
 
 ```
+
 The statistical methods employed in this work consist of various forms of multilevel models which are able to synthesize results across samples from multiple sources. Thus these findings are applicable to a diverse variety of cultures and contexts from around the globe.
 
 # Findings

@@ -1,13 +1,12 @@
 ---
 title: "Interesting and Noteworthy Findings From MICS Analyses"
-author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 format: 
   html:
     theme: 
       light: united
       dark: vapor
-    toc: true
+    toc: false
     number-sections: true
     anchor-sections: true
     highlight-style: haddock
@@ -17,7 +16,7 @@ format:
     comments:
       hypothesis: true
   pdf:
-    toc: true
+    toc: false
     toc-depth: 3
     number-sections: true
     colorlinks: true
@@ -25,7 +24,7 @@ format:
     execute:
       echo: false
       warning: false
-    shift-heading-level-by: 1  
+    shift-heading-level-by: 0  
   docx:
     toc: true
     number-sections: true
@@ -35,6 +34,7 @@ format:
       warning: false     
 title-block-banner: "#009edb"
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
+bibliography: ../MICS.bib
 biblio-style: apalike
 nocite: |
   @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
@@ -50,5 +50,95 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```
 
+```{r}
+
+# call libraries
+
+library(ggplot2)
+
+library(ggthemes)
+
+library(sf) # simple (spatial) features
+
+library(fontawesome) # fontawesome from Rstudio
+
+```
+
+```{r}
+
+# get data
+
+global_data <- read_sf("../../mapping/shapefiles/wrld_simpl/wrld_simpl.shp")
+
+MICS <- read_sf("../../mapping/shapefiles/MICS/MICS.shp")
+
+```
+
+# Data 
+
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
+
+```{r, echo=FALSE, fig.cap="Countries in MICS"}
+#| label: fig-MICS
+#| column: margin
+
+ggplot(global_data) +
+  geom_sf(fill = "gray93",
+          size = .25) +
+  geom_sf(data = MICS, 
+          aes(fill = continent)) +
+  scale_fill_tableau(name = "Continent",
+                     palette = "Tableau 10", 
+                     type = "regular") +
+  # scale_fill_viridis_d(option = "turbo") +
+  labs(title = "Countries in MICS") +
+  # theme_minimal() +
+  theme_void()
+
+```
+
+# No Spanking
+
+Spanking is associated with decreases in child socio-emotional development & with increases in child aggression.
+
+```{r}
+#| column: margin
+
+fa("child", fill = "darkblue", width = "3em")
+
+```
+
+# No Insults
+
+Name-calling & psychological aggression may have effects that are as harmful as those of physical punishment.
+
+```{r}
+#| column: margin
+
+fa("child", fill = "darkblue", width = "3em")
+
+```
+
+# No Physical Or Psychological Punishments
+
+Though common, these parenting behaviors are consistently associated with decreases in child socio-emotional development & with increases in child aggression.
+
+```{r}
+#| column: margin
+
+fa("child", fill = "darkblue", width = "3em")
+
+```
 
 
+```{r, echo=FALSE, results='asis'}
+
+# print a reference header when not HTML5
+
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") != "html5") {
+  
+  cat("# References")
+  
+}
+
+```
