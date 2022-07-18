@@ -1,0 +1,54 @@
+---
+title: "Interesting and Noteworthy Findings From MICS Analyses"
+author: "Andy Grogan-Kaylor"
+date: "`r Sys.Date()`"
+format: 
+  html:
+    theme: 
+      light: united
+      dark: vapor
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    highlight-style: haddock
+    code-fold: true
+    execute:
+      warning: false
+    comments:
+      hypothesis: true
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    highlight-style: haddock
+    execute:
+      echo: false
+      warning: false
+    shift-heading-level-by: 1  
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: haddock
+    execute:
+      echo: false
+      warning: false     
+title-block-banner: "#009edb"
+subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
+biblio-style: apalike
+nocite: |
+  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
+citation_url: https://agrogan1.github.io/research/MICS
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.margin=TRUE)
+
+```
+
+
+
