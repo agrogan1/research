@@ -3,3 +3,9 @@
 Experimenting with RMarkdown, Quarto and PowerPoint to create an infographic of our MICS studies.
 
 The PowerPoint file is likely the best version of the infographic due to PowerPoint's flexibility in formatting and layout.
+
+[HTML](https://agrogan1.github.io/research/MICS-infographic/MICS-infographic.html) version may also be useful.
+
+
+
+

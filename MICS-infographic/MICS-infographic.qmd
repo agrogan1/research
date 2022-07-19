@@ -32,7 +32,7 @@ format:
     execute:
       echo: false
       warning: false     
-title-block-banner: "#009edb"
+title-block-banner: "earth.png"
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
 bibliography: ../MICS.bib
 biblio-style: apalike
@@ -49,6 +49,18 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.margin=TRUE)
 
 ```
+
+```{css}
+
+#title-block-header > div.quarto-title-banner.color-body-bg.page-columns.page-full > div > h1 {
+
+color: red;
+
+}
+
+
+```
+
 
 ```{r}
 
