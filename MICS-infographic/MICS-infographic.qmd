@@ -6,8 +6,8 @@ format:
     theme: 
       light: united
       dark: vapor
-    toc: false
-    number-sections: true
+    toc: true
+    number-sections: false
     anchor-sections: true
     highlight-style: haddock
     code-fold: true
@@ -18,7 +18,7 @@ format:
   pdf:
     toc: false
     toc-depth: 3
-    number-sections: true
+    number-sections: false
     colorlinks: true
     highlight-style: haddock
     execute:
@@ -26,8 +26,8 @@ format:
       warning: false
     shift-heading-level-by: 0  
   docx:
-    toc: true
-    number-sections: true
+    toc: false
+    number-sections: false
     highlight-style: haddock
     execute:
       echo: false
@@ -80,14 +80,13 @@ The findings below are drawn from studies using the *Multiple Indicator Cluster 
 
 ```{r, echo=FALSE, fig.cap="Countries in MICS"}
 #| label: fig-MICS
-#| column: margin
 
 ggplot(global_data) +
   geom_sf(fill = "gray93",
           size = .25) +
   geom_sf(data = MICS, 
           aes(fill = continent)) +
-  scale_fill_tableau(name = "Continent",
+  scale_fill_tableau(name = "Region",
                      palette = "Tableau 10", 
                      type = "regular") +
   # scale_fill_viridis_d(option = "turbo") +
@@ -101,35 +100,17 @@ ggplot(global_data) +
 
 Spanking is associated with decreases in child socio-emotional development & with increases in child aggression.
 
-```{r}
-#| column: margin
-
-fa("child", fill = "darkblue", width = "3em")
-
-```
-
 # No Insults
 
 Name-calling & psychological aggression may have effects that are as harmful as those of physical punishment.
-
-```{r}
-#| column: margin
-
-fa("child", fill = "darkblue", width = "3em")
-
-```
 
 # No Physical Or Psychological Punishments
 
 Though common, these parenting behaviors are consistently associated with decreases in child socio-emotional development & with increases in child aggression.
 
-```{r}
-#| column: margin
+# Positive Discipline
 
-fa("child", fill = "darkblue", width = "3em")
-
-```
-
+Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
 
 ```{r, echo=FALSE, results='asis'}
 
