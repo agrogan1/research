@@ -14,7 +14,7 @@ format:
     execute:
       warning: false
     comments:
-      hypothesis: true
+      hypothesis: false
   pdf:
     toc: false
     toc-depth: 3
@@ -58,6 +58,11 @@ color: red;
 
 }
 
+#title-block-header > div.quarto-title-banner.color-body-bg.page-columns.page-full > div > p {
+
+color: white;
+
+}
 
 ```
 
