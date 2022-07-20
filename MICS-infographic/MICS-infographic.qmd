@@ -90,7 +90,7 @@ MICS <- read_sf("../../mapping/shapefiles/MICS/MICS.shp")
 
 The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
 
-```{r, echo=FALSE, fig.cap="Countries in MICS"}
+```{r, echo=FALSE, fig.cap="Countries in MICS", fig.pos="H", fig.height=3}
 #| label: fig-MICS
 
 ggplot(global_data) +
@@ -119,6 +119,10 @@ Name-calling & psychological aggression may have effects that are as harmful as 
 # No Physical Or Psychological Punishments
 
 Though common, these parenting behaviors are consistently associated with decreases in child socio-emotional development & with increases in child aggression.
+
+# Child Physical Abuse
+
+Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
 # Positive Discipline
 
