@@ -95,8 +95,12 @@ MICS <- read_sf("../../mapping/shapefiles/MICS/MICS.shp")
 
 The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
 
-```{r, echo=FALSE, fig.cap="Countries in MICS", fig.pos="H", fig.height=3}
+```{r dev.args = list(bg = 'transparent'), echo=FALSE, fig.cap="Countries in MICS", fig.pos="H", fig.height=3}
 #| label: fig-MICS
+
+# NB: dev.args in chunk arguments
+# sets chunk to have transparent background
+# need to also included transparency in ggplot theme()
 
 ggplot(global_data) +
   geom_sf(fill = "gray93",
@@ -109,7 +113,11 @@ ggplot(global_data) +
   # scale_fill_viridis_d(option = "turbo") +
   labs(title = "Countries in MICS") +
   # theme_minimal() +
-  theme_void()
+  theme_void() +
+  theme(panel.background = element_rect(fill = "transparent", 
+                                        colour = NA),
+        plot.background = element_rect(fill = "transparent", 
+                                       colour = NA))
 
 ```
 
