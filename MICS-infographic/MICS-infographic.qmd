@@ -121,25 +121,27 @@ ggplot(global_data) +
 
 ```
 
-# No Spanking
+# Spanking Hurts Children
 
-Spanking is associated with decreases in child socio-emotional development & with increases in child aggression.
+Spanking is associated with decreased child socio-emotional development & with increased child aggression.
 
-# No Insults
+# Insults Contribute to Harm
 
 Name-calling & psychological aggression may have effects that are as harmful as those of physical punishment.
 
-# No Physical Or Psychological Punishments
+# Physical and Psychological Punishment Slow Child Development
 
-Though common, these parenting behaviors are consistently associated with decreases in child socio-emotional development & with increases in child aggression.
+Harsh punishment is consistently associated with decreased child socio-emotional development & with more child aggression.
 
-# Child Physical Abuse
+# Eliminating Spanking Reduces Abuse
 
 Simulations with MICS data suggest that eliminating the use of physical punishment would be met with a large reduction in the amount of physical child abuse.
 
-# Positive Discipline
+# Use Positive Discipline!
 
-Positive discipline--in the form of verbal reasoning--is generally associated with improvements in child well-being across countries, and should therefore be recommended. 
+Positive discipline--in the form of verbal reasoning--is generally associated with improvemed child well-being across MICS countries. 
+
+Positive discipline benefits children
 
 ```{r, echo=FALSE, results='asis'}
 
