@@ -93,7 +93,7 @@ MICS <- read_sf("../../mapping/shapefiles/MICS/MICS.shp")
 
 # Data 
 
-The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data come from several hundred thousand families from a diverse group of approximately 60 Low and Middle Income Countries (LMICS) around the world.
 
 ```{r dev.args = list(bg = 'transparent'), echo=FALSE, fig.cap="Countries in MICS", fig.pos="H", fig.height=3}
 #| label: fig-MICS
