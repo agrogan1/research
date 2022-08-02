@@ -132,6 +132,7 @@ plot_geo(mydata) %>%
             text = ~paste(country, 
                           "<br>year of prohibition:", 
                           year.of.prohibition),
+            hoverinfo = "text",
             marker = list(size = 10)) %>%
   layout(title = "Countries With Bans on Corporal Punishment of Children", 
          geo = list(showland = FALSE,
@@ -156,7 +157,7 @@ plot_geo(mydata) %>%
   add_trace(locations = ~country_code, 
             color = ~year.of.prohibition,
             z = ~year.of.prohibition,
-            # hoverinfo = "text",
+            hoverinfo = "text",
             text = ~paste(country, 
                           "<br>year of prohibition:", 
                           year.of.prohibition)) %>%
@@ -165,7 +166,7 @@ plot_geo(mydata) %>%
          height = 500,
          geo = list(showland = FALSE,
                     showcountries = TRUE,
-                    projection = list(type = 'mollweide'))) %>%
+                    projection = list(type = 'natural earth'))) %>%
   colorbar(title = 'year of prohibition')
 
 ```
