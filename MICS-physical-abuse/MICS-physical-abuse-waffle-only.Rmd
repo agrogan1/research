@@ -1,0 +1,214 @@
+---
+title: "Spanking and Physical Abuse among Children under Five"
+subtitle: "in Low- and Middle-Income Countries"
+author: "Julie Ma, Andrew Grogan-Kaylor, Garrett T. Pace, Kaitlin P. Ward, Shawna J. Lee"
+institute: "University of Michigan"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", michigan.css, michigan-fonts.css]
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+options(htmltools.dir.version = FALSE)
+
+# gganimate gives grainy results
+# fadeIn is better, especially with incremental slides
+# dev = 'svg'
+
+
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(tibble) 
+
+library(tidyr)
+
+library(ggplot2)
+
+library(gganimate)
+
+library(countrycode)
+
+library(plotly)
+
+library(fontawesome)
+
+library(scales)
+
+# library(waffle)
+# 
+# library(hrbrthemes)
+
+# library(michigancolors)
+
+library(xaringanExtra)
+
+xaringanExtra::use_tile_view()
+
+xaringanExtra::use_animate_css()
+
+xaringanExtra::use_share_again()
+
+xaringanExtra::style_share_again()
+
+xaringanExtra::use_progress_bar(color = "#ffcb05", 
+                                location = "bottom")
+
+```
+
+63 Not Spanked and Not Abused
+
+```{r}
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+fa("child", fill = "grey")
+
+```
+
+5 Not Spanked and Abused
+
+```{r}
+
+fa("child", fill = "deeppink")
+fa("child", fill = "deeppink")
+fa("child", fill = "deeppink")
+fa("child", fill = "deeppink")
+fa("child", fill = "deeppink")
+
+```
+
+25 Spanked and Not Abused
+
+```{r}
+
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+fa("child", fill = "limegreen")
+
+```
+
+3 Spanked and Abused
+
+```{r}
+
+fa("child", fill = "red")
+fa("child", fill = "red")
+fa("child", fill = "red")
+
+```
+
+4 Would Not Be Abused Were Spanking Eliminated
+
+```{r}
+
+fa("child", fill = "darkorange")
+fa("child", fill = "darkorange")
+fa("child", fill = "darkorange")
+fa("child", fill = "darkorange")
+
+```
+
