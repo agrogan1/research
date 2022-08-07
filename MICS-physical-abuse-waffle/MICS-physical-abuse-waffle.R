@@ -47,6 +47,8 @@ mydata %>%
 
 ggsave("./MICS-physical-abuse-waffle/pabuse.png")
 
+ggsave("./MICS-physical-abuse-waffle/pabuse.svg")
+
 
 
 
