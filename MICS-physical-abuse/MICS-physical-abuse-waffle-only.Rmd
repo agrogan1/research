@@ -1,18 +1,11 @@
 ---
-title: "Spanking and Physical Abuse among Children under Five"
-subtitle: "in Low- and Middle-Income Countries"
-author: "Julie Ma, Andrew Grogan-Kaylor, Garrett T. Pace, Kaitlin P. Ward, Shawna J. Lee"
-institute: "University of Michigan"
+title: ""
+subtitle: ""
+author: ""
 date: "`r Sys.Date()`"
 output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    css: ["default", michigan.css, michigan-fonts.css]
-    seal: false
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+  html_document: 
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -76,6 +69,12 @@ xaringanExtra::style_share_again()
   display: none;
 
 }
+
+div{ 
+
+  display:inline-block;
+  
+} 
 
 ```
 
