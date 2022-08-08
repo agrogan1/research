@@ -56,7 +56,7 @@ library(scales)
 
 library(xaringanExtra)
 
-xaringanExtra::use_tile_view()
+# xaringanExtra::use_tile_view()
 
 xaringanExtra::use_animate_css()
 
@@ -64,8 +64,8 @@ xaringanExtra::use_share_again()
 
 xaringanExtra::style_share_again()
 
-xaringanExtra::use_progress_bar(color = "#ffcb05", 
-                                location = "bottom")
+# xaringanExtra::use_progress_bar(color = "#ffcb05", 
+                                # location = "bottom")
 
 ```
 
