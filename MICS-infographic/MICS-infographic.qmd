@@ -52,15 +52,9 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{css}
 
-#title-block-header > div.quarto-title-banner.color-body-bg.page-columns.page-full > div > h1 {
+h1.title {
 
-color: red;
-
-}
-
-#title-block-header > div.quarto-title-banner.color-body-bg.page-columns.page-full > div > p {
-
-color: white;
+  color: red;
 
 }
 
