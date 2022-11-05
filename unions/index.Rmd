@@ -40,11 +40,15 @@ library(plotly)
 plot_ly(unions2, 
         x = ~Year, 
         y = ~Union_membership, 
-        text = ~paste("Year: ", Year, '<br>Union Membership:', Union_membership),
+        text = ~paste("Year: ", 
+                      Year, 
+                      '<br>Union Membership:', 
+                      Union_membership),
         hoverinfo = "text",
         type = 'scatter', 
         mode = 'lines', 
-        line = list(color = 'red')) %>%
+        line = list(color = 'red'),
+        name = 'Union Membership') %>%
   add_trace(x = ~Year, 
             y = ~Share_of_income_going_to_the_top_10, 
             text = ~paste("Year: ", Year, 
@@ -53,7 +57,11 @@ plot_ly(unions2,
             hoverinfo = "text",
             type = 'scatter',
             mode = 'lines', 
-        line = list(color = 'blue')) 
+        line = list(color = 'blue'),
+        name = 'Share of Income <br>Going To Top 10%') %>%
+        layout(title = 'Union Membership and Share of Income Going to Top 10%',
+               xaxis = list(title = 'year'),
+               yaxis = list(title = ' '))
 
 
 ```
