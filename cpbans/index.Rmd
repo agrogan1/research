@@ -152,6 +152,8 @@ save(mydata, file = "CPBans.RData") # save to R
 
 write.dta(mydata, "CPBans.dta") # write to Stata
 
+write.csv(mydata, file = "CPBans.csv") # save to CSV
+
 # make new data file of ALL Countries
 
 AllCountries <- read_csv("AllCountries.csv") # read data
