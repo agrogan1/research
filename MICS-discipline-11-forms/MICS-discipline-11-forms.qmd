@@ -1,28 +1,14 @@
 ---
 title: "Associations Between 11 Forms of Discipline and Child Outcomes Across 60 Countries"
-author:
-  - name: Kaitlin P. Ward
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu
-  - name: Andrew Grogan-Kaylor
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu
-  - name: Shawna J. Lee
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu  
-  - name: Julie Ma
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu  
-  - name: Garrett T. Pace 
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-citation_url: https://agrogan1.github.io/
+author: "Kaitlin P. Ward, Andrew Grogan-Kalor, Shawna J. Lee, Julie Ma, Garrett T. Pace"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: cosmo
+      dark: vapor
 ---
 
 ```{r setup, include=FALSE}
@@ -31,8 +17,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-
 ```{r}
+#| output: false
 
 library(maps) # maps
 
@@ -57,6 +43,7 @@ library(tibble) # data frames
 ```
 
 ```{r}
+#| warning: false
 
 data(wrld_simpl) # world map data
 
@@ -109,7 +96,7 @@ To test associations between 11 parental discipline behaviors and child aggressi
 
 Data came from the fourth (2009-2013) and fifth (2012-2017) rounds of the UNICEF Multiple Indicator Cluster Surveys (MICS). Survey responses publicly available as of July 2020 were included. Data were restricted to household respondents with focal children under 5 years. The final analytic sample included 163,345 respondents across 60 LMICs. Data were analyzed using Bayesian multilevel logistic regression.
 
-```{r, fig.cap="Locations of MICS Countries", layout = "l-page"}
+```{r, fig.cap="Locations of MICS Countries"}
 
 library(leaflet)
 
@@ -140,7 +127,7 @@ Random slopes suggested statistically credible cultural variation in the associa
 
 # Data Visualization
 
-```{r, fig.cap="Association of Discipline with Child Outcomes", layout = "l-page"}
+```{r, fig.cap="Association of Discipline with Child Outcomes"}
 
 myORs <- tribble(
   ~Discipline, ~Aggression, ~Distraction, ~Prosocial,
