@@ -1,23 +1,20 @@
 ---
 title: "Media Mentions of Meta-Analysis of Research on Corporal Punishment"
-author:
-  - name: Andy Grogan-Kaylor 
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu/
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
+author: "Andy Grogan-Kaylor" 
+date: "today"
+format: 
+  html:
+    theme: cosmo
+    toc: false
+    number-sections: false
+    css: styles.css
 ---
 
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE)
-
-```
-
-```{r, layout="l-screen", fig.height=4}
+```{r}
+#| column: page
+#| fig-height: 4
+#| echo: false
+#| message: false
 
 library(readxl)
 
@@ -49,7 +46,7 @@ ggplotly(p1, tooltip = c("fill", "label"))
 
 Media Mentions of Meta-Analysis of Corporal Punishment Research:
 
-> Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. Journal of Family Psychology. 30(4), 453-469. http://dx.doi.org/10.1037/fam0000191 
+> Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. Journal of Family Psychology. 30(4), 453-469. [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191) 
 
 Our meta-analysis of 50 years of research on corporal punishment received at least 100 mentions in the English language news media.  Further, a report from University of Michigan News indicated that the press release from UM News received "more than 100 hits in Spanish, 60 in Chinese, 43 in Portuguese and 23 in India."
 

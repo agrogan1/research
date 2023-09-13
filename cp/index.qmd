@@ -1,23 +1,15 @@
 ---
 title: "Earlier Research on Corporal Punishment"
-description: |
-  Research Articles
-author:
-  - name: Andy Grogan-Kaylor 
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://umich.edu/
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
+subtitle: "Research Articles"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format: 
+  html:
+    theme: cosmo
+    toc: false
+    number-sections: false
+    css: styles.css
 ---
-
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE)
-
-```
 
 > I have authored, and collaborated on, a number of studies of corporal punishment.  In my research, I have consistently found that parental use of corporal punishment is associated with undesirable increases in outcomes like antisocial behavior, as well as anxiety and depression among children.  These findings are robust--and consistent across many different groups of parents and families--despite the fact that I have used statistical models which control for a number of possible alternative explanations.
 
