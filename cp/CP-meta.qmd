@@ -1,23 +1,19 @@
 ---
 title: "Meta-Analysis of Research on Corporal Punishment"
-author:
-  - name: Andy Grogan-Kaylor 
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu/
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
+author: "Andy Grogan-Kaylor" 
+date: "today"
+format: 
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
 ---
 
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE)
-
-```
-
-```{r, layout="l-screen", fig.height=4}
+```{r}
+#| column: page
+#| fig-height: 4
+#| echo: false
+#| message: false
 
 library(readxl)
 
@@ -52,7 +48,3 @@ ggplotly(p1, tooltip = c("fill", "label"))
 > This article received a [considerable amount of media attention](media-mentions-CP-meta.html).
 
 Whether spanking is helpful or harmful to children continues to be the source of considerable debate among both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences. Meta-analyses focused specifically on spanking were conducted on a total of 111 unique effect sizes representing 160,927 children. Thirteen of 17 mean effect sizes were significantly different from zero and all indicated a link between spanking and increased risk for detrimental child outcomes. Effect sizes did not substantially differ between spanking and physical abuse or by study design characteristics.
-
-
-
-
