@@ -1,10 +1,10 @@
 ---
-title: "Interesting and Noteworthy Findings From MICS Analyses"
-date: "`r Sys.Date()`"
+title: "Interesting and Noteworthy Findings"
+date: "today"
 format: 
   html:
     theme: 
-      light: united
+      light: cosmo
       dark: vapor
     toc: true
     number-sections: false
@@ -31,9 +31,11 @@ format:
     highlight-style: haddock
     execute:
       echo: false
-      warning: false     
+      warning: false  
+  PrettyPDF-pdf:
+    keep-tex: true         
 title-block-banner: "earth.png"
-subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
+subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development from MICS Data"
 bibliography: ../MICS.bib
 biblio-style: apalike
 nocite: |
