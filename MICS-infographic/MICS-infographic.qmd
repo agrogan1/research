@@ -34,7 +34,6 @@ format:
       warning: false  
   PrettyPDF-pdf:
     keep-tex: true         
-title-block-banner: "earth.png"
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development from MICS Data"
 bibliography: ../MICS.bib
 biblio-style: apalike
@@ -51,17 +50,6 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.margin=TRUE)
 
 ```
-
-```{css}
-
-h1.title {
-
-  color: red;
-
-}
-
-```
-
 
 ```{r}
 
@@ -103,9 +91,10 @@ ggplot(global_data) +
           size = .25) +
   geom_sf(data = MICS, 
           aes(fill = continent)) +
-  scale_fill_tableau(name = "Region",
-                     palette = "Tableau 10", 
-                     type = "regular") +
+  scale_fill_viridis_d(name = "Region") +
+  # scale_fill_tableau(name = "Region",
+  #                    palette = "Tableau 10", 
+  #                    type = "regular") +
   # scale_fill_viridis_d(option = "turbo") +
   labs(title = "Countries in MICS") +
   # theme_minimal() +
