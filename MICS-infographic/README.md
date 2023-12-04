@@ -6,7 +6,7 @@ The PowerPoint file is likely the best version of the infographic due to PowerPo
 
 [HTML](https://agrogan1.github.io/research/MICS-infographic/MICS-infographic.html) version may also be useful.
 
-More information on the studies described in this infographic, can be found [here](https://agrogan1.github.io/#multiple-indicator-cluster-surveys-mics-unicef-data).
+More information on the studies described in this infographic, can be found [here](https://agrogan1.github.io/research.html).
 
 
 
