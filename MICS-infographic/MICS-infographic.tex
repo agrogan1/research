@@ -116,7 +116,7 @@
 %% Let's define some colours
 \definecolor{light}{HTML}{1CABE2}
 \definecolor{highlight}{HTML}{374EA2}
-\definecolor{dark}{HTML}{1CABE2}
+\definecolor{dark}{HTML}{000000}
 
 %% Let's add the border on the right hand side 
 \AddToShipoutPicture{% 
@@ -263,7 +263,7 @@ Child Development from MICS Data}
 \maketitle
 \pagestyle{mystyle}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, colback={codebgcolor}, boxrule=0pt, sharp corners, enhanced, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, colback={codebgcolor}, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \begin{figure}[H]
 
