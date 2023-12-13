@@ -1,5 +1,5 @@
 ---
-title: "Interesting and Noteworthy Findings"
+title: "Parenting and Child Development"
 date: "today"
 format: 
   html:
