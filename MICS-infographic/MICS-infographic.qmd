@@ -19,6 +19,7 @@ format:
     toc: false
     number-sections: false
     highlight-style: haddock
+    reference-doc: markstat.docx
     execute:
       echo: false
       warning: false  
@@ -28,7 +29,7 @@ subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Deve
 bibliography: ../MICS.bib
 biblio-style: apalike
 nocite: |
-  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
+  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Ward2023, @Pace2019, @Ma2022
 citation_url: https://agrogan1.github.io/research/MICS
 ---
 
