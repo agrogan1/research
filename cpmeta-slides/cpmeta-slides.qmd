@@ -1,0 +1,159 @@
+---
+title: "Spanking and Child Outcomes:"
+subtitle: "Old Controversies and New Meta-Analyses"
+author: "Elizabeth Gershoff and Andrew Grogan-Kaylor" 
+date: "today"
+format:
+  revealjs:
+    incremental: true
+    scrollable: true
+    controls: true
+    transition: convex
+    transition-speed: slow
+    chalkboard: true
+    title-slide-attributes:
+      data-background-color: black
+---
+
+## How To Navigate This Presentation {transition="convex" transition-speed="slow"}
+
+```{css, echo = FALSE}
+
+h1.title {
+  font-size: 70px;
+  color: white;
+  background-color: red;
+}
+
+.quarto-title-author-name {
+  font-size: 30px;
+  color: white;
+}
+
+p.author {
+  color: white;
+}
+
+```
+
+
+```{r}
+
+library(emo)
+
+library(ggplot2)
+
+library(plotly)
+
+set.seed(3846)
+
+```
+
+-   Use the `r emo::ji("left_arrow")` `r emo::ji("right_arrow")` keys to move through the presentation.
+-   Press *o* for *panel overview*.
+
+## Introduction
+
+Whether spanking is helpful or harmful to children continues to be the source of considerable debate among both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences.
+
+## Analysis
+
+Meta-analyses focused specifically on spanking were conducted on a total of 111 unique effect sizes representing 160,927 children.
+
+## What Is An Effect Size? {.smaller}
+
+In meta-analysis, an effect size is an attempt to make comparable different measures on different numeric scales. Effect sizes are often expressed in terms of standard deviations.
+
+```{r}
+#| echo: false
+#| fig-height: 3
+
+N <- 30 
+
+x1 <- rnorm(N, 0, 1)
+
+x2 <- rnorm(N, .25, 1)
+
+x <- c(x1, x2)
+
+group <- rep(c(1,2), each = N)
+
+# group <- factor(group)
+
+mydata <- data.frame(x, group)
+
+plot_ly(mydata, 
+        x = ~x, 
+        type = "histogram",
+        # y = ~group,
+        text = ~group,
+        color = ~factor(group),
+        symbol = ~factor(group),
+        marker = list(size = 10)) %>% 
+  layout(title = '2 Groups That Differ By .25 Standard Deviations',
+         xaxis = list(title = 'Some Measure X'))
+
+```
+
+> "... in order to have one more favorable outcome in the "treatment" group compared to the "control" group, we need to treat 13.0 people on average." [https://rpsychologist.com/cohend/](https://rpsychologist.com/cohend/)
+
+## Results
+
+* Thirteen of 17 mean effect sizes were significantly different from zero and all indicated a link between spanking and increased risk for detrimental child outcomes. 
+* Effect sizes did not substantially differ between spanking and physical abuse or by study design characteristics.
+
+## Visualization
+
+```{r}
+#| echo: false
+#| message: false
+
+library(readxl)
+
+CP_Meta_Summary_Results <- read_excel("data/CP Meta Summary Results.xlsx")
+
+library(ggplot2)
+
+library(plotly)
+
+p1 <- ggplot(CP_Meta_Summary_Results,
+             aes(x = reorder(Outcome, d),
+                 y = d,
+                 label = Outcome,
+                 fill = d)) + 
+  geom_bar(stat = "identity") +
+  scale_fill_viridis_c() +
+  coord_flip() +
+  labs(title= "Effect Sizes of Physical Punishment",
+       x = "Outcome",
+       y = "Cohen's d Effect Size",
+       caption = "Gershoff and Grogan-Kaylor, 2016") +
+  theme(legend.position = "none",
+        title = element_text(size = rel(.5)),
+        axis.text = element_text(size = rel(.75)))
+
+ggplotly(p1, tooltip = c("fill", "label"))
+
+```
+
+
+## Media Attention
+
+![Media Attention](media.png){width=80%}
+
+## Part of the Conversation 
+
+* Policy Statement by American Academy of Pediatrics
+* Policy Statement by American Psychological Association
+* More recent work has -> oral testimony by colleague before First Commission of the Congress of Colombia
+* Colombia instituted a ban on physical punishment in Summer 2020.
+
+## Citation
+
+Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. *Journal of Family Psychology*. 30(4), 453-469. [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)
+
+
+
+
+
+
