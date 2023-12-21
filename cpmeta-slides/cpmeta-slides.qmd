@@ -5,9 +5,12 @@ author: "Elizabeth Gershoff and Andrew Grogan-Kaylor"
 date: "today"
 format:
   revealjs:
+    view-distance: 10
     incremental: true
     scrollable: true
     controls: true
+    controls-tutorial: true
+    progress: true
     transition: convex
     transition-speed: slow
     chalkboard: true
