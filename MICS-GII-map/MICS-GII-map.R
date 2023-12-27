@@ -46,6 +46,8 @@ ggplot(data = mapdata) +
                       low = "grey95",
                       high = "grey1",
                       na.value = "white") +
+  # scale_fill_viridis_c(name = "Gender \nInequality \nIndex",
+  #                      na.value = "white") +
   # labs(title = "Gender Inequality Index",
   #      subtitle = "For Countries in MICS") +
   theme_minimal()
