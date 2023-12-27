@@ -13,7 +13,7 @@ library(dplyr)
 library(readr)
 
 library(countrycode)
-  
+
 # read in MICS data
 
 MICS_GII <- read_csv("MICS-GII-map/MICS-GII.csv")
@@ -46,8 +46,8 @@ ggplot(data = mapdata) +
                       low = "grey95",
                       high = "grey1",
                       na.value = "white") +
-  labs(title = "Gender Inequality Index",
-       subtitle = "For Countries in MICS") +
+  # labs(title = "Gender Inequality Index",
+  #      subtitle = "For Countries in MICS") +
   theme_minimal()
 
 ggsave("MICS-GII-map/MICS-GII.pdf",
