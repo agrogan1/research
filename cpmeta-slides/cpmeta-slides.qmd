@@ -52,8 +52,9 @@ set.seed(3846)
 
 ```
 
--   Use the `r emo::ji("left_arrow")` `r emo::ji("right_arrow")` keys to move through the presentation.
--   Press *o* for *panel overview*.
+- Use the `r emo::ji("left_arrow")` `r emo::ji("right_arrow")` keys to move through the presentation.
+- Press *o* for *panel overview*.
+- You may need to hit *reload* to get some slides--especially those with visualizations--to load properly.
 
 ## Introduction
 
