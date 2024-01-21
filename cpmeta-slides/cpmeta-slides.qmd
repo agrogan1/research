@@ -141,17 +141,6 @@ ggplotly(p1, tooltip = c("fill", "label"))
 ```
 
 
-## Media Attention
-
-![Media Attention](media.png){width=80%}
-
-## Part of the Conversation 
-
-* Policy Statement by American Academy of Pediatrics
-* Policy Statement by American Psychological Association
-* More recent work has -> oral testimony by colleague before First Commission of the Congress of Colombia
-* Colombia instituted a ban on physical punishment in Summer 2020.
-
 ## Citation
 
 Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. *Journal of Family Psychology*. 30(4), 453-469. [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)
