@@ -14,8 +14,10 @@ format:
     transition: convex
     transition-speed: slow
     chalkboard: true
+    lightbox: true
     title-slide-attributes:
       data-background-color: black
+bibliography: cpmeta.bib
 ---
 
 ## How To Navigate This Presentation {transition="convex" transition-speed="slow"}
@@ -35,6 +37,10 @@ h1.title {
 
 p.author {
   color: white;
+}
+
+.reveal blockquote {
+  border-left: 3px solid red;
 }
 
 ```
@@ -59,6 +65,12 @@ set.seed(3846)
 
 * Whether spanking is helpful or harmful to children continues to be the source of considerable debate among both researchers and the public. 
 * This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences.
+
+## Context {.smaller}
+
+> "Corporal punishment is the most common form of violence against children worldwide, leading to the injury and death of thousands of children each year. Its very widespread social acceptance means that a level of violence in childrearing is normalised, entrenching children’s low status and paving the way for other forms of violence and mistreatment." [@CP10KeyMessages2022]
+
+> "The magnitude of violence against children is staggering. Globally, the most pervasive form of violence against children is corporal punishment. Because it often occurs in the confines of homes and other settings where children live, study and play, it is largely hidden and challenging to detect. Worldwide, it is estimated that nearly one billion children are hit, slapped, spanked, pinched, or otherwise physically punished regularly by their parents, caregivers, teachers, or other trusted adults, the same individuals responsible for nurturing, protecting, and educating them [@UNICEF2017; @WHO2020]." [@StewartTufescu2023]
 
 ## Analysis
 
@@ -149,12 +161,14 @@ ggplotly(p1, tooltip = c("fill", "label"))
 
 * Policy Statement by American Academy of Pediatrics
 * Policy Statement by American Psychological Association
-* More recent work has -> oral testimony by colleague before First Commission of the Congress of Colombia
+* More recent work has `r emo::ji("right_arrow")` oral testimony by colleague before First Commission of the Congress of Colombia
 * Colombia instituted a ban on physical punishment in Summer 2020.
 
 ## Citation
 
 Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. *Journal of Family Psychology*. 30(4), 453-469. [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191)
+
+## References
 
 
 

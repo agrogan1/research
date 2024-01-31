@@ -7,11 +7,14 @@
 <link href="cpmeta-slides-2_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="cpmeta-slides-2_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="cpmeta-slides-2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="cpmeta-slides-2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+<link href="cpmeta-slides-2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="cpmeta-slides-2_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="cpmeta-slides-2_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="cpmeta-slides-2_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Elizabeth Gershoff and Andrew Grogan-Kaylor">
-  <meta name="dcterms.date" content="2024-01-20">
+  <meta name="dcterms.date" content="2024-01-31">
   <title>Spanking and Child Outcomes:</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,7 +33,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="cpmeta-slides-2_files/libs/revealjs/dist/theme/quarto.css">
   <link href="cpmeta-slides-2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="cpmeta-slides-2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -159,7 +182,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -348,7 +372,7 @@ Elizabeth Gershoff and Andrew Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2024-01-20</p>
+  <p class="date">2024-01-31</p>
 </section>
 <section id="how-to-navigate-this-presentation" class="slide level2" data-transition="convex" data-transition-speed="slow">
 <h2>How To Navigate This Presentation</h2>
@@ -370,6 +394,10 @@ p.author {
   color: white;
 }
 
+.reveal blockquote {
+  border-left: 3px solid red;
+}
+
 </style>
 </div>
 <ul>
@@ -384,6 +412,15 @@ p.author {
 <li class="fragment">This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences.</li>
 </ul>
 </section>
+<section id="context" class="slide level2 smaller">
+<h2>Context</h2>
+<blockquote>
+<p>“Corporal punishment is the most common form of violence against children worldwide, leading to the injury and death of thousands of children each year. Its very widespread social acceptance means that a level of violence in childrearing is normalised, entrenching children’s low status and paving the way for other forms of violence and mistreatment.” <span class="citation" data-cites="CP10KeyMessages2022">(<a href="#/references" role="doc-biblioref" onclick="">End Violence Against Children and End Corporal Punishment 2022</a>)</span></p>
+</blockquote>
+<blockquote>
+<p>“The magnitude of violence against children is staggering. Globally, the most pervasive form of violence against children is corporal punishment. Because it often occurs in the confines of homes and other settings where children live, study and play, it is largely hidden and challenging to detect. Worldwide, it is estimated that nearly one billion children are hit, slapped, spanked, pinched, or otherwise physically punished regularly by their parents, caregivers, teachers, or other trusted adults, the same individuals responsible for nurturing, protecting, and educating them <span class="citation" data-cites="UNICEF2017 WHO2020">(<a href="#/references" role="doc-biblioref" onclick="">UNICEF 2017</a>; <a href="#/references" role="doc-biblioref" onclick="">World Health Organization 2020</a>)</span>.” <span class="citation" data-cites="StewartTufescu2023">(<a href="#/references" role="doc-biblioref" onclick="">Stewart-Tufescu 2023</a>)</span></p>
+</blockquote>
+</section>
 <section id="analysis" class="slide level2">
 <h2>Analysis</h2>
 <p>Meta-analyses focused specifically on spanking were conducted on a total of 111 unique effect sizes representing 160,927 children.</p>
@@ -394,7 +431,7 @@ p.author {
 <div class="cell">
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-aa169b24e19bfdfb2de6" style="width:960px;height:288px;"></div>
-<script type="application/json" data-for="htmlwidget-aa169b24e19bfdfb2de6">{"x":{"visdat":{"110797dffc0":["function () ","plotlyVisDat"]},"cur_data":"110797dffc0","attrs":{"110797dffc0":{"x":{},"text":{},"marker":{"size":10},"color":{},"symbol":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"2 Groups That Differ By .25 Standard Deviations","xaxis":{"domain":[0,1],"automargin":true,"title":"Some Measure X"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.16961748326210163,0.097961702541151593,-1.6209353882929536,-1.215572761527081,-1.2956221609568073,1.5420729187750335,0.53637769349372832,-1.074419117907057,-0.38804958563429792,-0.19373050160798513,0.17630043206055895,0.89428245203226386,-1.0599501086590002,0.1205253657680412,1.456038195019834,1.5023128915975263,0.77363222607563109,0.39789270110699826,1.6742578415935938,0.95305683793824303,-0.93468787052273161,1.2909417763269304,-1.6566267874269356,0.002010482140267889,-0.5258157546130946,0.84710553978554248,-2.0706165982717417,-0.21580286480176761,0.47941405587185942,1.3426573277835414],"text":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"marker":{"color":"rgba(102,194,165,1)","symbol":"circle","size":10,"line":{"color":"rgba(102,194,165,1)"}},"type":"histogram","name":"1","mode":"+markers","textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-0.77780354468926882,1.5607763544409632,0.30172349797883757,1.4576020708152089,-0.46226467242212366,-1.537513466572221,0.94273376984574198,-0.046305928103373362,-0.57707717693003269,0.052011435116774973,-0.22241758818920465,-0.73831366326512005,1.0450422085281406,0.41934782120944403,-0.13468814218449032,0.91241860881733072,-0.46906322481671237,-0.43624753516527159,-0.537205616646525,-0.71577633401064078,1.6968991189529734,1.049027296747562,-0.89947221149037193,0.37094587250061384,-0.066190180485480477,-0.52347022928507569,-0.068973382586112519,-0.17752146141738906,-0.60030670560390409,0.54401511706352057],"text":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"marker":{"color":"rgba(141,160,203,1)","symbol":"triangle-up","size":10,"line":{"color":"rgba(141,160,203,1)"}},"type":"histogram","name":"2","mode":"+markers","textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-aa169b24e19bfdfb2de6">{"x":{"visdat":{"32a276fffd12":["function () ","plotlyVisDat"]},"cur_data":"32a276fffd12","attrs":{"32a276fffd12":{"x":{},"text":{},"marker":{"size":10},"color":{},"symbol":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"2 Groups That Differ By .25 Standard Deviations","xaxis":{"domain":[0,1],"automargin":true,"title":"Some Measure X"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.16961748326210163,0.097961702541151593,-1.6209353882929536,-1.215572761527081,-1.2956221609568073,1.5420729187750335,0.53637769349372832,-1.074419117907057,-0.38804958563429792,-0.19373050160798513,0.17630043206055895,0.89428245203226386,-1.0599501086590002,0.1205253657680412,1.456038195019834,1.5023128915975263,0.77363222607563109,0.39789270110699826,1.6742578415935938,0.95305683793824303,-0.93468787052273161,1.2909417763269304,-1.6566267874269356,0.002010482140267889,-0.5258157546130946,0.84710553978554248,-2.0706165982717417,-0.21580286480176761,0.47941405587185942,1.3426573277835414],"text":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"marker":{"color":"rgba(102,194,165,1)","symbol":"circle","size":10,"line":{"color":"rgba(102,194,165,1)"}},"type":"histogram","name":"1","mode":"+markers","textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-0.77780354468926882,1.5607763544409632,0.30172349797883757,1.4576020708152089,-0.46226467242212366,-1.537513466572221,0.94273376984574198,-0.046305928103373362,-0.57707717693003269,0.052011435116774973,-0.22241758818920465,-0.73831366326512005,1.0450422085281406,0.41934782120944403,-0.13468814218449032,0.91241860881733072,-0.46906322481671237,-0.43624753516527159,-0.537205616646525,-0.71577633401064078,1.6968991189529734,1.049027296747562,-0.89947221149037193,0.37094587250061384,-0.066190180485480477,-0.52347022928507569,-0.068973382586112519,-0.17752146141738906,-0.60030670560390409,0.54401511706352057],"text":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"marker":{"color":"rgba(141,160,203,1)","symbol":"triangle-up","size":10,"line":{"color":"rgba(141,160,203,1)"}},"type":"histogram","name":"2","mode":"+markers","textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <blockquote>
@@ -413,28 +450,55 @@ p.author {
 <div class="cell">
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-70c24a992036f18f019c" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-70c24a992036f18f019c">{"x":{"data":[{"orientation":"h","width":0.89999999999999991,"base":0,"x":[0.089999999999999997],"y":[1],"text":"Outcome: Child alcohol or substance abuse<br />d: 0.090","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000013,"base":0,"x":[0.13300000000000001],"y":[2],"text":"Outcome: Adult alcohol or substance abuse<br />d: 0.133","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,34,104,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.14299999999999999],"y":[3],"text":"Outcome: Immediate defiance<br />d: 0.143","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,39,108,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.151],"y":[4],"text":"Outcome: Low self-esteem<br />d: 0.151","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,44,112,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.16600000000000001],"y":[5],"text":"Outcome: Impaired cognitive ability<br />d: 0.166","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,51,119,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23799999999999999],"y":[6],"text":"Outcome: Child internalizing behavior problems<br />d: 0.238","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,87,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23999999999999999],"y":[7],"text":"Outcome: Adult mental health problems<br />d: 0.240","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,88,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999947,"base":0,"x":[0.30099999999999999],"y":[8],"text":"Outcome: Low self-regulation<br />d: 0.301","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(45,117,142,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.33100000000000002],"y":[9],"text":"Outcome: Overall effect size<br />d: 0.331","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,130,140,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.35499999999999998],"y":[10],"text":"Outcome: Adult antisocial behavior<br />d: 0.355","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,140,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.37],"y":[11],"text":"Outcome: Child aggression<br />d: 0.370","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,147,137,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.379],"y":[12],"text":"Outcome: Adult support for physical punishment<br />d: 0.379","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,151,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38200000000000001],"y":[13],"text":"Outcome: Low moral internalization<br />d: 0.382","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,152,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38700000000000001],"y":[14],"text":"Outcome: Child anti-social behavior<br />d: 0.387","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,155,135,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.40999999999999998],"y":[15],"text":"Outcome: Child externalizing behavior problems<br />d: 0.410","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(36,165,133,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.51100000000000001],"y":[16],"text":"Outcome: Negative parent-child relationship<br />d: 0.511","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(114,203,90,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.52800000000000002],"y":[17],"text":"Outcome: Child mental health problems<br />d: 0.528","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(125,209,80,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.63500000000000001],"y":[18],"text":"Outcome: Victim of physical abuse<br />d: 0.635","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":39.378995433789953,"r":7.3059360730593621,"b":36.529680365296812,"l":221.00456621004565},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Effect Sizes of Physical Punishment","font":{"color":"rgba(0,0,0,1)","family":"","size":8.7671232876712324},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.03175,0.66674999999999995],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.19999999999999998,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Cohen's d Effect Size","font":{"color":"rgba(0,0,0,1)","family":"","size":7.3059360730593621}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,18.600000000000001],"tickmode":"array","ticktext":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"tickvals":[1,2,3,4,5,5.9999999999999991,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Outcome","font":{"color":"rgba(0,0,0,1)","family":"","size":7.3059360730593621}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"11074dc37a75":{"x":{},"y":{},"label":{},"fill":{},"type":"bar"}},"cur_data":"11074dc37a75","visdat":{"11074dc37a75":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-70c24a992036f18f019c">{"x":{"data":[{"orientation":"h","width":0.89999999999999991,"base":0,"x":[0.089999999999999997],"y":[1],"text":"Outcome: Child alcohol or substance abuse<br />d: 0.090","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000013,"base":0,"x":[0.13300000000000001],"y":[2],"text":"Outcome: Adult alcohol or substance abuse<br />d: 0.133","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,34,104,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.14299999999999999],"y":[3],"text":"Outcome: Immediate defiance<br />d: 0.143","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,39,108,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.151],"y":[4],"text":"Outcome: Low self-esteem<br />d: 0.151","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,44,112,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.16600000000000001],"y":[5],"text":"Outcome: Impaired cognitive ability<br />d: 0.166","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,51,119,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23799999999999999],"y":[6],"text":"Outcome: Child internalizing behavior problems<br />d: 0.238","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,87,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23999999999999999],"y":[7],"text":"Outcome: Adult mental health problems<br />d: 0.240","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,88,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999947,"base":0,"x":[0.30099999999999999],"y":[8],"text":"Outcome: Low self-regulation<br />d: 0.301","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(45,117,142,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.33100000000000002],"y":[9],"text":"Outcome: Overall effect size<br />d: 0.331","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,130,140,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.35499999999999998],"y":[10],"text":"Outcome: Adult antisocial behavior<br />d: 0.355","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,140,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.37],"y":[11],"text":"Outcome: Child aggression<br />d: 0.370","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,147,137,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.379],"y":[12],"text":"Outcome: Adult support for physical punishment<br />d: 0.379","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,151,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38200000000000001],"y":[13],"text":"Outcome: Low moral internalization<br />d: 0.382","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,152,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38700000000000001],"y":[14],"text":"Outcome: Child anti-social behavior<br />d: 0.387","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,155,135,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.40999999999999998],"y":[15],"text":"Outcome: Child externalizing behavior problems<br />d: 0.410","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(36,165,133,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.51100000000000001],"y":[16],"text":"Outcome: Negative parent-child relationship<br />d: 0.511","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(114,203,90,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.52800000000000002],"y":[17],"text":"Outcome: Child mental health problems<br />d: 0.528","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(125,209,80,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.63500000000000001],"y":[18],"text":"Outcome: Victim of physical abuse<br />d: 0.635","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":39.378995433789953,"r":7.3059360730593621,"b":36.529680365296812,"l":221.00456621004565},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Effect Sizes of Physical Punishment","font":{"color":"rgba(0,0,0,1)","family":"","size":8.7671232876712324},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.03175,0.66674999999999995],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.19999999999999998,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Cohen's d Effect Size","font":{"color":"rgba(0,0,0,1)","family":"","size":7.3059360730593621}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,18.600000000000001],"tickmode":"array","ticktext":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"tickvals":[1,2,3,4,5,5.9999999999999991,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Outcome","font":{"color":"rgba(0,0,0,1)","family":"","size":7.3059360730593621}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"32a23e2aaceb":{"x":{},"y":{},"label":{},"fill":{},"type":"bar"}},"cur_data":"32a23e2aaceb","visdat":{"32a23e2aaceb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="media-attention" class="slide level2">
 <h2>Media Attention</h2>
-
-<img data-src="media.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p class="caption">Media Attention</p></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="media.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Media Attention"><img data-src="media.png" style="width:80.0%" alt="Media Attention"></a></p>
+<figcaption>Media Attention</figcaption>
+</figure>
+</div>
+</section>
 <section id="part-of-the-conversation" class="slide level2">
 <h2>Part of the Conversation</h2>
 <ul>
 <li class="fragment">Policy Statement by American Academy of Pediatrics</li>
 <li class="fragment">Policy Statement by American Psychological Association</li>
-<li class="fragment">More recent work has -&gt; oral testimony by colleague before First Commission of the Congress of Colombia</li>
+<li class="fragment">More recent work has ➡️ oral testimony by colleague before First Commission of the Congress of Colombia</li>
 <li class="fragment">Colombia instituted a ban on physical punishment in Summer 2020.</li>
 </ul>
 </section>
 <section id="citation" class="slide level2">
 <h2>Citation</h2>
 <p>Gershoff, E. T., &amp; Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. <em>Journal of Family Psychology</em>. 30(4), 453-469. <a href="http://dx.doi.org/10.1037/fam0000191">http://dx.doi.org/10.1037/fam0000191</a></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Media Attention</span>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-CP10KeyMessages2022" class="csl-entry" role="listitem">
+End Violence Against Children, and End Corporal Punishment. 2022. <span>“Corporal Punishment – 10 Key Messages.”</span> Report. <span>E</span>nd <span>C</span>orporal <span>P</span>unishment. <a href="https://www.end-violence.org/">https://www.end-violence.org/</a>.
+</div>
+<div id="ref-StewartTufescu2023" class="csl-entry" role="listitem">
+Stewart-Tufescu, Ashley. 2023. <span>“Corporal Punishment: The Global Picture.”</span> <em>The Canadian Journal of Children’s Rights / Revue Canadienne Des Droits Des Enfants</em> 10. <a href="https://doi.org/10.22215/cjcr.v10i1">https://doi.org/10.22215/cjcr.v10i1</a>.
+</div>
+<div id="ref-UNICEF2017" class="csl-entry" role="listitem">
+UNICEF. 2017. <span>“A Familiar Face: Violence in the Lives of Children and Adolescents.”</span> Report. UNICEF.
+</div>
+<div id="ref-WHO2020" class="csl-entry" role="listitem">
+World Health Organization. 2020. <span>“Global Status Report on Preventing Violence Against Children 2020.”</span> Report. <span>World Health Organization</span>. <a href="https://www.unicef.org/sites/default/files/2020-06/Global-status-report-on-preventing-violence-against-children-2020.pdf">https://www.unicef.org/sites/default/files/2020-06/Global-status-report-on-preventing-violence-against-children-2020.pdf</a>.
+</div>
 </div>
 </section>
     </div>
@@ -464,7 +528,6 @@ p.author {
       Reveal.initialize({
 'controlsAuto': false,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -764,10 +827,9 @@ p.author {
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -777,8 +839,17 @@ p.author {
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -834,6 +905,31 @@ p.author {
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>
