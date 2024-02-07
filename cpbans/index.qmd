@@ -10,41 +10,21 @@ format:
     theme:
       light: cosmo
       dark: vapor
+    css: styles.css
 ---
 
-```{r global_options, echo=FALSE}
 
-knitr::opts_chunk$set(echo=FALSE, 
-                      warning=FALSE, 
-                      message=FALSE)
-
-```
-
-```{css, echo=FALSE}
-
-blockquote {
-  color: black;
-  border-left: 2px solid #FFCB05; 
-  padding: 0.5em 10px;
-}
-.panelset {  
-  color: #9A3324;
-}
-  
-```
-
-```{r call_libraries, eval = TRUE}
+```{r call_libraries}
+#| eval: true
+#| echo: false
+#| output: false
+#| warning: false
 
 library(readr) # get data
 
 library(foreign) # read and write other formats
 
 library(maps) # basic mapping
-
-# 
-# library(maptools) # additional map tools
-# 
-# library(mapdata) # map data
 
 library(countrycode) # code country names
 
@@ -72,7 +52,9 @@ xaringanExtra::use_panelset()
 
 ```
 
-```{r get_data, eval = TRUE}
+```{r get_data}
+#| eval: true
+#| echo: false
 
 mydata <- tribble( 
   ~type, ~year.of.prohibition, ~country, ~country_code, ~total.number.of.bans,
@@ -145,7 +127,10 @@ mydata <- tribble(
 
 ```
 
-```{r wrangle_data, eval = TRUE}
+```{r wrangle_data}
+#| eval: true
+#| echo: false
+#| warning: false
 
 save(mydata, file = "CPBans.RData") # save to R
 
@@ -184,12 +169,13 @@ Information on countries that have banned corporal punishment available from  [e
 
 # Visualizations
 
-::::: {.panelset}
+::: {.panel-tabset}
 
-::: {.panel}
-[Interactive Globe]{.panel-name}
+## Interactive Globe
 
-```{r make_globe, eval = TRUE}
+```{r make_globe}
+#| eval: true
+#| echo: false
 
 plot_geo(mydata) %>% 
   add_trace(locations = ~country_code, 
@@ -212,12 +198,13 @@ plot_geo(mydata) %>%
 
 ```
 
-:::
 
-::: {.panel}
-[Map]{.panel-name}
+## Map
 
 ```{r make_map}
+#| eval: true
+#| echo: false
+#| fig-height: 6
 
 plot_geo(mydata) %>%
   add_trace(locations = ~country_code, 
@@ -228,8 +215,6 @@ plot_geo(mydata) %>%
                           "<br>year of prohibition:", 
                           year.of.prohibition)) %>%
   layout(title = "Countries With Bans on Corporal Punishment of Children",
-         width = 1000,
-         height = 500,
          geo = list(showland = FALSE,
                     showcountries = TRUE,
                     projection = list(type = 'natural earth'))) %>%
@@ -237,12 +222,12 @@ plot_geo(mydata) %>%
 
 ```
 
-:::
+## Motion Chart
 
-::: {.panel}
-[Motion Chart]{.panel-name}
-
-```{r make_motion_chart_data, eval = TRUE, echo = FALSE}
+```{r make_motion_chart_data}
+#| eval: true
+#| echo: false
+#| warning: false
 
 # create data with repeated observations for animation
 
@@ -276,7 +261,11 @@ mydata2$country_iso <- countrycode(mydata2$country,
 
 ```
 
-```{r plotly_motion_chart, fig.height = 8, eval = TRUE, echo = FALSE}
+```{r plotly_motion_chart}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+#| warning: false
 
 # motion chart
 
@@ -302,12 +291,11 @@ mydata2 %>%
 
 ```
 
-:::
-
-::: {.panel}
-[Data Table]{.panel-name}
+## Data Table
 
 ```{r make_data_table}
+#| eval: true
+#| echo: false
 
 mynewdata <- subset(mydata, 
                     select = c(total.number.of.bans, 
@@ -333,12 +321,14 @@ datatable(mynewdata,
 
 ```
 
-:::
+## Graph
 
-::: {.panel}
-[Graph]{.panel-name}
-
-```{r make_graph, eval = TRUE, fig.height=6}
+```{r make_graph}
+#| eval: true
+#| echo: false
+#| fig-height: 6
+#| warning: false
+#| message: false
 
 p1 <- ggplot(mydata, 
              aes(x = year.of.prohibition, 
@@ -347,7 +337,7 @@ p1 <- ggplot(mydata,
             method = "loess",
             color = "grey",
             span = 0.5,
-            size = 3,
+            linewidth = 3,
             alpha = .25) +
   geom_point(aes(color = total.number.of.bans),
              # color = "blue", 
@@ -368,12 +358,13 @@ p1
 
 ```
 
-:::
+## Interactive Graph
 
-::: {.panel}
-[Interactive Graph]{.panel-name}
-
-```{r make_interactive_graph, fig.height=8}
+```{r make_interactive_graph}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+#| warning: false
 
 plot_ly(data = mydata, 
         x = ~year.of.prohibition, 
@@ -400,9 +391,6 @@ plot_ly(data = mydata,
 ```
 
 :::
-
-:::::
-
 
 
 
