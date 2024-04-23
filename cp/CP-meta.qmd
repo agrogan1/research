@@ -43,7 +43,7 @@ ggplotly(p1, tooltip = c("fill", "label"))
 
 ```
 
-**Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. Journal of Family Psychology. 30(4), 453-469. http://dx.doi.org/10.1037/fam0000191**
+**Gershoff, E. T., & Grogan-Kaylor, A. (2016). Spanking and Child Outcomes: Old Controversies and New Meta-Analyses. Journal of Family Psychology. 30(4), 453-469. [http://dx.doi.org/10.1037/fam0000191](http://dx.doi.org/10.1037/fam0000191) [[PubMed Full Text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7992110/)]**
 
 > This article received a [considerable amount of media attention](media-mentions-CP-meta.html).
 
