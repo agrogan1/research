@@ -4,7 +4,8 @@ author: "Andy Grogan-Kaylor"
 date: "today"
 format: 
   html:
-    theme: cosmo
+    theme: yeti
+    css: styles.css
     toc: true
     number-sections: true
 ---
