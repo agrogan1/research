@@ -8,7 +8,7 @@ format:
     number-sections: true
     anchor-sections: true
     theme:
-      light: cosmo
+      light: yeti
       dark: vapor
     css: styles.css
 ---
@@ -58,6 +58,7 @@ xaringanExtra::use_panelset()
 
 mydata <- tribble( 
   ~type, ~year.of.prohibition, ~country, ~country_code, ~total.number.of.bans,
+  "CP Ban", 2024, "Lao PDR", "LAO", 66,
   "CP Ban", 2022, "Mauritius", "MUS", 65,
   "CP Ban", 2022, "Zambia", "ZMB", 64, 
   "CP Ban", 2021, "Colombia", "COL", 63, 
