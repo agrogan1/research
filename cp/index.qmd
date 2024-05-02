@@ -5,7 +5,7 @@ author: "Andy Grogan-Kaylor"
 date: "today"
 format: 
   html:
-    theme: cosmo
+    theme: yeti
     toc: false
     number-sections: false
     css: styles.css
@@ -39,7 +39,7 @@ of attachment style.
 **Conclusions:** Results suggest that, even in the context of a secure attachment style, spanking is associated with adverse outcomes in early childhood. Findings support the American Academy of Pediatrics 2018 policy statement, which encourages parents to avoid spanking when disciplining children. Results suggest that children, regardless of attachment style, may
 benefit from policies and services that promote non-violent forms of discipline.
 
-**Ward, K. P., Lee, S. J., Limb, G., Grogan-Kaylor, A. (In Press). Physical punishment and child externalizing behavior: Comparing American Indian, White, and African American children. *Journal of Interpersonal Violence*.**
+**Ward, K. P., Lee, S. J., Limb, G., Grogan-Kaylor, A. (In Press). Physical punishment and child externalizing behavior: Comparing American Indian, White, and African American children. *Journal of Interpersonal Violence*. [https://doi.org/10.1177/0886260519861678](https://doi.org/10.1177/0886260519861678)**
 
 The current study examined the associations of maternal spanking and child wellbeing for American Indian children. Analyses examined if, compared to White and African American children, spanking of American Indian children was associated with adverse child outcomes. Using a community-based sample of 3,632 children (1,183 White, 2,183 African American, 266 American Indian), multiple-group autoregressive cross-lagged models examined the association between maternal spanking and child externalizing behavior across the first five years of life. Rates of spanking for American Indian and White children were similar at all three time points (age 1, age 3, and age 5). The observed associations between spanking and child externalizing behavior for American Indian children were small but statistically significant and consistent with those the associations reported in prior studies of White and African American children. Results suggest that the positive association between spanking and externalizing behavior among American Indian children was not distinguishable from the associations found among White and African American children. Results of this study can be interpreted in light of the recent American Academy of Pediatrics statement that encourages pediatricians to counsel parents against the use of physical punishment. Similar to White and African American families, American Indian children may benefit from reducing or eliminating the use of physical punishment. 
 
