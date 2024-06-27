@@ -1,11 +1,11 @@
 ---
 title: "Interesting and Noteworthy Findings From MICS Analyses"
 author: "Andy Grogan-Kaylor"
-date: "`r Sys.Date()`"
+date: "today"
 format: 
   html:
     theme: 
-      light: united
+      light: yeti
       dark: vapor
     toc: true
     number-sections: true
@@ -33,12 +33,11 @@ format:
     execute:
       echo: false
       warning: false     
-title-block-banner: "#009edb"
 subtitle: "Implications For The Cross Cultural Study Of Parenting And Child Development"
 bibliography: ../MICS.bib
 biblio-style: apalike
 nocite: |
-  @Grogan-Kaylor2021, @WardA, @WardC, @ward_grogan-kaylor_ma_pace_lee_2021, @Pace2019, @Ma2022
+  @Grogan-Kaylor2021, @WardA, @WardC, @Pace2019, @Ma2022, @Ward2023
 citation_url: https://agrogan1.github.io/research/MICS
 ---
 
@@ -53,7 +52,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{css, echo=FALSE}
 
-d-article blockquote {
+blockquote {
   color: black;
   border-left: 2px solid gold; 
   padding: 0.5em 10px;
@@ -86,7 +85,7 @@ fa("table", fill = "#009edb", width = "3em")
 
 ```
 
-The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
+The findings below are drawn from studies using the *Multiple Indicator Cluster Surveys* (MICS) [@MICS] conducted by UNICEF. Data include more than 200,000 families from a diverse sample of approximately 60 Low and Middle Income (LMICS) around the world.
 
 ```{r, echo=FALSE, warning=FALSE}
 
@@ -109,6 +108,7 @@ MICScountries$continent <- as.factor(MICScountries$continent)
 
 ```{r, echo=FALSE, fig.cap="Countries in MICS"}
 #| label: fig-MICS
+#| fig-height: 3
 
 g <- list(showframe = TRUE, 
           showcoastlines = TRUE, 
