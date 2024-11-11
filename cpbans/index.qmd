@@ -10,6 +10,7 @@ format:
     theme:
       light: yeti
       dark: vapor
+    lightbox: true
     css: styles.css
 ---
 
@@ -354,16 +355,15 @@ p1 <- ggplot(mydata,
   xlab("year") + 
   ylab("total number of bans") +
   theme_minimal() +
-  scale_color_viridis_c()
+  scale_color_viridis_c(name = "Total Number \nof Bans")
 
 p1
 
 ```
 
-## Interactive Graph
 
 ```{r make_interactive_graph}
-#| eval: true
+#| eval: false
 #| echo: false
 #| fig-height: 8
 #| warning: false
