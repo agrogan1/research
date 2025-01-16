@@ -57,7 +57,7 @@ library(fontawesome) # Font Awesome icons
 #| eval: true
 #| echo: false
 
-mydata <- tribble( 
+cpbans <- tribble( 
   ~type, ~year.of.prohibition, ~country, ~country_code, ~total.number.of.bans,
   "CP Ban", 2024, "Tajikistan", "TJK", 67,
   "CP Ban", 2024, "Lao PDR", "LAO", 66,
@@ -135,17 +135,17 @@ mydata <- tribble(
 #| echo: false
 #| warning: false
 
-save(mydata, file = "CPBans.RData") # save to R
+save(cpbans, file = "CPBans.RData") # save to R
 
-write.dta(mydata, "CPBans.dta") # write to Stata
+write.dta(cpbans, "CPBans.dta") # write to Stata
 
-write.csv(mydata, file = "CPBans.csv") # save to CSV
+write.csv(cpbans, file = "CPBans.csv") # save to CSV
 
 # make new data file of ALL Countries
 
 AllCountries <- read_csv("AllCountries.csv") # read data
 
-CPBans_w_AllCountries <- merge(mydata, 
+CPBans_w_AllCountries <- merge(cpbans, 
                                AllCountries, 
                                by = "country_code",
                                all = TRUE) # merge
@@ -166,7 +166,7 @@ write.dta(CPBans_w_AllCountries,
 
 # Background 
 
-**`r max(mydata$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r mydata$country[1]`**.
+**`r max(cpbans$total.number.of.bans)`** countries have instituted country wide bans upon the use of corporal punishment with children.  The most recent country to institute a ban is **`r cpbans$country[1]`**.
 
 Information on countries that have banned corporal punishment available from  [endcorporalpunishment.org](http://endcorporalpunishment.org/)
 
@@ -180,7 +180,7 @@ Information on countries that have banned corporal punishment available from  [e
 #| eval: true
 #| echo: false
 
-plot_geo(mydata) %>% 
+plot_geo(cpbans) %>% 
   add_trace(locations = ~country_code, 
             color = ~year.of.prohibition,
             z = ~year.of.prohibition, 
@@ -209,7 +209,7 @@ plot_geo(mydata) %>%
 #| echo: false
 #| fig-height: 6
 
-plot_geo(mydata) %>%
+plot_geo(cpbans) %>%
   add_trace(locations = ~country_code, 
             color = ~year.of.prohibition,
             z = ~year.of.prohibition,
@@ -234,31 +234,31 @@ plot_geo(mydata) %>%
 
 # create data with repeated observations for animation
 
-mydata$number.repetitions <- 
-  max(mydata$year.of.prohibition) + 
+cpbans$number.repetitions <- 
+  max(cpbans$year.of.prohibition) + 
   1 - 
-  mydata$year.of.prohibition
+  cpbans$year.of.prohibition
 
-mydata2 <- data.frame(rep(mydata$country, 
-                          mydata$number.repetitions),
-                      rep(mydata$year.of.prohibition, 
-                          mydata$number.repetitions),
-                      rep(mydata$total.number.of.bans, 
-                          mydata$number.repetitions))
+cpbans2 <- data.frame(rep(cpbans$country, 
+                          cpbans$number.repetitions),
+                      rep(cpbans$year.of.prohibition, 
+                          cpbans$number.repetitions),
+                      rep(cpbans$total.number.of.bans, 
+                          cpbans$number.repetitions))
 
 
-names(mydata2)[1] <- "country"
+names(cpbans2)[1] <- "country"
 
-names(mydata2)[2] <- "year.of.prohibition"
+names(cpbans2)[2] <- "year.of.prohibition"
 
-names(mydata2)[3] <- "number_bans"
+names(cpbans2)[3] <- "number_bans"
 
-mydata2 <- mydata2 %>% 
+cpbans2 <- cpbans2 %>% 
   group_by(country) %>% 
   mutate(id = n() - row_number()) %>%
   mutate(year = year.of.prohibition + id)
 
-mydata2$country_iso <- countrycode(mydata2$country, 
+cpbans2$country_iso <- countrycode(cpbans2$country, 
                                  'country.name', 
                                  'iso3c')
 
@@ -272,7 +272,7 @@ mydata2$country_iso <- countrycode(mydata2$country,
 
 # motion chart
 
-mydata2 %>% 
+cpbans2 %>% 
   arrange(year, number_bans) %>% 
   plot_ly(x = ~year.of.prohibition, 
         y = ~number_bans,
@@ -300,7 +300,7 @@ mydata2 %>%
 #| eval: true
 #| echo: false
 
-mynewdata <- subset(mydata, 
+mynewdata <- subset(cpbans, 
                     select = c(total.number.of.bans, 
                                country, 
                                year.of.prohibition))
@@ -333,7 +333,7 @@ datatable(mynewdata,
 #| warning: false
 #| message: false
 
-p1 <- ggplot(mydata, 
+p1 <- ggplot(cpbans, 
              aes(x = year.of.prohibition, 
                  y = total.number.of.bans)) + 
   geom_line(stat = "smooth", 
@@ -351,7 +351,7 @@ p1 <- ggplot(mydata,
             size = 2) +
   ggtitle("Total Number of Corporal Punishment Bans by Year") +
   xlim(1975, 
-       max(mydata$year.of.prohibition)) +
+       max(cpbans$year.of.prohibition)) +
   xlab("year") + 
   ylab("total number of bans") +
   theme_minimal() +
@@ -368,7 +368,7 @@ p1
 #| fig-height: 8
 #| warning: false
 
-plot_ly(data = mydata, 
+plot_ly(data = cpbans, 
         x = ~year.of.prohibition, 
         y = ~total.number.of.bans,
         color = ~year.of.prohibition, 
@@ -379,9 +379,9 @@ plot_ly(data = mydata,
                       '<br>', 
                       'year of ban:',
                       year.of.prohibition)) %>%
-  add_annotations(x = mydata$year.of.prohibition,
-                  y = mydata$total.number.of.bans,
-                  text = mydata$country,
+  add_annotations(x = cpbans$year.of.prohibition,
+                  y = cpbans$total.number.of.bans,
+                  text = cpbans$country,
                   font = list(size = 8), 
                   showarrow = FALSE, 
                   xanchor = 'right') %>%
