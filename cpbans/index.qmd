@@ -59,6 +59,7 @@ library(fontawesome) # Font Awesome icons
 
 cpbans <- tribble( 
   ~type, ~year.of.prohibition, ~country, ~country_code, ~total.number.of.bans,
+  "CP Ban", 2025, "Thailand", "THA", 68,
   "CP Ban", 2024, "Tajikistan", "TJK", 67,
   "CP Ban", 2024, "Lao PDR", "LAO", 66,
   "CP Ban", 2022, "Mauritius", "MUS", 65,
@@ -289,7 +290,7 @@ cpbans2 %>%
   hide_colorbar() %>%
   layout(title = 'Country Level Bans on Corporal Punishment', 
          xaxis = list(title = "year", 
-                      range = c(1975, 2025)),
+                      range = c(1975, 2030)),
          yaxis = list(title = "total number of bans")) 
 
 ```

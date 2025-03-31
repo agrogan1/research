@@ -1,68 +1,69 @@
 "","type","year.of.prohibition","country","country_code","total.number.of.bans"
-"1","CP Ban",2024,"Tajikistan","TJK",67
-"2","CP Ban",2024,"Lao PDR","LAO",66
-"3","CP Ban",2022,"Mauritius","MUS",65
-"4","CP Ban",2022,"Zambia","ZMB",64
-"5","CP Ban",2021,"Colombia","COL",63
-"6","CP Ban",2021,"Korea","KOR",62
-"7","CP Ban",2021,"Guinea","GIN",61
-"8","CP Ban",2020,"Seychelles","SYC",60
-"9","CP Ban",2019,"Japan","JPN",59
-"10","CP Ban",2019,"Georgia","GEO",58
-"11","CP Ban",2019,"South Africa","ZAF",57
-"12","CP Ban",2019,"France","FRA",56
-"13","CP Ban",2019,"Kosovo","RKS",55
-"14","CP Ban",2018,"Nepal","NPL",54
-"15","CP Ban",2016,"Montenegro","MNE",53
-"16","CP Ban",2017,"Lithuania","LTU",52
-"17","CP Ban",2016,"Slovenia","SVN",51
-"18","CP Ban",2016,"Paraguay","PRY",50
-"19","CP Ban",2016,"Mongolia","MNG",49
-"20","CP Ban",2015,"Peru","PER",48
-"21","CP Ban",2015,"Ireland","IRL",47
-"22","CP Ban",2015,"Benin","BEN",46
-"23","CP Ban",2015,"Andorra","AND",45
-"24","CP Ban",2014,"Nicaragua","NIC",44
-"25","CP Ban",2014,"Estonia","EST",43
-"26","CP Ban",2014,"San Marino","SMR",42
-"27","CP Ban",2014,"Argentina","ARG",41
-"28","CP Ban",2014,"Cape Verde","CPV",40
-"29","CP Ban",2014,"Bolivia","BOL",39
-"30","CP Ban",2014,"Brazil","BRA",38
-"31","CP Ban",2014,"Malta","MLT",37
-"32","CP Ban",2013,"Honduras","HND",36
-"33","CP Ban",2013,"Macedonia","MKD",35
-"34","CP Ban",2011,"South Sudan","SSD",34
-"35","CP Ban",2010,"Albania","ALB",33
-"36","CP Ban",2010,"Congo","COG",32
-"37","CP Ban",2010,"Kenya","KEN",31
-"38","CP Ban",2010,"Tunisia","TUN",30
-"39","CP Ban",2010,"Poland","POL",29
-"40","CP Ban",2008,"Liechtenstein","LIE",28
-"41","CP Ban",2008,"Luxembourg","LUX",27
-"42","CP Ban",2008,"Moldova","MDA",26
-"43","CP Ban",2008,"Costa Rica","CRI",25
-"44","CP Ban",2007,"Togo","TGO",24
-"45","CP Ban",2007,"Spain","ESP",23
-"46","CP Ban",2007,"Venezuela","VEN",22
-"47","CP Ban",2007,"Uruguay","URY",21
-"48","CP Ban",2007,"Portugal","PRT",20
-"49","CP Ban",2007,"New Zealand","NZL",19
-"50","CP Ban",2007,"Netherlands","NLD",18
-"51","CP Ban",2006,"Greece","GRC",17
-"52","CP Ban",2005,"Hungary","HUN",16
-"53","CP Ban",2004,"Romania","ROU",15
-"54","CP Ban",2004,"Ukraine","UKR",14
-"55","CP Ban",2003,"Iceland","ISL",13
-"56","CP Ban",2002,"Turkmenistan","TKM",12
-"57","CP Ban",2000,"Germany","DEU",11
-"58","CP Ban",2000,"Israel","ISR",10
-"59","CP Ban",2000,"Bulgaria","BGR",9
-"60","CP Ban",1999,"Croatia","HRV",8
-"61","CP Ban",1998,"Latvia","LVA",7
-"62","CP Ban",1997,"Denmark","DNK",6
-"63","CP Ban",1994,"Cyprus","CYP",5
-"64","CP Ban",1989,"Austria","AUT",4
-"65","CP Ban",1987,"Norway","NOR",3
-"66","CP Ban",1983,"Finland","FIN",2
-"67","CP Ban",1979,"Sweden","SWE",1
+"1","CP Ban",2025,"Thailand","THA",68
+"2","CP Ban",2024,"Tajikistan","TJK",67
+"3","CP Ban",2024,"Lao PDR","LAO",66
+"4","CP Ban",2022,"Mauritius","MUS",65
+"5","CP Ban",2022,"Zambia","ZMB",64
+"6","CP Ban",2021,"Colombia","COL",63
+"7","CP Ban",2021,"Korea","KOR",62
+"8","CP Ban",2021,"Guinea","GIN",61
+"9","CP Ban",2020,"Seychelles","SYC",60
+"10","CP Ban",2019,"Japan","JPN",59
+"11","CP Ban",2019,"Georgia","GEO",58
+"12","CP Ban",2019,"South Africa","ZAF",57
+"13","CP Ban",2019,"France","FRA",56
+"14","CP Ban",2019,"Kosovo","RKS",55
+"15","CP Ban",2018,"Nepal","NPL",54
+"16","CP Ban",2016,"Montenegro","MNE",53
+"17","CP Ban",2017,"Lithuania","LTU",52
+"18","CP Ban",2016,"Slovenia","SVN",51
+"19","CP Ban",2016,"Paraguay","PRY",50
+"20","CP Ban",2016,"Mongolia","MNG",49
+"21","CP Ban",2015,"Peru","PER",48
+"22","CP Ban",2015,"Ireland","IRL",47
+"23","CP Ban",2015,"Benin","BEN",46
+"24","CP Ban",2015,"Andorra","AND",45
+"25","CP Ban",2014,"Nicaragua","NIC",44
+"26","CP Ban",2014,"Estonia","EST",43
+"27","CP Ban",2014,"San Marino","SMR",42
+"28","CP Ban",2014,"Argentina","ARG",41
+"29","CP Ban",2014,"Cape Verde","CPV",40
+"30","CP Ban",2014,"Bolivia","BOL",39
+"31","CP Ban",2014,"Brazil","BRA",38
+"32","CP Ban",2014,"Malta","MLT",37
+"33","CP Ban",2013,"Honduras","HND",36
+"34","CP Ban",2013,"Macedonia","MKD",35
+"35","CP Ban",2011,"South Sudan","SSD",34
+"36","CP Ban",2010,"Albania","ALB",33
+"37","CP Ban",2010,"Congo","COG",32
+"38","CP Ban",2010,"Kenya","KEN",31
+"39","CP Ban",2010,"Tunisia","TUN",30
+"40","CP Ban",2010,"Poland","POL",29
+"41","CP Ban",2008,"Liechtenstein","LIE",28
+"42","CP Ban",2008,"Luxembourg","LUX",27
+"43","CP Ban",2008,"Moldova","MDA",26
+"44","CP Ban",2008,"Costa Rica","CRI",25
+"45","CP Ban",2007,"Togo","TGO",24
+"46","CP Ban",2007,"Spain","ESP",23
+"47","CP Ban",2007,"Venezuela","VEN",22
+"48","CP Ban",2007,"Uruguay","URY",21
+"49","CP Ban",2007,"Portugal","PRT",20
+"50","CP Ban",2007,"New Zealand","NZL",19
+"51","CP Ban",2007,"Netherlands","NLD",18
+"52","CP Ban",2006,"Greece","GRC",17
+"53","CP Ban",2005,"Hungary","HUN",16
+"54","CP Ban",2004,"Romania","ROU",15
+"55","CP Ban",2004,"Ukraine","UKR",14
+"56","CP Ban",2003,"Iceland","ISL",13
+"57","CP Ban",2002,"Turkmenistan","TKM",12
+"58","CP Ban",2000,"Germany","DEU",11
+"59","CP Ban",2000,"Israel","ISR",10
+"60","CP Ban",2000,"Bulgaria","BGR",9
+"61","CP Ban",1999,"Croatia","HRV",8
+"62","CP Ban",1998,"Latvia","LVA",7
+"63","CP Ban",1997,"Denmark","DNK",6
+"64","CP Ban",1994,"Cyprus","CYP",5
+"65","CP Ban",1989,"Austria","AUT",4
+"66","CP Ban",1987,"Norway","NOR",3
+"67","CP Ban",1983,"Finland","FIN",2
+"68","CP Ban",1979,"Sweden","SWE",1
