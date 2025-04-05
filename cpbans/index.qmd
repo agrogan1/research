@@ -7,9 +7,7 @@ format:
     toc: true
     number-sections: true
     anchor-sections: true
-    theme:
-      light: yeti
-      dark: vapor
+    theme: yeti
     lightbox: true
     css: styles.css
 ---
@@ -190,7 +188,7 @@ plot_geo(cpbans) %>%
                           year.of.prohibition),
             hoverinfo = "text",
             marker = list(size = 10)) %>%
-  layout(title = "Countries With Bans on Corporal Punishment of Children", 
+  layout(title = "Countries With Bans on Corporal Punishment of Children",
          geo = list(showland = FALSE,
                     showcountries = TRUE,
                     projection = list(type = 'orthographic',
