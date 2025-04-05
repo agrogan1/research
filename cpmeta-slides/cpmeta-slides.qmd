@@ -129,12 +129,12 @@ p1 <- ggplot(CP_Meta_Summary_Results,
   geom_bar(stat = "identity") +
   scale_fill_viridis_c() +
   coord_flip() +
-  labs(title= "Effect Sizes of Physical Punishment",
+  labs(title= "Cohen's d Effect Sizes of Physical Punishment",
        x = "Outcome",
        y = "Cohen's d Effect Size",
        caption = "Gershoff and Grogan-Kaylor, 2016") +
   theme(legend.position = "none",
-        title = element_text(size = rel(.5)),
+        title = element_text(size = rel(1)),
         axis.text = element_text(size = rel(.75)))
 
 ggplotly(p1, tooltip = c("fill", "label"))
