@@ -4,7 +4,7 @@ Many of these publications are available from [Deep Blue](https://deepblue.lib.u
 
 ## Multiple Indicator Cluster Surveys (MICS) (UNICEF Data)
 
-[https://agrogan1.github.io/research.html#multiple-indicator-cluster-surveys-mics-unicef-data](https://agrogan1.github.io/research.html#multiple-indicator-cluster-surveys-mics-unicef-data)
+* [Multiple Indicator Cluster Surveys (MICS) (UNICEF Data)](https://agrogan1.github.io/research.html#multiple-indicator-cluster-surveys-mics-unicef-data)
 
 ## Corporal Punishment Bans
 
