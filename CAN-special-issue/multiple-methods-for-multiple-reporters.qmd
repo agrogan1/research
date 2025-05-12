@@ -1,6 +1,7 @@
 ---
 title: "Multiple Methods for Multiple Reporters of Child Maltreatment"
 author: "Lehigh Measurement and Causal Inference Analyses Team"
+date: "today"
 format:
   html: 
     toc: true
@@ -18,7 +19,7 @@ editor: source
 # Basic Conceptual Model
 
 ```{mermaid}
-%%| fig-width: 6.5
+%%| fig-height: 3
 %%| fig-cap: "Basic Conceptual Model Indicating Timing of Measures and Reporters Without Causal Links"
 %%| label: fig-conceptual
 %%| eval: true
@@ -78,7 +79,7 @@ flowchart LR
 ### Diagram
 
 ```{mermaid}
-%%| fig-width: 6.5
+%%| fig-height: 3
 %%| fig-cap: "Ordinary Least Squares"
 %%| label: fig-OLS
 %%| eval: true
@@ -158,7 +159,7 @@ $$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1
 ### Diagram
 
 ```{mermaid}
-%%| fig-width: 6.5
+%%| fig-height: 3
 %%| fig-cap: "Summing Across Reporters"
 %%| label: fig-reporters
 %%| eval: true
@@ -230,6 +231,12 @@ flowchart LR
 ```
 
 ### Equation
+
+$P = \frac{P1 + P2}{2}$
+
+$SR = \frac{SR1 + SR2}{2}$
+
+$$\text{outcome} = \beta_0 + \beta \text{P} + \beta \text{SR} + \beta \text{administrative} + \Sigma \beta \text{covariates} + e_i$$
 
 ### Syntax
 
