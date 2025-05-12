@@ -32,7 +32,7 @@ We begin with a basic conceptual model of the reports and time points in the dat
 
 # Variable Abbreviations
 
-For parsimony, we use the following conventions for variable names.
+For parsimony, we use the following conventions for variable names in equations and statistical syntax.
 
 | Variable          | Label                               |
 |-------------------|:------------------------------------|
