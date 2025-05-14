@@ -1,4 +1,9 @@
 ```mermaid
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
 
 flowchart LR
 
