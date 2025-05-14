@@ -50,4 +50,8 @@ flowchart LR
 
   Mongolia --> |"reduce"| psychosocial
 
+  %% linkeStyle
+
+  linkStyle 0 stroke:#000000,stroke-width:4px,color:red;
+
 ```
