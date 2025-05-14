@@ -20,7 +20,7 @@ flowchart LR
 
   male[male child]
 
-  time:::tidal --> |"slightly reduce"| psychosocial:::tidal2
+  time:::tidal ==> |"slightly reduce"| psychosocial:::tidal2
 
   male --> |"slightly reduce"| psychosocial
 
