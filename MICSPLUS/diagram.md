@@ -9,8 +9,10 @@ flowchart LR
   classDef red fill:#E2231A,stroke:#000000,stroke-width:2px,color:#FFFFFF;
   
   classDef orange fill:#F26A21,stroke:#000000,stroke-width:2px,color:#FFFFFF;
+
+  classDef tidal fill:#113f5d,color:#FFBB00
   
-  macroviolence[higher rates of \nviolence in the \nmacro context]:::red --> |"reduce"| pabuse[physical child abuse]:::yellow
+  macroviolence[higher rates of \nviolence in the \nmacro context]:::tidal --> |"reduce"| pabuse[physical child abuse]:::yellow
 
 
 ```
