@@ -1,4 +1,9 @@
-```mermaid
+---
+title: "diagram"
+format: docx
+---
+
+```{mermaid}
 
 flowchart LR
 
