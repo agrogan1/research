@@ -26,6 +26,14 @@ flowchart LR
 
   size[household size]:::tidal
 
+  rural[rural community]:::tidal
+
+  material[material resources]:::tidal
+
+  incomedecline[recent income decline]:::tidal
+
+  Mongolia["country(Mongolia)"]:::tidal
+
   %% links
 
   time --> |"reduce"| psychosocial
