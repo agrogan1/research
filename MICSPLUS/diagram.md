@@ -1,7 +1,7 @@
 ```mermaid
 
 flowchart LR
-   A == "-" ==> B
+   A--> |"???"|  B
 
 
 ```
