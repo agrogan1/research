@@ -1,7 +1,4 @@
 ```mermaid
-config:
-  theme: neo
-  look: neo
 
 flowchart LR
 
