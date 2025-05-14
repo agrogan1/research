@@ -1,9 +1,7 @@
 ```mermaid
 
----
-title: Node
----
 flowchart LR
-    id
+   A == text ==> B
+
 
 ```
