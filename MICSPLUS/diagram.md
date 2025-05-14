@@ -14,13 +14,13 @@ flowchart LR
 
   classDef tidal2 fill:#FFBB00,color:#000000,stroke:#000000,stroke-width:2px
 
-  time[passage of time]
+  time[passage of time]:::tidal
 
-  psychosocial[psychosocial stimulation]
+  psychosocial[psychosocial stimulation]:::tidal2
 
-  male[male child]
+  male[male child]:::tidal
 
-  time:::tidal ==> |"slightly reduce"| psychosocial:::tidal2
+  time --> |"slightly reduce"| psychosocial
 
   male --> |"slightly reduce"| psychosocial
 
