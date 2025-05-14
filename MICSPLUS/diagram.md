@@ -2,7 +2,7 @@
 ---
 config:
   look: handDrawn
-  theme: neutral
+  theme: forest
 ---
 
 flowchart LR
