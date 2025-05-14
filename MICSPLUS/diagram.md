@@ -2,6 +2,8 @@
 
 flowchart LR
 
+  %% classes
+
   classDef yellow fill:#FFC20E,stroke:#000000,stroke-width:2px,color:#000000;
   
   classDef cyan fill:#1CABE2,stroke:#000000,stroke-width:2px,color:#FFFFFF;
@@ -14,18 +16,30 @@ flowchart LR
 
   classDef tidal2 fill:#FFBB00,color:#000000,stroke:#000000,stroke-width:2px
 
-  time[passage of time]:::tidal
-
   psychosocial[psychosocial stimulation]:::tidal2
+
+  %% nodes
+
+  time[passage of time]:::tidal  
 
   male[male child]:::tidal
 
-  age[household head age]:::tidal
+  size[household size]:::tidal
+
+  %% links
 
   time --> |"reduce"| psychosocial
 
   male --> |"reduce"| psychosocial
 
-  age --> |"reduce"| psychosocial
+  size --> |"reduce"| psychosocial
+
+  rural --> |"reduce"| psychosocial
+
+  material --> |"increase"| psychosocial
+
+  incomedecline --> |"reduce"| psychosocial
+
+  Mongolia --> |"reduce"| psychosocial
 
 ```
