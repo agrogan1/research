@@ -20,8 +20,12 @@ flowchart LR
 
   male[male child]:::tidal
 
-  time --> |"slightly reduce"| psychosocial
+  age[household head age]:::tidal
 
-  male --> |"slightly reduce"| psychosocial
+  time --> |"reduce"| psychosocial
+
+  male --> |"reduce"| psychosocial
+
+  age --> |"reduce"| psychosocial
 
 ```
