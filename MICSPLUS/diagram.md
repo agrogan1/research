@@ -1,9 +1,4 @@
 ```mermaid
----
-config:
-  look: handDrawn
-  theme: forest
----
 
 flowchart LR
 
