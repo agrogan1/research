@@ -12,9 +12,9 @@ flowchart LR
 
   classDef tidal fill:#113f5d,color:#FFBB00,stroke:#FFBB00,stroke-width:2px
 
-  classDef tidal2 fill:#FFBB00,color:#113f5d,stroke:#FFBB00,stroke-width:2px
+  classDef tidal2 fill:#FFBB00,color:#113f5d,stroke:#000000,stroke-width:2px
   
-  time[passage of time]:::tidal --> |"reduce"| pabuse[physical child abuse]:::tidal2
+  time[passage of time]:::tidal --> |"reduce"| psychosocial[psychosocial stimulation]:::tidal2
 
 
 ```
