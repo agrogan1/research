@@ -54,4 +54,6 @@ flowchart LR
 
   linkStyle 0,1,2,3,5,6 stroke:#000000,stroke-width:4px,color:red;
 
+  linkStyle 4 stroke:#000000,stroke-width:4px,color:green;
+
 ```
