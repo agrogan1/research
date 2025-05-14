@@ -11,8 +11,10 @@ flowchart LR
   classDef orange fill:#F26A21,stroke:#000000,stroke-width:2px,color:#FFFFFF;
 
   classDef tidal fill:#113f5d,color:#FFBB00,stroke:#FFBB00,stroke-width:2px
+
+  classDef tidal2 fill:#FFBB00,color:#113f5d,stroke:#FFBB00,stroke-width:2px
   
-  macroviolence[higher rates of \nviolence in the \nmacro context]:::tidal --> |"reduce"| pabuse[physical child abuse]:::yellow
+  time[passage of time]:::tidal --> |"reduce"| pabuse[physical child abuse]:::tidal2
 
 
 ```
