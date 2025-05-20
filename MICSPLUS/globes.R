@@ -15,17 +15,22 @@ library(patchwork)
 Mongolia <- ne_countries(country = "mongolia",
                          scale = "medium")["geometry"]
 
+Georgia <- ne_countries(country = "georgia",
+                        scale = "medium")["geometry"]
+
 plot(Mongolia,
+     main = Mongolia
      col = "#FFBB00")
 
-plot(ne_countries(country = "georgia")["geometry"],
+plot(Georgia,
      main = "Georgia",
      col = "#FFBB00")
 
-pMongolia <- ggplot(ne_countries(country = "mongolia")["geometry"]) + 
-  geom_sf(fill = "#FFBB00") +
+pMongolia <- ggplot(Mongolia) + 
+  geom_sf(fill = "#FFBB00",
+          color = "black") +
   annotate("text", 
-           x = 100, 
+           x = 103, 
            y = 47, 
            label = "Mongolia", 
            color = "black",
@@ -34,11 +39,12 @@ pMongolia <- ggplot(ne_countries(country = "mongolia")["geometry"]) +
   theme(plot.background = element_rect(fill = "#113f5d"),
         panel.background = element_rect(fill = "#113f5d"))
 
-pGeorgia <- ggplot(ne_countries(country = "georgia")["geometry"]) + 
-  geom_sf(fill = "#FFBB00") +
+pGeorgia <- ggplot(Georgia) + 
+  geom_sf(fill = "#FFBB00",
+          color = "black") +
   annotate("text", 
-           x = 43.3, 
-           y = 42.3, 
+           x = 43.7, 
+           y = 42.1, 
            label = "Georgia", 
            color = "black",
            size = 7) +
@@ -50,7 +56,7 @@ pMongolia / pGeorgia &
   theme(panel.border = element_rect(colour = "#113f5d", 
                                     fill="NA"))
 
-ggsave("./MICS-Plus/Mongolia and Georgia.png",
+ggsave("./MICSPLUS/Mongolia and Georgia.png",
        height = 4,
        width = 4)
 
