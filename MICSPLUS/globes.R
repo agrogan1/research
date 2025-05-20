@@ -12,7 +12,10 @@ library(patchwork)
 
 # country outlines with rnaturalearth
 
-plot(ne_countries(country = "mongolia")["geometry"],
+Mongolia <- ne_countries(country = "mongolia",
+                         scale = "medium")["geometry"]
+
+plot(Mongolia,
      col = "#FFBB00")
 
 plot(ne_countries(country = "georgia")["geometry"],
