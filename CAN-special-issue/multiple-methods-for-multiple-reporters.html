@@ -350,9 +350,17 @@ Figure&nbsp;4: path model
 </section>
 <section id="equation-2" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="equation-2"><span class="header-section-number">4.3.2</span> Equation</h3>
+<p><span id="eq-path"><span class="math display">\[\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1} + \beta \text{SR2} + \beta \text{administrative} + \Sigma \beta \text{covariates} + e_i \tag{5}\]</span></span></p>
+<p><span class="math display">\[\text{SR2} = \beta_0 + \beta \text{SR1} + e_i\]</span> <span class="math display">\[\text{P2} = \beta_0 + \beta \text{P1} + e_i\]</span></p>
 </section>
 <section id="syntax-2" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="syntax-2"><span class="header-section-number">4.3.3</span> Syntax</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sem (outcome &lt;- covariates SR1 SR2 PR1 PR2 administrative) <span class="co">///</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (SR2 &lt;- SR1) <span class="co">///</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  (PR2 &lt;- PR1) <span class="co">///</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  cov(<span class="fu">e</span>.outcome*<span class="fu">e</span>.SR2*<span class="fu">e</span>.PR2) <span class="co">// correlated errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="latent-constructs" class="level2" data-number="4.4">
@@ -375,6 +383,11 @@ Figure&nbsp;5: latent construct
 </section>
 <section id="syntax-3" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="syntax-3"><span class="header-section-number">4.4.3</span> Syntax</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sem <span class="co">///</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  (P1 P2 SR1 SR2 administrative &lt;- X) <span class="co">/// measurement</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  (outcome &lt;- covariates X) <span class="co">// structural</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="latent-profile-analysis-person-centered-approach" class="level2" data-number="4.5">
@@ -400,11 +413,11 @@ Figure&nbsp;6: latent profile
 <p>We first run a latent class analysis to generate latent underlying classes based upon the reports of discipline from the different reporterers</p>
 <p>In the syntax below, we estimate three latent classes. The actual number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using <em>fit statistics</em>, and <em>likelihood ratio tests</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gsem(P1 P2 SR1 SR2 administrative &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gsem (P1 P2 SR1 SR2 administrative &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We then use class membership to predict the outcome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span> covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span> covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -433,12 +446,12 @@ Figure&nbsp;7: network model
 \text{SR2} &amp; &amp; &amp; &amp; 1 &amp; r_{\text{SR2, administrative}} &amp; r_{\text{SR2, outcome}}\\
 \text{administrative} &amp; &amp; &amp; &amp; &amp; 1 &amp; r_{\text{administrative, outcome}}\\ \\
 \text{outcome} &amp; &amp; &amp; &amp; &amp; &amp; 1
-\end{matrix} \tag{5}\]</span></span></p>
+\end{matrix} \tag{6}\]</span></span></p>
 </section>
 <section id="syntax-5" class="level3" data-number="4.6.3">
 <h3 data-number="4.6.3" class="anchored" data-anchor-id="syntax-5"><span class="header-section-number">4.6.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corr</span> P1 P2 SR1 SR2 administrative outcome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corr</span> P1 P2 SR1 SR2 administrative outcome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

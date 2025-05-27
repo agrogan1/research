@@ -129,7 +129,22 @@ regress outcome P SR administrative covariates
 
 ### Equation
 
+$$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1} + \beta \text{SR2} + \beta \text{administrative} + \Sigma \beta \text{covariates} + e_i$$ {#eq-path}
+
+$$\text{SR2} = \beta_0 + \beta \text{SR1} + e_i$$
+$$\text{P2} = \beta_0 + \beta \text{P1} + e_i$$
+
 ### Syntax
+
+```{stata}
+#| eval: false
+
+sem (outcome <- covariates SR1 SR2 PR1 PR2 administrative) ///
+  (SR2 <- SR1) ///
+  (PR2 <- PR1) ///
+  cov(e.outcome*e.SR2*e.PR2) // correlated errors
+
+```
 
 ## Latent Construct(s)
 
@@ -141,6 +156,15 @@ regress outcome P SR administrative covariates
 ### Equation
 
 ### Syntax
+
+```{stata}
+#| eval: false
+
+sem ///
+  (P1 P2 SR1 SR2 administrative <- X) /// measurement
+  (outcome <- covariates X) // structural
+
+```
 
 ## Latent Profile Analysis (Person Centered Approach)
 
@@ -161,7 +185,7 @@ In the syntax below, we estimate three latent classes. The actual number of late
 ```{stata}
 #| eval: false
 
-gsem(P1 P2 SR1 SR2 administrative <-, gaussian), (lclass(C 3))
+gsem (P1 P2 SR1 SR2 administrative <-, gaussian), (lclass(C 3))
 
 ```
 
