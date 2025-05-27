@@ -58,7 +58,9 @@ For parsimony, we use the following conventions for variable names in equations 
 
 # Methods
 
-## OLS (or Logistic) Regression
+## OLS Regression
+
+Our outcome is continuous. Therefore we here employ *ordinary least squares regression*. Were our outcome to be dichotomous, we could as easily employ *logistic regression*. 
 
 ### Diagram
 
@@ -68,12 +70,21 @@ For parsimony, we use the following conventions for variable names in equations 
 
 $$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1} + \beta \text{SR2} + \beta \text{administrative} + \Sigma \beta \text{covariates} + e_i$$ {#eq-OLS}
 
-### Syntax
+### Syntax   
 
 ```{stata}
 #| eval: false
 
 regress outcome P1 P2 SR1 SR2 administrative covariates
+
+```
+
+For logistic regression, the appropriate syntax would be:  
+
+```{stata}
+#| eval: false
+
+logit outcome P1 P2 SR1 SR2 administrative covariates, or
 
 ```
 
@@ -143,14 +154,14 @@ regress outcome P SR administrative covariates
 
 ### Syntax
 
-We first run a latent class analysis to generate latent underlying classes based upon the independent variables. 
+We first run a latent class analysis to generate latent underlying classes based upon the reports of discipline from the different reporterers 
 
-The number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using *fit statistics*, and *likelihood ratio tests*. 
+In the syntax below, we estimate three latent classes. The actual number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using *fit statistics*, and *likelihood ratio tests*. 
 
 ```{stata}
 #| eval: false
 
-gsem(P SR administrative covariates <-, gaussian), (lclass(C 3))
+gsem(P1 P2 SR1 SR2 administrative <-, gaussian), (lclass(C 3))
 
 ```
 
@@ -159,7 +170,7 @@ We then use class membership to predict the outcome.
 ```{stata}
 #| eval: false
 
-regress outcome i.class
+regress outcome i.class covariates
 
 ```
 
@@ -184,7 +195,12 @@ $$\begin{matrix}
 
 ### Syntax
 
-`corr P1 P2 SR1 SR2 administrative outcome`
+```{stata}
+#| eval: false
+
+corr P1 P2 SR1 SR2 administrative outcome
+
+```
 
 ## ~~Multilevel Modeling~~
 

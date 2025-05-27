@@ -118,7 +118,7 @@ window.Quarto = {
   <li><a href="#variable-abbreviations" id="toc-variable-abbreviations" class="nav-link" data-scroll-target="#variable-abbreviations"><span class="header-section-number">3</span> Variable Abbreviations</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">4</span> Methods</a>
   <ul class="collapse">
-  <li><a href="#ols-or-logistic-regression" id="toc-ols-or-logistic-regression" class="nav-link" data-scroll-target="#ols-or-logistic-regression"><span class="header-section-number">4.1</span> OLS (or Logistic) Regression</a>
+  <li><a href="#ols-regression" id="toc-ols-regression" class="nav-link" data-scroll-target="#ols-regression"><span class="header-section-number">4.1</span> OLS Regression</a>
   <ul class="collapse">
   <li><a href="#diagram" id="toc-diagram" class="nav-link" data-scroll-target="#diagram"><span class="header-section-number">4.1.1</span> Diagram</a></li>
   <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">4.1.2</span> Equation</a></li>
@@ -267,8 +267,9 @@ Table&nbsp;1: Variables and Variable Labels
 </section>
 <section id="methods" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Methods</h1>
-<section id="ols-or-logistic-regression" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="ols-or-logistic-regression"><span class="header-section-number">4.1</span> OLS (or Logistic) Regression</h2>
+<section id="ols-regression" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ols-regression"><span class="header-section-number">4.1</span> OLS Regression</h2>
+<p>Our outcome is continuous. Therefore we here employ <em>ordinary least squares regression</em>. Were our outcome to be dichotomous, we could as easily employ <em>logistic regression</em>.</p>
 <section id="diagram" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="diagram"><span class="header-section-number">4.1.1</span> Diagram</h3>
 <div id="fig-OLS" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -290,6 +291,10 @@ Figure&nbsp;2: OLS
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="syntax"><span class="header-section-number">4.1.3</span> Syntax</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P1 P2 SR1 SR2 administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For logistic regression, the appropriate syntax would be:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">logit</span> outcome P1 P2 SR1 SR2 administrative covariates, <span class="kw">or</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -320,11 +325,11 @@ Figure&nbsp;3: summing across reporters
 <section id="syntax-1" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="syntax-1"><span class="header-section-number">4.2.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> P = (P1 + P2) / 2 <span class="co">// is averaging appropriate?</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> SR = (SR1 + SR2) / 2 <span class="co">// is averaging appropriate?</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P SR administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> P = (P1 + P2) / 2 <span class="co">// is averaging appropriate?</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> SR = (SR1 + SR2) / 2 <span class="co">// is averaging appropriate?</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P SR administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -392,14 +397,14 @@ Figure&nbsp;6: latent profile
 </section>
 <section id="syntax-4" class="level3" data-number="4.5.3">
 <h3 data-number="4.5.3" class="anchored" data-anchor-id="syntax-4"><span class="header-section-number">4.5.3</span> Syntax</h3>
-<p>We first run a latent class analysis to generate latent underlying classes based upon the independent variables.</p>
-<p>The number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using <em>fit statistics</em>, and <em>likelihood ratio tests</em>.</p>
+<p>We first run a latent class analysis to generate latent underlying classes based upon the reports of discipline from the different reporterers</p>
+<p>In the syntax below, we estimate three latent classes. The actual number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using <em>fit statistics</em>, and <em>likelihood ratio tests</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gsem(P SR administrative covariates &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gsem(P1 P2 SR1 SR2 administrative &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We then use class membership to predict the outcome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span> covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -432,7 +437,9 @@ Figure&nbsp;7: network model
 </section>
 <section id="syntax-5" class="level3" data-number="4.6.3">
 <h3 data-number="4.6.3" class="anchored" data-anchor-id="syntax-5"><span class="header-section-number">4.6.3</span> Syntax</h3>
-<p><code>corr P1 P2 SR1 SR2 administrative outcome</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corr</span> P1 P2 SR1 SR2 administrative outcome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="multilevel-modeling" class="level2" data-number="4.7">
