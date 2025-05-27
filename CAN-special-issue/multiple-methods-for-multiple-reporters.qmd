@@ -20,6 +20,16 @@ editor: source
 
 # Background
 
+```{r}
+#| echo: false
+#| message: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+
 The Lehigh Study presents a unique opportunity. Data are collected on experiences of abusive discipline as reported by *administrative* reports, two *parental* reports at two different time points, and two *self* reports at two different time points. However, in the absence of a gold standard measure of abusive discipline, appropriately aggregating these multiple reports across multiple time points represents an analytic challenge.
 
 In the manuscript below, we employ multiple strategies to estimate the relationship of these multiple reports from multiple reporters at multiple time points to a mental health outcome. We compare and contrast the advantages and disadvantages of these different methods, and conclude the manuscript with suggestions on optimal methodological approaches to confront the methodological challenges that are posed by having multiple reports from multiple reporters at multiple time points. 
@@ -60,7 +70,12 @@ $$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1
 
 ### Syntax
 
-`regress outcome P1 P2 SR1 SR2 administrative covariates`
+```{stata}
+#| eval: false
+
+regress outcome P1 P2 SR1 SR2 administrative covariates
+
+```
 
 ## Summing Across Reporters
 
@@ -84,7 +99,16 @@ $$\text{outcome} = \beta_0 + \beta \text{P} + \beta \text{SR} + \beta \text{admi
 
 ### Syntax
 
-`regress outcome P SR administrative covariates`
+```{stata}
+#| eval: false
+
+generate P = (P1 + P2) / 2 // is averaging appropriate?
+  
+generate SR = (SR1 + SR2) / 2 // is averaging appropriate?
+
+regress outcome P SR administrative covariates
+
+```
 
 ## Path Model
 
@@ -118,6 +142,26 @@ $$\text{outcome} = \beta_0 + \beta \text{P} + \beta \text{SR} + \beta \text{admi
 ### Equation
 
 ### Syntax
+
+We first run a latent class analysis to generate latent underlying classes based upon the independent variables. 
+
+The number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using *fit statistics*, and *likelihood ratio tests*. 
+
+```{stata}
+#| eval: false
+
+gsem(P SR administrative covariates <-, gaussian), (lclass(C 3))
+
+```
+
+We then use class membership to predict the outcome.
+
+```{stata}
+#| eval: false
+
+regress outcome i.class
+
+```
 
 ## Network Analysis
 
