@@ -9,13 +9,17 @@ format:
     number-sections: true
     theme: yeti
     lightbox: true
-  typst: 
+  pdf: 
     toc: true
     number-sections: true
   docx: 
     toc: true
     number-sections: true
 editor: source
+bibliography: bibliography.bib
+csl: apa.csl
+nocite: |
+  @McLaughlinKatieA2020, @Machlin2025
 ---
 
 # Background
@@ -231,6 +235,8 @@ corr P1 P2 SR1 SR2 administrative outcome
 ## ~~Classification and Regression Tree (CART) (Machine Learning)~~
 
 ## ~~Random Forest (Machine Learning)~~
+
+# References
 
 
 
