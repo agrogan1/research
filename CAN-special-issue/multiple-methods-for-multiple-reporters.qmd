@@ -33,10 +33,19 @@ library(Statamarkdown)
 
 ```
 
-
 The Lehigh Study presents a unique opportunity. Data are collected on experiences of abusive discipline as reported by *administrative* reports, two *parental* reports at two different time points, and two *self* reports at two different time points. However, in the absence of a gold standard measure of abusive discipline, appropriately aggregating these multiple reports across multiple time points represents an analytic challenge.
 
 In the manuscript below, we employ multiple strategies to estimate the relationship of these multiple reports from multiple reporters at multiple time points to a mental health outcome. We compare and contrast the advantages and disadvantages of these different methods, and conclude the manuscript with suggestions on optimal methodological approaches to confront the methodological challenges that are posed by having multiple reports from multiple reporters at multiple time points. 
+
+::: {#nte-key-ideas-questions .callout-note}
+## Key Ideas or Questions
+
+* Many sources in the literature note that data can come from multiple reporters. It is often suggested that it is important to *triangulate* these different sources of information, yet what is meant exactly, or operationally, by such *triangulation* is often unclear. 
+* How do the different methods highlight, or not highlight:
+    + The differences between prospective and retrospective reports, especially in predicting outcomes?
+    + The level of agreement or disagreement between different reporters?
+    + Issues of severity, chronicity, timing and developmental stages across reporters?
+:::
 
 # Basic Conceptual Model
 
