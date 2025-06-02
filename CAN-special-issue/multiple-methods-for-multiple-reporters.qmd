@@ -239,14 +239,17 @@ corr P1 P2 SR1 SR2 administrative outcome
 
 ```
 
+## ~~Item Response Theory (IRT)~~
+
 ## ~~Multilevel Modeling~~
 
 ## ~~Classification and Regression Tree (CART) (Machine Learning)~~
 
 ## ~~Random Forest (Machine Learning)~~
 
-# References
+## ~~@nte-key-ideas-questions~~
 
+# References
 
 
 
