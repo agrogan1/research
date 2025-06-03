@@ -247,10 +247,11 @@ corr P1 P2 SR1 SR2 administrative outcome
 
 ## ~~Random Forest (Machine Learning)~~
 
-## ~~@nte-key-ideas-questions~~
+# Notes
+
+@nte-key-ideas-questions
 
 # References
-
 
 
 
