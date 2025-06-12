@@ -24,12 +24,24 @@ nocite: |
 
 # Background
 
+::: {#tip-Statamarkdown .callout-tip}
+## Created With `Statamarkdown`
+
+This document was created using the amazing package by @Hemken, which should be cited in the final version of the paper. 
+:::
+
 ```{r}
 #| echo: false
 #| message: false
 #| output: false
 
 library(Statamarkdown)
+
+```
+
+```{stata, collectcode=TRUE, echo=FALSE}
+
+use "/Users/agrogan/Library/CloudStorage/Dropbox-UniversityofMichigan/Andrew Grogan-Kaylor/Lehigh measurement and causal inference analyses/Data sets/Stata data/Lehigh_working_concept_paper.dta", clear
 
 ```
 
@@ -46,6 +58,14 @@ In the manuscript below, we employ multiple strategies to estimate the relations
     + The level of agreement or disagreement between different reporters?
     + Issues of severity, chronicity, timing and developmental stages across reporters?
 :::
+
+# The Data
+
+```{stata, message=FALSE, warning=FALSE}
+
+describe
+
+```
 
 # Basic Conceptual Model
 
