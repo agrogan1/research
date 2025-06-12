@@ -12,6 +12,9 @@ format:
   pdf: 
     toc: true
     number-sections: true
+    geometry:
+      - left=.5in
+      - right=.5in
   docx: 
     toc: true
     number-sections: true
@@ -42,6 +45,8 @@ library(Statamarkdown)
 ```{stata, collectcode=TRUE, echo=FALSE}
 
 use "/Users/agrogan/Library/CloudStorage/Dropbox-UniversityofMichigan/Andrew Grogan-Kaylor/Lehigh measurement and causal inference analyses/Data sets/Stata data/Lehigh_working_concept_paper.dta", clear
+
+set linesize 96
 
 ```
 
@@ -106,9 +111,9 @@ $$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1
 ### Syntax   
 
 ```{stata}
-#| eval: false
+#| eval: true
 
-regress outcome P1 P2 SR1 SR2 administrative covariates
+regress outcome PR1 PR2 SR1 SR2 administrative age
 
 ```
 

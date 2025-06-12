@@ -270,41 +270,35 @@ Note&nbsp;1: Key Ideas or Questions
 
 
 
-Contains data from /Users/agrogan/Library/CloudStorage/Dropbox-UniversityofM
-&gt; ichigan/Andrew Grogan-Kaylor/Lehigh measurement and causal inference analy
-&gt; ses/Data sets/Stata data/Lehigh_working_concept_paper.dta
+Contains data from /Users/agrogan/Library/CloudStorage/Dropbox-UniversityofMichigan/Andrew Groga
+&gt; n-Kaylor/Lehigh measurement and causal inference analyses/Data sets/Stata data/Lehigh_working_
+&gt; concept_paper.dta
  Observations:           273                  
-    Variables:            11                  12 Jun 2025 11:29
-----------------------------------------------------------------------------
+    Variables:            11                  12 Jun 2025 11:31
+------------------------------------------------------------------------------------------------
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-----------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 gender          double  %10.0g     gender     gender
 age             double  %10.0g     a_age      Age
 marital         double  %10.0g     a_lvmar    Marital status
 SR2             double  %10.0g     o_ptsdchab
-                                              As a child, were you ever
-                                                badly beaten up by your
-                                                parents or the people who
-                                                rais
-annual_income   double  %10.0g     y_fin      What is your total shared
-                                                annual household income
-                                                before taxes from all
-                                                sources?
+                                              As a child, were you ever badly beaten up by your
+                                                parents or the people who rais
+annual_income   double  %10.0g     y_fin      What is your total shared annual household income
+                                                before taxes from all sources?
 ethrace         double  %10.0g     a_ethrace
                                               Racial background
 administrative  double  %12.0g                involved with child welfare
 PR2             double  %11.0g     aggwsevphys38mfo
-                                              sum of mother father and other
-                                                weighted severe phys discp
-                                                38
+                                              sum of mother father and other weighted severe
+                                                phys discp 38
 SR1             double  %16.0g     aggsumsevw12mf_oadol
-                                              sum of mother father and other
-                                                weighted severe phys discp
-                                                adolescent
+                                              sum of mother father and other weighted severe
+                                                phys discp adolescent
 PR1             float   %9.0g                 
 outcome         float   %9.0g                 
-----------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 Sorted by: </code></pre>
 </div>
 </div>
@@ -399,11 +393,35 @@ Figure&nbsp;2: OLS
 <section id="syntax" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="syntax"><span class="header-section-number">5.1.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P1 P2 SR1 SR2 administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome PR1 PR2 SR1 SR2 administrative age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running /Users/agrogan/Desktop/GitHub/research/CAN-special-issue/profile.do 
+
+&gt; ...
+
+      Source |       SS           df       MS      Number of obs   =       211
+-------------+----------------------------------   F(6, 204)       =      4.72
+       Model |   908.37924         6   151.39654   Prob &gt; F        =    0.0002
+    Residual |  6547.28901       204   32.094554   R-squared       =    0.1218
+-------------+----------------------------------   Adj R-squared   =    0.0960
+       Total |  7455.66825       210  35.5031821   Root MSE        =    5.6652
+
+--------------------------------------------------------------------------------
+       outcome | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+           PR1 |   .0050038   .0184412     0.27   0.786     -.031356    .0413636
+           PR2 |  -.0276371    .039927    -0.69   0.490    -.1063597    .0510854
+           SR1 |   .0028035   .0173291     0.16   0.872    -.0313637    .0369707
+           SR2 |   3.810465   1.042226     3.66   0.000     1.755548    5.865381
+administrative |   1.493418   .8286179     1.80   0.073    -.1403357    3.127171
+           age |   .3125531   .2161928     1.45   0.150    -.1137058    .7388119
+         _cons |  -10.42348   9.956836    -1.05   0.296    -30.05498     9.20803
+--------------------------------------------------------------------------------</code></pre>
+</div>
 </div>
 <p>For logistic regression, the appropriate syntax would be:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">logit</span> outcome P1 P2 SR1 SR2 administrative covariates, <span class="kw">or</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">logit</span> outcome P1 P2 SR1 SR2 administrative covariates, <span class="kw">or</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -434,11 +452,11 @@ Figure&nbsp;3: summing across reporters
 <section id="syntax-1" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="syntax-1"><span class="header-section-number">5.2.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> P = (P1 + P2) / 2 <span class="co">// is averaging appropriate?</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> SR = (SR1 + SR2) / 2 <span class="co">// is averaging appropriate?</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P SR administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> P = (P1 + P2) / 2 <span class="co">// is averaging appropriate?</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> SR = (SR1 + SR2) / 2 <span class="co">// is averaging appropriate?</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome P SR administrative covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -465,10 +483,10 @@ Figure&nbsp;4: path model
 <section id="syntax-2" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="syntax-2"><span class="header-section-number">5.3.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sem (outcome &lt;- covariates SR1 SR2 PR1 PR2 administrative) <span class="co">///</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  (SR2 &lt;- SR1) <span class="co">///</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  (PR2 &lt;- PR1) <span class="co">///</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  cov(<span class="fu">e</span>.outcome*<span class="fu">e</span>.SR2*<span class="fu">e</span>.PR2) <span class="co">// correlated errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sem (outcome &lt;- covariates SR1 SR2 PR1 PR2 administrative) <span class="co">///</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  (SR2 &lt;- SR1) <span class="co">///</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  (PR2 &lt;- PR1) <span class="co">///</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  cov(<span class="fu">e</span>.outcome*<span class="fu">e</span>.SR2*<span class="fu">e</span>.PR2) <span class="co">// correlated errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -493,9 +511,9 @@ Figure&nbsp;5: latent construct
 <section id="syntax-3" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="syntax-3"><span class="header-section-number">5.4.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sem <span class="co">///</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  (P1 P2 SR1 SR2 administrative &lt;- X) <span class="co">/// measurement</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  (outcome &lt;- covariates X) <span class="co">// structural</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sem <span class="co">///</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  (P1 P2 SR1 SR2 administrative &lt;- X) <span class="co">/// measurement</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  (outcome &lt;- covariates X) <span class="co">// structural</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -522,11 +540,11 @@ Figure&nbsp;6: latent profile
 <p>We first run a latent class analysis to generate latent underlying classes based upon the reports of discipline from the different reporterers</p>
 <p>In the syntax below, we estimate three latent classes. The actual number of latent classes is determined by running models with different numbers of latent classes, and comparing those models using <em>fit statistics</em>, and <em>likelihood ratio tests</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gsem (P1 P2 SR1 SR2 administrative &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gsem (P1 P2 SR1 SR2 administrative &lt;-, gaussian), (lclass(C 3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We then use class membership to predict the outcome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span> covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> outcome i.<span class="kw">class</span> covariates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -560,7 +578,7 @@ Figure&nbsp;7: network model
 <section id="syntax-5" class="level3" data-number="5.6.3">
 <h3 data-number="5.6.3" class="anchored" data-anchor-id="syntax-5"><span class="header-section-number">5.6.3</span> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corr</span> P1 P2 SR1 SR2 administrative outcome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corr</span> P1 P2 SR1 SR2 administrative outcome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
