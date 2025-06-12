@@ -90,9 +90,11 @@ For parsimony, we use the following conventions for variable names in equations 
 | `SR1`             | adolescent self report              |
 | `SR2`             | adult self report                   |
 | `covariates`      | covariates (multiple variables)     |
+|                   | (age, gender, ethnicity or race     |
+|                   | marital status, annual income)      |
 | `outcome`         | mental health outcome               |
 
-: Variables and Variable Labels {#tbl-variables}
+: Variables and Variable Labels {#tbl-variables .borderless .hover}
 
 # Methods
 
