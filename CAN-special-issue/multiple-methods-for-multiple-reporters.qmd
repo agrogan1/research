@@ -24,7 +24,7 @@ nocite: |
 
 # Background
 
-::: {#tip-Statamarkdown .callout-tip}
+::: {.callout-tip}
 ## Created With `Statamarkdown`
 
 This document was created using the amazing package by @Hemken, which should be cited in the final version of the paper. 
