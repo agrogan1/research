@@ -46,7 +46,9 @@ library(Statamarkdown)
 
 use "/Users/agrogan/Library/CloudStorage/Dropbox-UniversityofMichigan/Andrew Grogan-Kaylor/Lehigh measurement and causal inference analyses/Data sets/Stata data/Lehigh_working_concept_paper.dta", clear
 
-set linesize 96
+set linesize 96 // set linesize for Quarto
+
+global covariates "i.gender age i.ethrace i.marital annual_income" // set global macro
 
 ```
 
@@ -69,6 +71,15 @@ In the manuscript below, we employ multiple strategies to estimate the relations
 ```{stata, message=FALSE, warning=FALSE}
 
 describe
+
+```
+
+# Descriptive Statistics
+
+```{stata}
+#| column: page
+
+dtable i.gender age i.ethrace i.marital annual_income annual_income PR1 PR2 SR1 SR2 i.administrative outcome
 
 ```
 
@@ -115,7 +126,7 @@ $$\text{outcome} = \beta_0 + \beta \text{P1} + \beta \text{P2} + \beta \text{SR1
 ```{stata}
 #| eval: true
 
-regress outcome PR1 PR2 SR1 SR2 administrative age
+regress outcome PR1 PR2 SR1 SR2 administrative $covariates
 
 ```
 
@@ -124,7 +135,7 @@ For logistic regression, the appropriate syntax would be:
 ```{stata}
 #| eval: false
 
-logit outcome P1 P2 SR1 SR2 administrative covariates, or
+logit outcome P1 P2 SR1 SR2 administrative $covariates, or
 
 ```
 
@@ -177,12 +188,13 @@ $$\text{P2} = \beta_0 + \beta \text{P1} + e_i$$
 ### Syntax
 
 ```{stata}
-#| eval: false
+#| eval: true
 
-sem (outcome <- covariates SR1 SR2 PR1 PR2 administrative) ///
+gsem (outcome <- $covariates SR1 SR2 PR1 PR2 administrative) ///
   (SR2 <- SR1) ///
-  (PR2 <- PR1) ///
-  cov(e.outcome*e.SR2*e.PR2) // correlated errors
+  (PR2 <- PR1), ///
+  cov(e.outcome*e.SR2*e.PR2) /// correlated errors
+  nocapslatent // capital letters are NOT latent variables
 
 ```
 
