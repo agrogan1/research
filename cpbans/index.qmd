@@ -23,7 +23,7 @@ library(readr) # get data
 
 library(foreign) # read and write other formats
 
-library(maps) # basic mapping
+# library(maps) # basic mapping
 
 library(countrycode) # code country names
 
@@ -57,6 +57,8 @@ library(fontawesome) # Font Awesome icons
 
 cpbans <- tribble( 
   ~type, ~year.of.prohibition, ~country, ~country_code, ~total.number.of.bans,
+  "CP Ban", 2025, "Switzerland", "CHE", 70,
+  "CP Ban", 2025, "Czech Republic", "CZE", 69,
   "CP Ban", 2025, "Thailand", "THA", 68,
   "CP Ban", 2024, "Tajikistan", "TJK", 67,
   "CP Ban", 2024, "Lao PDR", "LAO", 66,
