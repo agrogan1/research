@@ -8,8 +8,7 @@ Many of these publications are available from [Deep Blue](https://deepblue.lib.u
 
 ## Corporal Punishment Bans
 
-* Data Visualization of [Country Level Bans on Corporal Punishment](https://agrogan1.github.io/research/cpbans/)
+* Data Visualization of [Country Level Bans on Corporal Punishment](https://agrogan1.github.io/CPbans.html)
 
-## Earlier Research on Corporal Punishment
 
-* [Earlier Research On Corporal Punishment](https://agrogan1.github.io/research/cp/)
+
